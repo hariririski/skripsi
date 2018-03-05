@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="fonts/iconfont/styles.css">
     <!-- END GLOBAL MANDATORY STYLES -->
 
-    
+
 
 <link rel="stylesheet" type="text/css" href="vendors/leaflet/leaflet.css">
 <link rel="stylesheet" type="text/css" href="vendors/jscrollpane/jquery.jscrollpane.css">
@@ -26,7 +26,7 @@
 
 
     <!-- BEGIN THEME STYLES -->
-    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+  <?php echo $this->load->view('umum/share/warna', '', TRUE);?>
     <!-- END THEME STYLES -->
 </head>
 <!-- BEGIN HEAD -->

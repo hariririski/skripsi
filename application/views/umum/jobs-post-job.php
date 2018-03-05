@@ -17,14 +17,14 @@
     <link rel="stylesheet" type="text/css" href="fonts/iconfont/styles.css">
     <!-- END GLOBAL MANDATORY STYLES -->
 
-    
+
 
 <link rel="stylesheet" type="text/css" href="vendors/select2/css/select2.min.css">
 <link rel="stylesheet" type="text/css" href="css/vendors/select2/select2.min.css">
 
 
     <!-- BEGIN THEME STYLES -->
-    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+    <?php echo $this->load->view('umum/share/warna', '', TRUE);?>
     <!-- END THEME STYLES -->
 </head>
 <!-- BEGIN HEAD -->

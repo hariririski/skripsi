@@ -67,7 +67,7 @@
                                      <a class="dropdown-item" href="blog-post.html">Pemilik Rumah Sakit</a>
                                      <a class="dropdown-item" href="blog-post.html">Kelas Rumah Sakit</a>
                                      <a class="dropdown-item" href="blog-post.html">Jenis Ruang</a>
-                                     <a class="dropdown-item" href="blog-post.html">Kelas Kamar</a>S
+                                     <a class="dropdown-item" href="blog-post.html">Kelas Kamar</a>
                                      <a class="dropdown-item" href="blog-post.html">Jenis Kelamin</a>
                                  </div>
                              </li>

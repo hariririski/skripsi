@@ -17,8 +17,8 @@
 
 
 
-
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/css/style-blue.min.css">
+    <?php echo $this->load->view('umum/share/warna', '', TRUE);?>
+  
 </head>
 <body class="">
 

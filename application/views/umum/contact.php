@@ -23,7 +23,7 @@
 
 
     <!-- BEGIN THEME STYLES -->
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/css/style.min.css">
+    <?php echo $this->load->view('umum/share/warna', '', TRUE);?>
     <!-- END THEME STYLES -->
 
 </head>
@@ -142,7 +142,7 @@
         });
 
         var marker = L.marker([5.5511826,95.3270089], {icon: contactIcon}).addTo(pageContactMap).bindPopup("I am a green leaf.");
-      
+
         marker.off('click');
     });
 })(jQuery);
