@@ -45,22 +45,25 @@
             <p class="blog__heading-level-two">Mengelola Data Jenis Kelamin</p>
         </div>
     </header>
+    <?php echo $this->session->flashdata('pesan')?>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="blog__posts">
                   <div class="col-lg-10">
-                      <form method="POST" action="">
-                            <div class="form-group row">
+                      <form method="POST" action="<?php site_url(); ?>jenis_kelamin/tambah" >
+                        <div class="form-group row">
                             <label for="example-text-input" class="col-3 col-form-label">Jenis Kelamin</label>
                             <div class="col-9">
-                                <input class="form-control" type="text"  id="example-text-input" placeholder="Masukkan Jenis Kelamin">
+                                <input class="form-control" type="text"  required name="nama_jenis_kelamin" placeholder="Masukkan Jenis Kelamin">
                                 <div class="form-control-feedback">Jenis Kelamin Yang Di Akui Indonesia. Contoh : Laki-Laki, Perempuan</div>
                             </div>
 
                         </div>
+                          <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
                       </form>
-                        <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
+
+
                     </div>
                 </div>
                     <hr>
@@ -99,15 +102,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                              <?php
+                                 $i=0;
+                                 foreach($lihat as $jenis_kelamin){
+                                 $i++;
+                               ?>
+                                <tr>
+                                    <td><?php echo $i?></td>
+                                    <td><?php echo $jenis_kelamin->nama_jenis_kelamin ?></td>
 
-
-                                <tr class="odd gradeX">
-                                    <td >a</td>
-                                    <td >a</td>
                                     <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
                                     <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                                 </tr>
-
+                                <?php
+                                }
+                               ?>
 
                             </tbody>
                         </table>

@@ -169,7 +169,7 @@
     })(jQuery);
 </script>
 
-    <!-- <script src="<?php site_url(); ?>data_umum/table/vendor/bootstrap/js/bootstrap.min.js"></script> -->
+    
 
         <!-- Metis Menu Plugin JavaScript -->
         <script src="<?php site_url(); ?>data_umum/table/vendor/metisMenu/metisMenu.min.js"></script>
