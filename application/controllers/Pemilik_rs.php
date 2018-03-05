@@ -25,18 +25,39 @@ class Pemilik_rs extends CI_Controller {
 			 $this->load->helper('url');
 			 $this->load->library('session');
 			 $this->load->database();
-			 // $admin=$this->session->userdata('admin');
+			 $this->load->model('M_Pemilik_rs');
 
 
    }
 
 	public function index()
 	{
-
-		$this->load->view('admin/tambah_pemilik_rs');
+    $data['lihat'] = $this->M_Pemilik_rs->lihat();
+		$this->load->view('admin/tambah_pemilik_rs',$data);
 	}
 
 
+  public function tambah(){
+        $cek= $this->M_Pemilik_rs->tambah();
+        if($cek){
+          $this->alert("primary","Berhasil");
+          redirect('pemilik_rs');
+        }else{
+          $this->alert("danger","Gagal");
+          redirect('pemilik_rs');
+        }
+  }
+
+  function alert($warna,$status){
+       $this->session->set_flashdata('pesan',
+       '<div class="alert alert-solid-'.$warna.'" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <strong>'.$status.'</strong> Data '.$status.' Di Tambahkan
+        </div>
+        ');
+     }
 
 
 }

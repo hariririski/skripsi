@@ -55,7 +55,7 @@
                             <div class="form-group row">
                             <label for="example-text-input" class="col-3 col-form-label">Kelas Kamar</label>
                             <div class="col-9">
-                                <input class="form-control" type="text"  name="nama_kelas_kamar" id="example-text-input" placeholder="Masukkan Nama Kelas Kamar">
+                                <input class="form-control" type="text" required name="nama_kelas_kamar" id="example-text-input" placeholder="Masukkan Nama Kelas Kamar">
 
                             </div>
 

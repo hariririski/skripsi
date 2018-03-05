@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>DirectoryHub - Multipurpose Directory &amp; Listings HTML Template</title>
+    <title>Login</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,6 +29,7 @@
 <?php echo $this->load->view('umum/share/menu', '', TRUE);?>
 
 <div class="page-auth">
+  <?php echo $this->session->flashdata('pesan')?>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-9">
@@ -52,26 +53,26 @@
 
                         <div class="tab-content">
                             <div class="tab-pane <?php $link=uri_string(); if($link =="login"){ echo "active";} ?>" id="page-auth__candiate-tab" role="tabpanel">
-                                <form action="#" class="page-auth__form form-controls-flat">
+                                <form action="<?php site_url(); ?>login/proses_login" method="POST" class="page-auth__form form-controls-flat">
                                     <h5 class="page-auth__form-heading">Rumah Sakit/ Admin</h5>
 
                                     <div class="form-group">
                                         <label for="username" class="form-label-icon form-label-icon--right">
                                             <span class="icon iconfont-user color-primary"></span> Username
                                         </label>
-                                        <input type="text" class="form-control" id="username" placeholder="">
+                                        <input type="text" class="form-control" name="username" id="username" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="form-label-icon form-label-icon--right">
                                             <span class="icon iconfont-envelope color-primary"></span> Password
                                         </label>
-                                        <input type="email" class="form-control" id="email" placeholder="">
+                                        <input type="password" class="form-control" name="password" placeholder="">
                                     </div>
 
                                     <div class="form-group">
                                         <div class="row justify-content-center">
                                             <div class="col-lg-6">
-                                                <button type="button" class="btn btn-primary btn-lg btn-block">Login</button>
+                                                <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
                                             </div>
                                         </div>
                                     </div>

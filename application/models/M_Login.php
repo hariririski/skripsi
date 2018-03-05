@@ -1,18 +1,22 @@
 <?php
     class M_login extends CI_Model{
-      function login(){
+      function login_rs(){
 
   			$username = $this->input->post('username');
   			$password= $this->input->post('password');
-        $cek=is_numeric($username);
         $password=md5($password);
-        if($cek==true){
-          $sql="SELECT * FROM mahasiswa where npm='$username' and password='$password'";
+          $sql="SELECT * FROM rs where kode_rs='$username' and password='$password'";
       		$query = $this->db->query($sql);
-        }else if($cek==false){
-          $sql="SELECT * FROM user where username='$username' and password='$password'";
-          $query = $this->db->query($sql);
-        }
+          return $query->result();
+      }
+
+      function login_admin(){
+
+        $username = $this->input->post('username');
+  			$password= $this->input->post('password');
+        $password=md5($password);
+          $sql="SELECT * FROM admin where username='$username' and password='$password'";
+      		$query = $this->db->query($sql);
           return $query->result();
       }
 

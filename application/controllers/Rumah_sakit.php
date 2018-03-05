@@ -25,15 +25,22 @@ class Rumah_sakit extends CI_Controller {
 			 $this->load->helper('url');
 			 $this->load->library('session');
 			 $this->load->database();
-			 // $admin=$this->session->userdata('admin');
+			 $this->load->model('M_Rs');
 
 
    }
 
 	public function index()
 	{
+    $data['lihat'] = $this->M_Rs->lihat();
+		$this->load->view('umum/Rumah_sakit',$data);
+	}
 
-		$this->load->view('umum/Rumah_sakit');
+  public function rumah_sakit_admin()
+	{
+    $data['lihat'] = $this->M_Rs->lihat();
+    $data['verifikasi'] = $this->M_Rs->lihat_verifikasi();
+		$this->load->view('admin/Rumah_sakit_admin',$data);
 	}
 
   public function detail()

@@ -45,22 +45,24 @@
             <p class="blog__heading-level-two">Mengelola Data Pemilik Rumah Sakit</p>
         </div>
     </header>
+    <?php echo $this->session->flashdata('pesan')?>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="blog__posts">
                   <div class="col-lg-10">
-                      <form method="POST" action="">
+                      <form method="POST" action="<?php site_url(); ?>pemilik_rs/tambah">
                             <div class="form-group row">
                             <label for="example-text-input" class="col-3 col-form-label">Pemilik Rumah Sakit</label>
                             <div class="col-9">
-                                <input class="form-control" type="text"  id="example-text-input" placeholder="Masukkan Jenis Kelamin">
+                                <input class="form-control" type="text" required name="nama_pemilik_rs" id="example-text-input" placeholder="Masukkan Pemilik  Rumah Sakit">
 
                             </div>
 
                         </div>
-                      </form>
+
                         <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
+                        </form>
                     </div>
                 </div>
                     <hr>
@@ -92,7 +94,7 @@
                             <thead>
                                 <tr>
                                     <th>NO</th>
-                                    <th>Kelas Rumah Sakit</th>
+                                    <th>Pemilik Rumah Sakit</th>
                                     <th>Edit</th>
                                     <th>Hapus</th>
 
@@ -101,12 +103,21 @@
                             <tbody>
 
 
-                                <tr class="odd gradeX">
-                                    <td >a</td>
-                                    <td >a</td>
+                              <?php
+                                 $i=0;
+                                 foreach($lihat as $pemilik_rs){
+                                 $i++;
+                               ?>
+                                <tr>
+                                    <td><?php echo $i?></td>
+                                    <td><?php echo $pemilik_rs->nama_pemilik_rs ?></td>
+
                                     <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
                                     <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                                 </tr>
+                                <?php
+                                }
+                               ?>
 
 
                             </tbody>
@@ -169,7 +180,7 @@
     })(jQuery);
 </script>
 
-    
+
 
         <!-- Metis Menu Plugin JavaScript -->
         <script src="<?php site_url(); ?>data_umum/table/vendor/metisMenu/metisMenu.min.js"></script>

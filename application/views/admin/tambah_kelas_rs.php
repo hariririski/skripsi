@@ -45,22 +45,24 @@
             <p class="blog__heading-level-two">Mengelola Kelas Rumah Sakit</p>
         </div>
     </header>
+    <?php echo $this->session->flashdata('pesan')?>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="blog__posts">
                   <div class="col-lg-10">
-                      <form method="POST" action="">
+                      <form method="POST" action="<?php site_url(); ?>kelas_rs/tambah">
                             <div class="form-group row">
                             <label for="example-text-input" class="col-3 col-form-label">Kelas Rumah Sakit</label>
                             <div class="col-9">
-                                <input class="form-control" type="text"  id="example-text-input" placeholder="Masukkan Jenis Kelamin">
+                                <input class="form-control" required type="text" name="nama_kelas_rs" id="example-text-input" placeholder="Masukkan Kelas Rumah Sakit">
 
                             </div>
 
                         </div>
-                      </form>
+
                         <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
+                      </form>
                     </div>
                 </div>
                     <hr>
@@ -101,12 +103,21 @@
                             <tbody>
 
 
-                                <tr class="odd gradeX">
-                                    <td >a</td>
-                                    <td >a</td>
+                              <?php
+                                 $i=0;
+                                 foreach($lihat as $kelas_rs){
+                                 $i++;
+                               ?>
+                                <tr>
+                                    <td><?php echo $i?></td>
+                                    <td><?php echo $kelas_rs->nama_kelas_rs ?></td>
+
                                     <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
                                     <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                                 </tr>
+                                <?php
+                                }
+                               ?>
 
 
                             </tbody>

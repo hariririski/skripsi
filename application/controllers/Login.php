@@ -25,7 +25,8 @@ class Login extends CI_Controller {
 			 $this->load->helper('url');
 			 $this->load->library('session');
 			 $this->load->database();
-			 $admin=$this->session->userdata('admin');
+			 $this->load->model('M_Rs');
+			 $this->load->model('M_Login');
 
 
    }
@@ -51,72 +52,31 @@ class Login extends CI_Controller {
 		redirect('login');
 	}
 
-  // public function register() {
-	// 	$data['prodi'] = $this->M_Prodi->lihat();
-	// 	$this->load->view('Register',$data);
-	// }
-  //
-	//  public function proses_daftar() {
-	// 	$cek= $this->M_Login->daftar();
-	// 	if($cek){
-  //
-  //          redirect('login');
-  //        }else{
-  //          $this->tambah_gagal();
-  //          redirect('daftar');
-  //        }
-	// }
-  //
-	// public function proses_login() {
-	// 	$cek=$this->M_Login->login();
-	// 	$mhs=$this->M_Login->mhs($this->input->post('username'));
-	// 	$prodi=$this->M_Login->prodi($this->input->post('username'));
-  //
-  // 		if($mhs==true && $cek==true){
-  //     			echo $username= $mhs[0]->npm;
-  //     			echo $level= $mhs[0]->level;
-  //     			echo $prodi= $mhs[0]->id_prodi;
-  //     			echo $mhs= $mhs[0]->nama;
-  //     			session_save_path();
-  //     			$this->session->set_userdata('login',$username);
-  //     			$this->session->set_userdata('level',$level);
-  //     			$this->session->set_userdata('prodi',$prodi);
-  //     			$this->session->set_userdata('nama',$mhs);
-	// 		     redirect('home');
-  //
-	// 	}
-  //   else if($prodi==true && $cek==true){
-  //           $username= $prodi[0]->username;
-  //           $level= $prodi[0]->level;
-  //           $prodi= $prodi[0]->id_prodi;
-  //           $nama_lengkap= $prodi[0]->nama_lengkap;
-  //           session_save_path();
-  //           $this->session->set_userdata('login',$username);
-  //           $this->session->set_userdata('level',$level);
-  //           $nama_prodi=$this->M_Prodi->prodi($prodi);
-  //           $nama_prodi= $nama_prodi[0]->nama_prodi;
-  //           $this->session->set_userdata('prodi',$prodi);
-  //           $this->session->set_userdata('nama_prodi',$nama_prodi);
-  //           $this->session->set_userdata('nama',$nama_lengkap);
-  //           redirect('home');
-  //   }
-  //   else{
-	// 		$data="document.getElementById('exampleTopFullWidth').click();";
-	// 		$this->session->set_flashdata('pesan', 'onload="'.$data.'"');
-	// 		redirect('login');
-	// 	}
-	// }
-  //
-  //
-  //
-  //
-  //   function tambah_gagal(){
-  //       $this->session->set_flashdata('pesan', '
-  //               <div class="alert alert-danger fade in">
-  //               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  //               <strong>Gagal!</strong> Proses Pendaftaran Gagal!.
-  //               </div>');
-  //    }
+	public function proses_login() {
+		 $rs=$this->M_Login->login_rs($this->input->post('username'));
+		 $admin=$this->M_Login->login_admin($this->input->post('username'));
 
+     if(isset($rs[0]->kode_rs)){
+       $this->session->set_userdata('rs',$rs[0]->kode_rs);
+       redirect('home');
+     }else if(isset($admin[0]->username)){
+       $this->session->set_userdata('admin',$admin[0]->username);
+       redirect('home');
+     }else{
+         $this->alert("danger","Gagal");
+         redirect('login');
+     }
+   }
+
+     function alert($warna,$status){
+          $this->session->set_flashdata('pesan',
+          '<div class="alert alert-solid-'.$warna.'" role="alert">
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                   </button>
+                   <strong>'.$status.'</strong> Anda '.$status.' Login
+           </div>
+           ');
+        }
 
 }

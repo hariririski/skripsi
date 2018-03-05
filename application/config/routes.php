@@ -57,6 +57,7 @@ $route['daftar'] = 'login/daftar';
 
 
 $route['detail'] = 'Rumah_sakit/detail';
+$route['rumah_sakit_admin'] = 'Rumah_sakit/rumah_sakit_admin';
 
 
 $route['404_override'] = '';
