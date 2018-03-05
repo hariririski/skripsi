@@ -25,17 +25,38 @@ class kelas_kamar extends CI_Controller {
 			 $this->load->helper('url');
 			 $this->load->library('session');
 			 $this->load->database();
-			 // $admin=$this->session->userdata('admin');
+			 $this->load->model('M_Kelas_kamar');
 
 
    }
 
 	public function index()
 	{
-
-		$this->load->view('admin/tambah_kelas_kamar');
+    $data['lihat'] = $this->M_Kelas_kamar->lihat();
+		$this->load->view('admin/tambah_kelas_kamar',$data);
 	}
 
+  public function tambah(){
+        $cek= $this->M_Kelas_kamar->tambah();
+        if($cek){
+          $this->alert("primary","Berhasil");
+          redirect('kelas_kamar');
+        }else{
+          $this->alert("danger","Gagal");
+          redirect('kelas_kamar');
+        }
+  }
+
+  function alert($warna,$status){
+       $this->session->set_flashdata('pesan',
+       '<div class="alert alert-solid-'.$warna.'" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <strong>'.$status.'</strong> Data '.$status.' Di Tambahkan
+        </div>
+        ');
+     }
 
 
 
