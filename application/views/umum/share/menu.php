@@ -62,13 +62,12 @@
                              <li class="nav-item dropdown">
                                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pengaturan</a>
                                  <div class="dropdown-menu" data-dropdown-in="fadeInUp" data-dropdown-out="fadeOutDown">
-                                     <a class="dropdown-item" href="blog.html">Kelas Rumah Sakit</a>
-                                     <a class="dropdown-item" href="blog-post.html">Jenis Rumah Sakit</a>
-                                     <a class="dropdown-item" href="blog-post.html">Pemilik Rumah Sakit</a>
-                                     <a class="dropdown-item" href="blog-post.html">Kelas Rumah Sakit</a>
-                                     <a class="dropdown-item" href="blog-post.html">Jenis Ruang</a>
-                                     <a class="dropdown-item" href="blog-post.html">Kelas Kamar</a>
-                                     <a class="dropdown-item" href="blog-post.html">Jenis Kelamin</a>
+                                     <a class="dropdown-item" href="<?php site_url(); ?>kelas_rs">Kelas Rumah Sakit</a>
+                                     <a class="dropdown-item" href="<?php site_url(); ?>jenis_rs">Jenis Rumah Sakit</a>
+                                     <a class="dropdown-item" href="<?php site_url(); ?>pemilik_rs">Pemilik Rumah Sakit</a>
+                                     <a class="dropdown-item" href="<?php site_url(); ?>jenis_ruang">Jenis Ruang</a>
+                                     <a class="dropdown-item" href="<?php site_url(); ?>kelas_kamar">Kelas Kamar</a>
+                                     <a class="dropdown-item" href="<?php site_url(); ?>jenis_kelamin">Jenis Kelamin</a>
                                  </div>
                              </li>
                          </ul>

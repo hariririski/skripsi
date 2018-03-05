@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jenis_kelamin extends CI_Controller {
+class Kelas_rs extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -33,7 +33,7 @@ class Jenis_kelamin extends CI_Controller {
 	public function index()
 	{
 
-		$this->load->view('admin/tambah_jenis_kelamin');
+		$this->load->view('admin/tambah_kelas_rs');
 	}
 
 

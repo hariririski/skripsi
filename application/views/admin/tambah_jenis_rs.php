@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>DirectoryHub - Multipurpose Directory &amp; Listings HTML Template</title>
+    <title>Jenis Rumah Sakit</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,8 +41,8 @@
 <div class="blog">
     <header class="blog__header">
         <div class="container">
-            <h3 class="blog__heading">Jenis Kelamin</h3>
-            <p class="blog__heading-level-two">Mengelola Data Jenis Kelamin</p>
+            <h3 class="blog__heading">Jenis Rumah Sakit</h3>
+            <p class="blog__heading-level-two">Mengelola Jenis Rumah Sakit</p>
         </div>
     </header>
     <div class="container">
@@ -52,10 +52,10 @@
                   <div class="col-lg-10">
                       <form method="POST" action="">
                             <div class="form-group row">
-                            <label for="example-text-input" class="col-3 col-form-label">Jenis Kelamin</label>
+                            <label for="example-text-input" class="col-3 col-form-label">Jenis Rumah Sakit</label>
                             <div class="col-9">
                                 <input class="form-control" type="text"  id="example-text-input" placeholder="Masukkan Jenis Kelamin">
-                                <div class="form-control-feedback">Jenis Kelamin Yang Di Akui Indonesia. Contoh : Laki-Laki, Perempuan</div>
+
                             </div>
 
                         </div>
@@ -92,7 +92,7 @@
                             <thead>
                                 <tr>
                                     <th>NO</th>
-                                    <th>Jenis Kelamin</th>
+                                    <th>Jenis Rumah Sakit</th>
                                     <th>Edit</th>
                                     <th>Hapus</th>
 
@@ -169,7 +169,7 @@
     })(jQuery);
 </script>
 
-    <script src="<?php site_url(); ?>data_umum/table/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="<?php site_url(); ?>data_umum/table/vendor/bootstrap/js/bootstrap.min.js"></script> -->
 
         <!-- Metis Menu Plugin JavaScript -->
         <script src="<?php site_url(); ?>data_umum/table/vendor/metisMenu/metisMenu.min.js"></script>
