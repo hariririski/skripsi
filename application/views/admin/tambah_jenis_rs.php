@@ -47,96 +47,64 @@
     </header>
     <?php echo $this->session->flashdata('pesan')?>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="blog__posts">
-                  <div class="col-lg-10">
-                      <form method="POST" action="<?php site_url(); ?>jenis_rs/tambah">
-                            <div class="form-group row">
-                            <label for="example-text-input" class="col-3 col-form-label">Jenis Rumah Sakit</label>
-                            <div class="col-9">
-                                <input class="form-control" type="text" required name="nama_jenis_rs" id="example-text-input" placeholder="Masukkan Jenis Rumah Sakit">
-                            </div>
-                        </div>
-                        <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
-                        </form>
+        <br>
+      <div class="card card-outline-success mb-3">
+            <div class="card-header bg-success">Tambah Jenis Rumah Sakit</div>
+            <div class="card-block">
+              <form method="POST" action="<?php site_url(); ?>jenis_rs/tambah">
+                    <div class="form-group row">
+                    <label for="example-text-input" class="col-3 col-form-label">Jenis Rumah Sakit</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" required name="nama_jenis_rs" id="example-text-input" placeholder="Masukkan Jenis Rumah Sakit">
                     </div>
                 </div>
-                    <hr>
+                <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
+                </form>
             </div>
+        </div>
 
+        <div class="card card-outline-info mb-3">
+            <div class="card-header bg-info">Data Jenis Rumah Sakit</div>
+            <div class="card-block">
+              <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                  <thead>
+                      <tr>
+                          <th>NO</th>
+                          <th>Jenis Rumah Sakit</th>
+                          <th>Edit</th>
+                          <th>Hapus</th>
+
+                      </tr>
+                  </thead>
+                  <tbody>
+
+
+                    <?php
+                       $i=0;
+                       foreach($lihat as $jenis_rs){
+                       $i++;
+                     ?>
+                      <tr>
+                          <td><?php echo $i?></td>
+                          <td><?php echo $jenis_rs->nama_jenis_rs ?></td>
+
+                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
+                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
+                      </tr>
+                      <?php
+                      }
+                     ?>
+
+
+                  </tbody>
+              </table>
+              <!-- /.table-responsive -->
+
+            </div>
         </div>
     </div>
 
 </div>
-
-
-
-<div class="container">
-<div class="col-lg-12">
-            <!-- <div class="col-lg-12">
-                <h1 class="page-header">Tables</h1>
-            </div> -->
-            <!-- /.col-lg-12 -->
-            <br>
-        </div>
-        <!-- /.row -->
-        <div class="col-lg-12">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>Jenis Rumah Sakit</th>
-                                    <th>Edit</th>
-                                    <th>Hapus</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-
-
-                              <?php
-                                 $i=0;
-                                 foreach($lihat as $jenis_rs){
-                                 $i++;
-                               ?>
-                                <tr>
-                                    <td><?php echo $i?></td>
-                                    <td><?php echo $jenis_rs->nama_jenis_rs ?></td>
-
-                                    <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
-                                    <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
-                                </tr>
-                                <?php
-                                }
-                               ?>
-
-
-                            </tbody>
-                        </table>
-                        <!-- /.table-responsive -->
-
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-                <!-- /.panel -->
-            </div>
-                <hr>
-            <!-- /.col-lg-12 -->
-        </div>
-</div>
-
-
-
-
-
-
-
 
 
 

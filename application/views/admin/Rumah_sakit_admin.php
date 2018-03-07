@@ -53,110 +53,88 @@
 
 
 <div class="container">
-<div class="col-lg-12">
-            <div class="col-lg-12">
-              <br>
-                <center><h4 >Data Rumah Sakit</h4></center>
-            </div>
-            <!-- /.col-lg-12 -->
-            <br>
+  <br>
+  <div class="card card-outline-info mb-3">
+        <div class="card-header bg-info">Data Rumah Sakit</div>
+        <div class="card-block">
+          <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+              <thead>
+                  <tr>
+                      <th>NO</th>
+                      <th>Rumah Sakit</th>
+                      <th>Jenis Rumah Sakit</th>
+                      <th>Alamat</th>
+                      <th>Kelas</th>
+                      <th>Detail</th>
+
+                  </tr>
+              </thead>
+              <tbody>
+                <?php
+                   $i=0;
+                   foreach($lihat as $Rs){
+                   $i++;
+                 ?>
+                  <tr>
+                      <td><?php echo $i?></td>
+                      <td><?php echo $Rs->nama_rs ?></td>
+                      <td><?php echo $Rs->nama_jenis_rs ?></td>
+                      <td><?php echo $Rs->alamat ?></td>
+                      <td><?php echo $Rs->nama_kelas_rs ?></td>
+                      <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-success btn-xs">Detail</button></td>
+                  </tr>
+                  <?php
+                  }
+                 ?>
+
+              </tbody>
+          </table>
+          <!-- /.table-responsive -->
         </div>
-        <!-- /.row -->
-        <div class="col-lg-12">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
+    </div>
 
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>Rumah Sakit</th>
-                                    <th>Jenis Rumah Sakit</th>
-                                    <th>Alamat</th>
-                                    <th>Kelas</th>
-                                    <th>Detail</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                                 $i=0;
-                                 foreach($lihat as $Rs){
-                                 $i++;
-                               ?>
-                                <tr>
-                                    <td><?php echo $i?></td>
-                                    <td><?php echo $Rs->nama_rs ?></td>
-                                    <td><?php echo $Rs->nama_jenis_rs ?></td>
-                                    <td><?php echo $Rs->alamat ?></td>
-                                    <td><?php echo $Rs->nama_kelas_rs ?></td>
-                                    <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-success btn-xs">Detail</button></td>
-                                </tr>
-                                <?php
-                                }
-                               ?>
+    <div class="card card-outline-warning mb-3">
+            <div class="card-header bg-warning">Data Rumah Sakit Belum Verifikasi</div>
+            <div class="card-block">
+              <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
+                  <thead>
+                      <tr>
+                          <th>NO</th>
+                          <th>Rumah Sakit</th>
+                          <th>Jenis Rumah Sakit</th>
+                          <th>Alamat</th>
+                          <th>Kelas</th>
+                          <th>Detail</th>
 
-                            </tbody>
-                        </table>
-                        <!-- /.table-responsive -->
+                      </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                       $i=0;
+                       foreach($verifikasi as $Verifikasi){
+                       $i++;
+                     ?>
+                      <tr>
+                          <td><?php echo $i?></td>
+                          <td><?php echo $Verifikasi->nama_rs ?></td>
+                          <td><?php echo $Verifikasi->nama_jenis_rs ?></td>
+                          <td><?php echo $Verifikasi->alamat ?></td>
+                          <td><?php echo $Verifikasi->nama_kelas_rs ?></td>
+                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-primary btn-xs">Detail</button></td>
+                      </tr>
+                      <?php
+                      }
+                     ?>
 
-                        <br>
-                        <hr>
-                        <br>
-                        <div class="col-lg-12">
-                                    <div class="col-lg-12">
-                                      <br>
-                                        <center><h4 >Data Rumah Sakit Belum Verifikasi</h4></center>
-                                    </div>
-                                    <!-- /.col-lg-12 -->
-                                    <br>
-                                </div>
-                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>Rumah Sakit</th>
-                                    <th>Jenis Rumah Sakit</th>
-                                    <th>Alamat</th>
-                                    <th>Kelas</th>
-                                    <th>Detail</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                                 $i=0;
-                                 foreach($verifikasi as $Verifikasi){
-                                 $i++;
-                               ?>
-                                <tr>
-                                    <td><?php echo $i?></td>
-                                    <td><?php echo $Verifikasi->nama_rs ?></td>
-                                    <td><?php echo $Verifikasi->nama_jenis_rs ?></td>
-                                    <td><?php echo $Verifikasi->alamat ?></td>
-                                    <td><?php echo $Verifikasi->nama_kelas_rs ?></td>
-                                    <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-primary btn-xs">Detail</button></td>
-                                </tr>
-                                <?php
-                                }
-                               ?>
-
-                            </tbody>
-                        </table>
-                        <!-- /.table-responsive -->
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-                <hr>
-                <!-- /.panel -->
-
+                  </tbody>
+              </table>
+              <!-- /.table-responsive -->
             </div>
-
-
-            <!-- /.col-lg-12 -->
         </div>
+
+
+
 
 
 
