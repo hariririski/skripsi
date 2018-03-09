@@ -58,7 +58,7 @@
 
                                     <div class="form-group">
                                         <label for="username" class="form-label-icon form-label-icon--right">
-                                            <span class="icon iconfont-user color-primary"></span> Username
+                                            <span class="icon iconfont-user color-primary"></span> Kode Rumah Sakit /Username
                                         </label>
                                         <input type="text" class="form-control" name="username" id="username" placeholder="">
                                     </div>
@@ -80,7 +80,7 @@
                                 </form>
                             </div>
                             <div class="tab-pane <?php $link=uri_string(); if($link =="daftar"){ echo "active";} ?>" id="page-auth__employeer-tab" role="tabpanel">
-                                <form action="#" class="page-auth__form form-controls-flat">
+                                <form action="<?php site_url(); ?>login/proses_daftar" method="POST" class="page-auth__form form-controls-flat">
                                     <h5 class="page-auth__form-heading">Daftar Rumah Sakit</h5>
 
                                     <div class="form-group">
@@ -88,27 +88,30 @@
                                             <span class="icon iconfont-user color-primary"></span> Kode Rumah Sakit
 
                                         </label>
-                                        <input type="text" class="form-control" id="employee-username" placeholder="">
+                                        <input type="text" class="form-control" name="kode_rumah_sakit" id="employee-username" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="company-name">Nama Rumah Sakit</label>
-                                        <input type="text" class="form-control" id="company-name" placeholder="">
+                                        <input type="text" class="form-control" name="nama_rumah_sakit" id="company-name" placeholder="">
                                     </div>
                                     <div class="form-group">
                                         <label for="employee-email" class="form-label-icon form-label-icon--right">
                                             <span class="icon iconfont-envelope color-primary"></span> E-mail
                                         </label>
-                                        <input type="email" class="form-control" id="employee-email" placeholder="">
+                                        <input type="email" class="form-control" name="email" id="employee-email" placeholder="">
                                     </div>
                                     <div class="form-group">
-                                        <label for="employee-phone-number">Phone Number</label>
-                                        <input type="text" class="form-control" id="employee-phone-number" placeholder="">
+                                        <label for="employee-phone-number">NO HP</label>
+                                        <input type="text" class="form-control" name="no_hp" id="employee-phone-number" placeholder="">
                                     </div>
-
+                                    <div class="form-group">
+                                        <label for="employee-phone-number">Password</label>
+                                        <input type="password" name="password" class="form-control" id="employee-phone-number" placeholder="">
+                                    </div>
                                     <div class="form-group">
                                         <div class="row justify-content-center">
                                             <div class="col-lg-6">
-                                                <button type="button" class="btn btn-primary btn-lg btn-block">Create account</button>
+                                                <button type="submit" class="btn btn-primary btn-lg btn-block">Daftar</button>
                                             </div>
                                         </div>
                                     </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DirectoryHub - Multipurpose Directory &amp; Listings HTML Template</title>
+    <title>Cari Ruang Rawat Inap</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,23 +18,23 @@
 
 
     <?php echo $this->load->view('umum/share/warna', '', TRUE);?>
-  
+
 </head>
 <body class="">
 
 
 <?php echo $this->load->view('umum/share/menu', '', TRUE);?>
 
-
+<?php echo $this->session->flashdata('pesan')?>
 <div class="hero-master">
     <div class="container">
-        <h2 class="hero-master__heading">A convenient way to find a master <br> for work on the house</h2>
-        <a href="master-post-application.html" class="btn btn-primary btn-rounded hero-master__post-job">Post an application</a>
+        <h2 class="hero-master__heading">Dapatkan informasi Dengan Mudah  <br> Ketersediaan Ruang Rawat Inap</h2>
+        <a href="master-post-application.html" class="btn btn-primary btn-rounded hero-master__post-job">Ketersediaan Ruang Rapat Inap</a>
     </div>
 </div>
 <div class="how-it-works-default">
     <div class="container">
-        <h2 class="how-it-works-default__heading">How does it work?</h2>
+        <h2 class="how-it-works-default__heading">Bgaiaman Cara Kerja Sistem Kami</h2>
 
         <div class="row">
             <div class="col-lg-4">
@@ -74,7 +74,7 @@
     </div>
 </div>
 <section class="popular-jobs">
-    <h2 class="popular-jobs__heading">Popular jobs</h2>
+    <h2 class="popular-jobs__heading">Rumah Sakit</h2>
 
     <div class="container">
         <div class="row">
@@ -133,13 +133,23 @@
 </section>
 <div class="features-master">
     <div class="container">
-        <h2 class="features-master__heading">How does it work?</h2>
+        <h2 class="features-master__heading">Bagaimana Cara Bergabung Bersama Kami?</h2>
 
         <div class="row">
+
+            <div class="col-lg-4">
+                <div class="features-master__item">
+                    <span class="features-master__item-icon iconfont-paper-solid"></span>
+                    <h6 class="features-master__item-title">Melakukan Pendaftaran</h6>
+                    <p class="features-master__item-description">
+                        In addition to reviews, there are photos of completed works, pricing and contact information in the questionnaire masters
+                    </p>
+                </div>
+            </div>
             <div class="col-lg-4">
                 <div class="features-master__item">
                     <span class="features-master__item-icon iconfont-user-checked"></span>
-                    <h6 class="features-master__item-title">Verified reviews</h6>
+                    <h6 class="features-master__item-title">Verifikasi Data</h6>
                     <p class="features-master__item-description">
                         All reviews submitted by the masters,
                         are thoroughly tested and then published
@@ -149,17 +159,8 @@
             </div>
             <div class="col-lg-4">
                 <div class="features-master__item">
-                    <span class="features-master__item-icon iconfont-paper-solid"></span>
-                    <h6 class="features-master__item-title">The information in the questionnaire</h6>
-                    <p class="features-master__item-description">
-                        In addition to reviews, there are photos of completed works, pricing and contact information in the questionnaire masters
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="features-master__item">
                     <span class="features-master__item-icon iconfont-info-solid"></span>
-                    <h6 class="features-master__item-title">All prices are in one place</h6>
+                    <h6 class="features-master__item-title">Masukkan Data Kamar dan Tempat Tidur</h6>
                     <p class="features-master__item-description">
                         Masters Proposals will be in front of your eyes, you can easily compare them and choose the right
                     </p>
@@ -168,7 +169,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <a href="#" class="btn btn-outline-primary btn-rounded features-master__btn">Describe your problem</a>
+            <a href="#" class="btn btn-outline-primary btn-rounded features-master__btn">Daftar Sekarang</a>
         </div>
 
         <div class="text-center mt-3 features-master__free-message">It is absolutely free</div>
@@ -287,7 +288,7 @@
         </div>
 
         <div class="d-flex justify-content-center">
-            <a href="#" class="btn btn-primary listing-recent-orders__show-all-btn btn-rounded">Show all orders</a>
+            <a href="#" class="btn btn-primary listing-recent-orders__show-all-btn btn-rounded">Tampilkan Semua Kamar Kosong</a>
         </div>
     </div>
 </div>

@@ -33,32 +33,21 @@
 
 
 		function daftar(){
-			$password_baru = md5($this->input->post('password'));
-			$ulangi_password = md5($this->input->post('ulangi_password'));
-			if($password_baru==$ulangi_password){
-				$mahasiswa = array(
-				  'npm'=>$this->input->post('npm'),
-				  'nama'=>$this->input->post('nama'),
-				  'alamat'=>$this->input->post('alamat'),
+				$rs= array(
+				  'kode_rs'=>$this->input->post('kode_rumah_sakit'),
+				  'nama_rs'=>$this->input->post('nama_rumah_sakit'),
 				  'email'=>$this->input->post('email'),
-				  'id_prodi'=>$this->input->post('prodi'),
 				  'no_hp'=>$this->input->post('no_hp'),
-          'password'=>$password_baru
-
+				  'password'=>md5($this->input->post('password'))
 				);
-
-
-			$cek1=$this->db->insert('mahasiswa',$mahasiswa);
+			$cek1=$this->db->insert('rs',$rs);
 
 			if($cek1){
 				return true;
       }else{
-        return true;
+        return false;
       }
+	  }
 
-			}else{
-				return false;
-			}
-		}
-	}
+}
 ?>

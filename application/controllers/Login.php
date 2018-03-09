@@ -63,18 +63,30 @@ class Login extends CI_Controller {
        $this->session->set_userdata('admin',$admin[0]->username);
        redirect('home');
      }else{
-         $this->alert("danger","Gagal");
-         redirect('login');
+       $this->alert("danger","Gagal","Maaf Anda Gagal Login");
+       redirect('login');
      }
    }
 
-     function alert($warna,$status){
+   public function proses_daftar() {
+ 		 $rs=$this->M_Login->daftar();
+      if($rs){
+        $this->alert("warning","berhasil","Silahkan Lengkapi Data Anda, Pada Menu Data -> Profil Rumah Sakit, Untuk Mempermudah Proses Verifikasi ");
+        $this->session->set_userdata('rs',$this->input->post('kode_rumah_sakit'));
+        redirect('home');
+      }else{
+          $this->alert("danger","Gagal","Maaf Anda Gagal Login");
+          redirect('login');
+      }
+    }
+
+     function alert($warna,$status,$isi){
           $this->session->set_flashdata('pesan',
           '<div class="alert alert-solid-'.$warna.'" role="alert">
                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                        <span aria-hidden="true">×</span>
                    </button>
-                   <strong>'.$status.'</strong> Anda '.$status.' Login
+                   <strong>'.$status.'</strong> '.$isi.'
            </div>
            ');
         }

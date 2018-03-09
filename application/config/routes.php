@@ -54,6 +54,7 @@ $route['home'] = 'welcome';
 
 $route['login'] = 'login';
 $route['daftar'] = 'login/daftar';
+$route['profil'] = 'rumah_sakit/profil';
 
 
 $route['detail'] = 'Rumah_sakit/detail';

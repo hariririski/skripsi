@@ -49,5 +49,12 @@ class Rumah_sakit extends CI_Controller {
 		$this->load->view('umum/Detail_rumah_sakit');
 	}
 
+  public function profil()
+  {
+    $id=$this->session->userdata('rs');
+    $data['lihat'] = $this->M_Rs->lihat_rs($id);
+    $this->load->view('umum/profil',$data);
+  }
+
 
 }
