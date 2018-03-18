@@ -55,7 +55,7 @@
                     <div class="form-group row">
                     <label for="example-text-input" class="col-3 col-form-label">Jenis Ruang</label>
                     <div class="col-9">
-                        <input class="form-control" required type="text" name="nama_jenis_ruang" id="example-text-input" placeholder="Masukkan Jenis Kelamin">
+                        <input class="form-control"  autofocus="autofocus" required type="text" name="nama_jenis_ruang" id="example-text-input" placeholder="Masukkan Nama Ruangan">
 
                     </div>
 

@@ -121,7 +121,7 @@
                           <td><?php echo $Verifikasi->nama_jenis_rs ?></td>
                           <td><?php echo $Verifikasi->alamat ?></td>
                           <td><?php echo $Verifikasi->nama_kelas_rs ?></td>
-                          <td class="center"><a href="rumah_sakit/detail/<?php echo $Rs->kode_rs?>"><button type="button" class="btn btn-primary btn-xs">Detail</button></td>
+                          <td class="center"><a href="rumah_sakit/detail/<?php echo $Verifikasi->kode_rs?>"><button type="button" class="btn btn-primary btn-xs">Detail</button></td>
                       </tr>
                       <?php
                       }

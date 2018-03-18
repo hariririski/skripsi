@@ -48,7 +48,8 @@ class Rumah_sakit extends CI_Controller {
 
   public function detail()
 	{
-    $data['lihat'] = $this->M_Rs->lihat_rs($id);
+
+    $data['lihat'] = $this->M_Rs->lihat_rs($this->uri->segment('3'));
 		$this->load->view('umum/Detail_rumah_sakit',$data);
 	}
 
@@ -56,9 +57,9 @@ class Rumah_sakit extends CI_Controller {
   {
     $id=$this->session->userdata('rs');
     $data['lihat'] = $this->M_Rs->lihat_rs($id);
-    $data['jenis'] = $this->M_Rs->lihat();
-    $data['pemilik'] = $this->M_Rs->lihat();
-    $data['kelas'] = $this->M_Rs->lihat();
+    $data['jenis'] = $this->M_Jenis_rs->lihat();
+    $data['pemilik'] = $this->M_Pemilik_rs->lihat();
+    $data['kelas'] = $this->M_Kelas_rs->lihat();
     $this->load->view('umum/profil',$data);
   }
 

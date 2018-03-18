@@ -43,7 +43,11 @@
 			$cek1=$this->db->insert('rs',$rs);
 
 			if($cek1){
-				return true;
+
+        if (!is_dir('gambar/'.$this->input->post('kode_rumah_sakit'))) {
+              mkdir('./gambar/' . $this->input->post('kode_rumah_sakit'), 0777, TRUE);
+          }
+          return true;
       }else{
         return false;
       }

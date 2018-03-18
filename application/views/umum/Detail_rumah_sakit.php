@@ -3,7 +3,11 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Rumah Sakit</title>
+    <title><?php
+       foreach($lihat as $title){
+       echo $title->nama_rs;
+     }
+     ?></title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,11 +37,15 @@
 
 
 <?php echo $this->load->view('umum/share/menu', '', TRUE);?>
+<?php
+   foreach($lihat as $detail){
+
+ ?>
 <div class="apartment">
     <div class="apartment__wrap">
-        <a href="" class="apartment__back-to-search">Back to search</a>
-        <h1 class="apartment__name">Apartment near the sea</h1>
-        <div class="apartment__location">Italy, Abruzzo, Teramo</div>
+        <a href="" class="apartment__back-to-search">Kembali Ke Pencaharian</a>
+        <h1 class="apartment__name"><?php  echo $detail->nama_rs;?></h1>
+        <div class="apartment__location"><?php  echo $detail->alamat;?></div>
 
         <div class="apartment__price">
             $399/mo <a href="" class="apartment__price-offer">Offer your price</a>
@@ -56,8 +64,8 @@
     </div>
     <div class="apartment__image-slider">
         <ul id="apartment-image-slider">
-            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
+            <li data-thumb="<?php echo site_url(); ?><?php  echo $detail->gambar;?>">
+                <img src="<?php echo site_url(); ?><?php  echo $detail->gambar;?>" alt="">
             </li>
             <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
                 <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
@@ -170,6 +178,9 @@
         <a href="#" class="btn btn-outline-primary btn-lg">Send a message</a>
     </div>
 </div>
+<?php
+ }
+ ?>
 <?php echo $this->load->view('umum/share/footer', '', TRUE);?>
 
 
