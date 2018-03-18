@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Rumah_sakit extends CI_Controller {
+class cari_kamar extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -36,7 +36,7 @@ class Rumah_sakit extends CI_Controller {
 	public function index()
 	{
     $data['lihat'] = $this->M_Rs->lihat();
-		$this->load->view('umum/Rumah_sakit',$data);
+		$this->load->view('umum/Cari_kamar',$data);
 	}
 
   public function rumah_sakit_admin()
@@ -48,8 +48,8 @@ class Rumah_sakit extends CI_Controller {
 
   public function detail()
 	{
-    $data['lihat'] = $this->M_Rs->lihat_rs($id);
-		$this->load->view('umum/Detail_rumah_sakit',$data);
+
+		$this->load->view('umum/Detail_rumah_sakit');
 	}
 
   public function profil()

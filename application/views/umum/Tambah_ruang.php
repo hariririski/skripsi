@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Rumah Sakit Admin</title>
+    <title>Ruang</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,91 +41,75 @@
 <div class="blog">
     <header class="blog__header">
         <div class="container">
-            <h3 class="blog__heading">Rumah Sakit</h3>
-            <p class="blog__heading-level-two">Mengelola Data Rumah Sakit</p>
+            <h3 class="blog__heading">Ruang</h3>
+            <p class="blog__heading-level-two">Mengelola Data Ruang</p>
         </div>
     </header>
-
-
-
-</div>
-
-
-
-<div class="container">
-  <br>
-  <div class="card card-outline-info mb-3">
-        <div class="card-header bg-info">Data Rumah Sakit</div>
-        <div class="card-block">
-          <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-              <thead>
-                  <tr>
-                      <th>NO</th>
-                      <th>Rumah Sakit</th>
-                      <th>Jenis Rumah Sakit</th>
-                      <th>Alamat</th>
-                      <th>Kelas</th>
-                      <th>Detail</th>
-
-                  </tr>
-              </thead>
-              <tbody>
-                <?php
-                   $i=0;
-                   foreach($lihat as $Rs){
-                   $i++;
-                 ?>
-                  <tr>
-                      <td><?php echo $i?></td>
-                      <td><?php echo $Rs->nama_rs ?></td>
-                      <td><?php echo $Rs->nama_jenis_rs ?></td>
-                      <td><?php echo $Rs->alamat ?></td>
-                      <td><?php echo $Rs->nama_kelas_rs ?></td>
-                      <td class="center"><a href="rumah_sakit/detail/<?php echo $Rs->kode_rs?>"><button type="button" class="btn btn-success btn-xs">Detail</button></td>
-                  </tr>
-                  <?php
-                  }
-                 ?>
-
-              </tbody>
-          </table>
-          <!-- /.table-responsive -->
-        </div>
-    </div>
-
-
-    <div class="card card-outline-warning mb-3">
-            <div class="card-header bg-warning">Data Rumah Sakit Belum Verifikasi</div>
+    <?php echo $this->session->flashdata('pesan')?>
+    <div class="container">
+        <br>
+      <div class="card card-outline-success mb-3">
+            <div class="card-header bg-success">Tambah Ruang</div>
             <div class="card-block">
-              <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
+              <form method="POST" action="<?php site_url(); ?>jenis_ruang/tambah">
+                    <div class="form-group row">
+                      <label for="example-text-input" class="col-3 col-form-label">Nama Ruang</label>
+                      <div class="col-9">
+                          <input class="form-control" required type="text" name="nama_jenis_ruang" id="example-text-input" placeholder="Masukkan Nama Ruang">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="example-text-input" class="col-3 col-form-label">Jenis Ruang</label>
+                      <div class="col-9">
+                        <select class="form-control select2-form-control " required tabindex="-1" aria-hidden="true">
+                            <?php
+                               foreach($lihat as $data_jenis){
+                             ?>
+                            <option value="<?php echo $data_jenis->id_jenis_ruang;?>"><?php echo $data_jenis->nama_jenis_ruang;?></option>
+                            <?php
+                              }
+                             ?>
+                        </select>
+                      </div>
+                    </div>
+                  <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
+              </form>
+            </div>
+        </div>
+
+        <div class="card card-outline-info mb-3">
+            <div class="card-header bg-info">Data Ruang</div>
+            <div class="card-block">
+              <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                   <thead>
                       <tr>
                           <th>NO</th>
-                          <th>Rumah Sakit</th>
-                          <th>Jenis Rumah Sakit</th>
-                          <th>Alamat</th>
-                          <th>Kelas</th>
+                          <th>Ruang</th>
                           <th>Detail</th>
+                          <th>Tambah Kamar</th>
 
                       </tr>
                   </thead>
                   <tbody>
+
+
                     <?php
                        $i=0;
-                       foreach($verifikasi as $Verifikasi){
+                       foreach($ruang as $data_ruang){
                        $i++;
                      ?>
                       <tr>
                           <td><?php echo $i?></td>
-                          <td><?php echo $Verifikasi->nama_rs ?></td>
-                          <td><?php echo $Verifikasi->nama_jenis_rs ?></td>
-                          <td><?php echo $Verifikasi->alamat ?></td>
-                          <td><?php echo $Verifikasi->nama_kelas_rs ?></td>
-                          <td class="center"><a href="rumah_sakit/detail/<?php echo $Rs->kode_rs?>"><button type="button" class="btn btn-primary btn-xs">Detail</button></td>
+                          <td><?php echo $data_ruang->nama_ruang ?></td>
+                          <td><?php echo $data_ruang->jenis_ruang ?></td>
+
+                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
+                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                       </tr>
                       <?php
                       }
                      ?>
+
 
                   </tbody>
               </table>
@@ -135,20 +119,9 @@
 
 
 
-
-
-
+    </div>
 
 </div>
-
-
-
-
-
-
-
-
-
 
   <?php echo $this->load->view('umum/share/footer', '', TRUE);?>
 
@@ -158,36 +131,7 @@
 <script src="<?php site_url(); ?>data_umum/js/dropdown.animate.js"></script>
 
 
-
-<script>
-    (function () {
-        $(document).ready(function () {
-            var dropDownToggle = $('.dropdown-toggle');
-
-            $(".navbar-toggler").on("click", function () {
-                $(this).toggleClass("is-active");
-            });
-
-            dropDownToggle.click(function() {
-                var dropdownList = $(this).parent().find('.dropdown-menu');
-                var dropdownOffset = $(this).offset();
-                var offsetLeft = dropdownOffset.left;
-                var dropdownWidth = dropdownList.width() / 2;
-                var docWidth = $(window).width();
-
-                var isDropdownVisible = (offsetLeft + dropdownWidth <= docWidth);
-
-                if (!isDropdownVisible) {
-                    dropdownList.addClass('dropdown-menu-right');
-                } else {
-                    dropdownList.removeClass('dropdown-menu-right');
-                }
-            });
-        });
-    })(jQuery);
-</script>
-
-    <!-- <script src="<?php site_url(); ?>data_umum/table/vendor/bootstrap/js/bootstrap.min.js"></script> -->
+    <!-- <script src="<?php site_url(); ?>data_umum/table/vendor/bootstrap/js/bootstrap.min.js"></script> --> -->
 
 
         <script src="<?php site_url(); ?>data_umum/table/vendor/metisMenu/metisMenu.min.js"></script>
@@ -198,7 +142,6 @@
 
         <script src="<?php site_url(); ?>data_umum/table/dist/js/sb-admin-2.js"></script>
 
-
         <script>
         $(document).ready(function() {
             $('#dataTables-example').DataTable({
@@ -207,12 +150,34 @@
         });
         </script>
 
+
+
         <script>
-        $(document).ready(function() {
-            $('#dataTables-example2').DataTable({
-                responsive: true
-            });
-        });
+            (function () {
+                $(document).ready(function () {
+                    var dropDownToggle = $('.dropdown-toggle');
+
+                    $(".navbar-toggler").on("click", function () {
+                        $(this).toggleClass("is-active");
+                    });
+
+                    dropDownToggle.click(function() {
+                        var dropdownList = $(this).parent().find('.dropdown-menu');
+                        var dropdownOffset = $(this).offset();
+                        var offsetLeft = dropdownOffset.left;
+                        var dropdownWidth = dropdownList.width() / 2;
+                        var docWidth = $(window).width();
+
+                        var isDropdownVisible = (offsetLeft + dropdownWidth <= docWidth);
+
+                        if (!isDropdownVisible) {
+                            dropdownList.addClass('dropdown-menu-right');
+                        } else {
+                            dropdownList.removeClass('dropdown-menu-right');
+                        }
+                    });
+                });
+            })(jQuery);
         </script>
 </body>
 </html>

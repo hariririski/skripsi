@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Jenis Kelamin</title>
+    <title>Profil Rumah Sakit</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,8 +41,8 @@
 <div class="blog">
     <header class="blog__header">
         <div class="container">
-            <h3 class="blog__heading">Jenis Kelamin</h3>
-            <p class="blog__heading-level-two">Mengelola Data Jenis Kelamin</p>
+            <h3 class="blog__heading">Profil Rumah Sakit</h3>
+            <p class="blog__heading-level-two">Mengelola Data Rumah Sakit</p>
         </div>
     </header>
     <?php echo $this->session->flashdata('pesan')?>
@@ -60,12 +60,107 @@
           <div class="card-block">
             <form method="POST" action="<?php site_url(); ?>jenis_kelamin/tambah" >
               <div class="form-group row">
-                  <label for="example-text-input" class="col-3 col-form-label">Kode Rumah Sakit</label>
+
                   <div class="col-9">
-                      <input class="form-control" type="text" value="<?php echo $profil->kode_rs?>"  required name="nama_jenis_kelamin" placeholder="Kode Rumah Sakit">
+                      <div class="form-group row col-12">
+                        <label for="example-text-input" class="col-3 col-form-label">Kode Rumah Sakit</label>
+                        <div class="col-9">
+                          <input class="form-control" readonly type="text" value="<?php echo $profil->kode_rs?>"  required name="nama_jenis_kelamin" placeholder="Kode Rumah Sakit">
+                        </div>
+                      </div>
+                      <div class="form-group row col-12">
+                        <label for="example-text-input" class="col-3 col-form-label">Nama Rumah Sakit</label>
+                        <div class="col-9">
+                          <input class="form-control"  type="text" value="<?php echo $profil->nama_rs?>"  required name="nama_jenis_kelamin" placeholder="Kode Rumah Sakit">
+                        </div>
+                      </div>
+                      <div class="form-group row col-12">
+                        <label for="example-text-input" class="col-3 col-form-label">Alamat</label>
+                        <div class="col-9">
+                          <input class="form-control" type="text" value="<?php echo $profil->alamat?>"  required name="nama_jenis_kelamin" placeholder="Kode Rumah Sakit">
+                        </div>
+                      </div>
+                      <div class="form-group row col-12">
+                        <label for="example-text-input" class="col-3 col-form-label">No_Hp</label>
+                        <div class="col-9">
+                          <input class="form-control"  type="text" value="<?php echo $profil->no_hp?>"  required name="nama_jenis_kelamin" placeholder="Kode Rumah Sakit">
+                        </div>
+                      </div>
+                      <div class="form-group row col-12">
+                        <label for="example-text-input" class="col-3 col-form-label">Email</label>
+                        <div class="col-9">
+                          <input class="form-control"  type="text" value="<?php echo $profil->email?>"  required name="nama_jenis_kelamin" placeholder="Kode Rumah Sakit">
+                        </div>
+                      </div>
+                      <div class="form-group row col-12">
+                        <label for="example-text-input" class="col-3 col-form-label">Jenis Rumah Sakit</label>
+                        <div class="col-9">
+                            <select class="form-control select2-form-control " required tabindex="-1" aria-hidden="true">
+                                <option value="<?php echo $profil->id_jenis_rs?>"><?php echo $profil->nama_jenis_rs?></option>
+                                <?php
+                                   foreach($jenis as $data_jenis){
+                                 ?>
+                                <option value="<?php echo $data_jenis->id_jenis_rs;?>"><?php echo $data_jenis->nama_jenis_rs;?></option>
+                                <?php
+                                  }
+                                 ?>
+
+                            </select>
+                        </div>
+                      </div>
+                      <div class="form-group row col-12">
+                        <label for="example-text-input" class="col-3 col-form-label">Kelas Rumah Sakit</label>
+                        <div class="col-9">
+                            <select class="form-control select2-form-control " required tabindex="-1" aria-hidden="true">
+                                <option value="<?php echo $profil->id_kelas_rs?>"><?php echo $profil->nama_kelas_rs?></option>
+                                <?php
+                                   foreach($jenis as $data_kelas){
+                                 ?>
+                                <option value="<?php echo $data_kelas->id_kelas_rs;?>"><?php echo $data_kelas->nama_kelas_rs;?></option>
+                                <?php
+                                  }
+                                 ?>
+
+                            </select>
+                        </div>
+                      </div>
+                      <div class="form-group row col-12">
+                        <label for="example-text-input" class="col-3 col-form-label">Pemilik Rumah Sakit</label>
+                        <div class="col-9">
+                            <select class="form-control select2-form-control " required tabindex="-1" aria-hidden="true">
+                                <option value="<?php echo $profil->id_pemilik?>"><?php echo $profil->nama_pemilik_rs?></option>
+                                <?php
+                                   foreach($jenis as $data_pemilik){
+                                 ?>
+                                <option value="<?php echo $data_pemilik->id_pemilik;?>"><?php echo $data_pemilik->nama_pemilik_rs;?></option>
+                                <?php
+                                  }
+                                 ?>
+
+                            </select>
+                        </div>
+                      </div>
+                        <p align="right"><button type="submit" class="btn btn-info btn-medium">Perbaharui</button></p>
+                  </div>
+
+                  <div class="col-3">
+                    <div class="listing-travel-trips__item">
+                        <div class="listing-travel-trips__item-image">
+                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/01.png" alt="" class="embed-responsive">
+                            <div class="listing-travel-trips__item-title">
+
+                            </div>
+                        </div>
+                        <div class="listing-travel-trips__item-info">
+                            <div class="listing-travel-trips__item-details">
+                                <input class="form-control"  type="file" value="<?php echo $profil->kode_rs?>"  required name="nama_jenis_kelamin" placeholder="Kode Rumah Sakit">
+                            </div>
+                        </div>
+                    </div>
+
                   </div>
               </div>
-                <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
+
             </form>
 
           </div>

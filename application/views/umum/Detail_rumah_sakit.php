@@ -3,24 +3,24 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>DirectoryHub - Multipurpose Directory &amp; Listings HTML Template</title>
+    <title>Rumah Sakit</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/tether/css/tether.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/animate-css/animate.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/fonts/circular/styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/fonts/open-sans/styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/fonts/iconfont/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/tether/css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/animate-css/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/circular/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/open-sans/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/iconfont/styles.css">
     <!-- END GLOBAL MANDATORY STYLES -->
 
 
 
-<link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/leaflet/leaflet.css">
-<link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/lightslider/css/lightslider.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/leaflet/leaflet.css">
+<link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/lightslider/css/lightslider.min.css">
 
 
     <!-- BEGIN THEME STYLES -->
@@ -56,29 +56,29 @@
     </div>
     <div class="apartment__image-slider">
         <ul id="apartment-image-slider">
-            <li data-thumb="<?php site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
+            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
+                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
             </li>
-            <li data-thumb="<?php site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
+            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
+                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
             </li>
-            <li data-thumb="<?php site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
+            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
+                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
             </li>
-            <li data-thumb="<?php site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
+            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
+                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
             </li>
-            <li data-thumb="<?php site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
+            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
+                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
             </li>
-            <li data-thumb="<?php site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
+            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
+                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
             </li>
-            <li data-thumb="<?php site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
+            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
+                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
             </li>
-            <li data-thumb="<?php site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
+            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
+                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
             </li>
         </ul>
     </div>
@@ -140,7 +140,7 @@
 
 <div class="container apartment__owner">
     <div class="apartment__owner-avatar-wrap">
-        <img src="<?php site_url(); ?>data_umum/images/apartments/avatar.png" alt="" class="apartment__owner-avatar" width="170" height="170">
+        <img src="<?php echo site_url(); ?>data_umum/images/apartments/avatar.png" alt="" class="apartment__owner-avatar" width="170" height="170">
     </div>
     <div class="apartment__owner-info">
         <div class="apartment__owner-info-name">John</div>
@@ -174,10 +174,10 @@
 
 
 
-<script src="<?php site_url(); ?>data_umum/vendors/jquery/jquery.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/vendors/tether/js/tether.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/js/dropdown.animate.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/jquery/jquery.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/tether/js/tether.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/js/dropdown.animate.js"></script>
 
 
 
@@ -209,9 +209,9 @@
     })(jQuery);
 </script>
 
-<script src="<?php site_url(); ?>data_umum/vendors/leaflet/leaflet.js"></script>
-<script src="<?php site_url(); ?>data_umum/vendors/lightslider/js/lightslider.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/js/apartment.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/leaflet/leaflet.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/lightslider/js/lightslider.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/js/apartment.js"></script>
 
 
 </body>
