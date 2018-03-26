@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ruang extends CI_Controller {
+class Kamar extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -25,17 +25,21 @@ class Ruang extends CI_Controller {
 			 $this->load->helper('url');
 			 $this->load->library('session');
 			 $this->load->database();
-			 $this->load->model('M_Jenis_ruang');
+			 $this->load->model('M_Kelas_kamar');
 			 $this->load->model('M_Ruang');
+			 $this->load->model('M_Kamar');
 
 
    }
 
-	public function index()
+	public function kamar()
 	{
-    $data['lihat'] = $this->M_Jenis_ruang->lihat();
-    $data['ruang'] = $this->M_Ruang->lihat();
-		$this->load->view('umum/tambah_ruang',$data);
+
+    $data['lihat'] = $this->M_Kelas_kamar->lihat();
+    $data['kamar'] = $this->M_Kamar->lihat($this->uri->segment('3'));
+    $data['ruang'] = $this->M_Ruang->lihat_per($this->uri->segment('3'));
+
+		$this->load->view('umum/tambah_kamar',$data);
 	}
 
   public function tambah(){

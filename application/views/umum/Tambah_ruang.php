@@ -51,17 +51,18 @@
       <div class="card card-outline-success mb-3">
             <div class="card-header bg-success">Tambah Ruang</div>
             <div class="card-block">
-              <form method="POST" action="<?php site_url(); ?>jenis_ruang/tambah">
+              <form method="POST" action="<?php site_url(); ?>ruang/tambah">
                     <div class="form-group row">
                       <label for="example-text-input" class="col-3 col-form-label">Nama Ruang</label>
                       <div class="col-9">
-                          <input class="form-control" required type="text" name="nama_jenis_ruang" id="example-text-input" placeholder="Masukkan Nama Ruang">
+                          <input class="form-control" autofocus="on" required type="text" name="nama_ruang" id="example-text-input" placeholder="Masukkan Nama Ruang">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="example-text-input" class="col-3 col-form-label">Jenis Ruang</label>
                       <div class="col-9">
-                        <select class="form-control select2-form-control " required tabindex="-1" aria-hidden="true">
+                        <select class="form-control select2-form-control " name="jenis_ruang" required tabindex="-1" aria-hidden="true">
+                              <option value="">Pilih Jenis Ruang</option>
                             <?php
                                foreach($lihat as $data_jenis){
                              ?>
@@ -86,7 +87,9 @@
                           <th>NO</th>
                           <th>Ruang</th>
                           <th>Detail</th>
+                          <th>Hapus Ruang</th>
                           <th>Tambah Kamar</th>
+
 
                       </tr>
                   </thead>
@@ -101,10 +104,9 @@
                       <tr>
                           <td><?php echo $i?></td>
                           <td><?php echo $data_ruang->nama_ruang ?></td>
-                          <td><?php echo $data_ruang->jenis_ruang ?></td>
-
-                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
-                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
+                          <td><?php echo $data_ruang->nama_jenis_ruang ?></td>
+                          <td class="center"><a href="<?php site_url(); ?>"><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
+                          <td class="center"><a href="<?php site_url(); ?>kamar/kamar/<?php echo $data_ruang->id_ruang ?>"><button type="button" class="btn btn-success btn-xs">Tambah</button></td>
                       </tr>
                       <?php
                       }

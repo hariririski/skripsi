@@ -28,17 +28,42 @@ class M_Rs extends CI_Model{
       return $cek;
     }
 
-    function Edit($id,$new)
+    function Edit_profil($name,$kode_rs)
     {
       $data = array(
-          'id_prodi'=>$id_prodi,
-          'nama_prodi'=>$nama,
-          'logo'=>$new
+        'nama_rs'=> $this->input->post('nama_rs'),
+        'alamat'=> $this->input->post('alamat'),
+        'email'=> $this->input->post('email'),
+        'no_hp'=> $this->input->post('no_hp'),
+        'id_pemilik'=> $this->input->post('pemilik_rs'),
+        'id_kelas_rs'=> $this->input->post('kelas_rs'),
+        'id_jenis_rs'=> $this->input->post('jenis_rs'),
+        'gambar'=> $name
       );
 
 
-          $this->db->where('id_prodi',$id);
-          $cek=$this->db->update('prodi',$data);
+          $this->db->where('kode_rs',$kode_rs);
+          $cek=$this->db->update('rs',$data);
+          return $cek;
+
+    }
+
+    function edit_profil_tanpa_gambar($kode_rs)
+    {
+      $data = array(
+        'nama_rs'=> $this->input->post('nama_rs'),
+        'alamat'=> $this->input->post('alamat'),
+        'email'=> $this->input->post('email'),
+        'no_hp'=> $this->input->post('no_hp'),
+        'id_pemilik'=> $this->input->post('pemilik_rs'),
+        'id_kelas_rs'=> $this->input->post('kelas_rs'),
+        'id_jenis_rs'=> $this->input->post('jenis_rs')
+
+      );
+
+
+          $this->db->where('kode_rs',$kode_rs);
+          $cek=$this->db->update('rs',$data);
           return $cek;
 
     }

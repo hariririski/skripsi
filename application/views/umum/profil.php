@@ -58,7 +58,7 @@
       <div class="card card-outline-success mb-3">
           <div class="card-header bg-success">Profil Rumah Sakit</div>
           <div class="card-block">
-            <form method="POST" action="<?php echo site_url(); ?>jenis_kelamin/tambah" >
+            <form method="POST" action="<?php echo site_url(); ?>rumah_sakit/edit/<?php echo $profil->kode_rs?>" enctype="multipart/form-data" >
               <div class="form-group row">
 
                   <div class="col-9">
@@ -95,7 +95,7 @@
                       <div class="form-group row col-12">
                         <label for="example-text-input" class="col-3 col-form-label">Jenis Rumah Sakit</label>
                         <div class="col-9">
-                            <select class="form-control select2-form-control " required tabindex="-1" aria-hidden="true">
+                            <select class="form-control select2-form-control " name="jenis_rs" required tabindex="-1" aria-hidden="true">
                                 <option value="<?php echo $profil->id_jenis_rs?>"><?php echo $profil->nama_jenis_rs?></option>
                                 <?php
                                    foreach($jenis as $data_jenis){
@@ -111,10 +111,10 @@
                       <div class="form-group row col-12">
                         <label for="example-text-input" class="col-3 col-form-label">Kelas Rumah Sakit</label>
                         <div class="col-9">
-                            <select class="form-control select2-form-control " required tabindex="-1" aria-hidden="true">
+                            <select class="form-control select2-form-control " name="kelas_rs" required tabindex="-1" aria-hidden="true">
                                 <option value="<?php echo $profil->id_kelas_rs?>"><?php echo $profil->nama_kelas_rs?></option>
                                 <?php
-                                   foreach($jenis as $data_kelas){
+                                   foreach($kelas as $data_kelas){
                                  ?>
                                 <option value="<?php echo $data_kelas->id_kelas_rs;?>"><?php echo $data_kelas->nama_kelas_rs;?></option>
                                 <?php
@@ -127,10 +127,10 @@
                       <div class="form-group row col-12">
                         <label for="example-text-input" class="col-3 col-form-label">Pemilik Rumah Sakit</label>
                         <div class="col-9">
-                            <select class="form-control select2-form-control " required tabindex="-1" aria-hidden="true">
+                            <select class="form-control select2-form-control " name="pemilik_rs" required tabindex="-1" aria-hidden="true">
                                 <option value="<?php echo $profil->id_pemilik?>"><?php echo $profil->nama_pemilik_rs?></option>
                                 <?php
-                                   foreach($jenis as $data_pemilik){
+                                   foreach($pemilik as $data_pemilik){
                                  ?>
                                 <option value="<?php echo $data_pemilik->id_pemilik;?>"><?php echo $data_pemilik->nama_pemilik_rs;?></option>
                                 <?php
@@ -163,7 +163,7 @@
                         </div>
                         <div class="listing-travel-trips__item-info">
                             <div class="listing-travel-trips__item-details">
-                                <input class="form-control"  type="file" value="<?php echo $profil->kode_rs?>"  required name="nama_jenis_kelamin" placeholder="Kode Rumah Sakit">
+                                <input class="form-control"  type="file"  name="gambar" placeholder="Kode Rumah Sakit">
                             </div>
                         </div>
                     </div>

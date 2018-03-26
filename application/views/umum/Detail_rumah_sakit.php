@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/tether/css/tether.min.css">
@@ -20,8 +21,8 @@
     <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/open-sans/styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/iconfont/styles.css">
     <!-- END GLOBAL MANDATORY STYLES -->
-
-
+       <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/css/vendors/nouislider/nouislider.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/nouislider/nouislider.min.css">
 
 <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/leaflet/leaflet.css">
 <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/lightslider/css/lightslider.min.css">
@@ -47,61 +48,35 @@
         <h1 class="apartment__name"><?php  echo $detail->nama_rs;?></h1>
         <div class="apartment__location"><?php  echo $detail->alamat;?></div>
 
-        <div class="apartment__price">
-            $399/mo <a href="" class="apartment__price-offer">Offer your price</a>
+
+        <div class="apartment__location"> <?php  echo $detail->nama_rs;?> merupakan <?php  echo $detail->nama_jenis_rs;?>
+          yang memiliki Kelas <?php  echo $detail->nama_kelas_rs?> yang  berstatus kepemilikan oleh <?php  echo $detail->nama_pemilik_rs;?>
         </div>
 
-        <a href="#" class="btn btn-primary apartment__price-make-reservation" >Make a reservation</a>
 
-        <div class="apartment__description">
-            Strong focus on great code to bring ultra fast experience
-            from browsing the listings in the directory theme.
-            Strong focus on great code to bring ultra fast experience
-            from browsing the listings in the directory theme.
-        </div>
+        <div class="apartment__unique-id">Kode Rumah Sakit: <span class="text-bold"><?php  echo $detail->kode_rs;?></span></div>
+    </div>
 
-        <div class="apartment__unique-id">Number of ads: <span class="text-bold">08034</span></div>
-    </div>
-    <div class="apartment__image-slider">
-        <ul id="apartment-image-slider">
-            <li data-thumb="<?php echo site_url(); ?><?php  echo $detail->gambar;?>">
-                <img src="<?php echo site_url(); ?><?php  echo $detail->gambar;?>" alt="">
-            </li>
-            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
-            </li>
-            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
-            </li>
-            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
-            </li>
-            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
-            </li>
-            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
-            </li>
-            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
-            </li>
-            <li data-thumb="<?php echo site_url(); ?>data_umum/images/apartments/flat-thumb.png">
-                <img src="<?php echo site_url(); ?>data_umum/images/apartments/flat-lg.png" alt="">
-            </li>
-        </ul>
-    </div>
+
+    <div class="col-lg-6">
+
+<div>
+  <?php if($detail->gambar==NULL){?>
+      <img class="d-flex" width="100%"src="<?php echo site_url(); ?>gambar/rs.png" alt="<?php  echo $detail->nama_rs;?>">
+  <?php }else{?>
+      <img class="d-flex" width="100%"src="<?php echo site_url(); ?>gambar/<?php  echo $detail->kode_rs;?>/<?php  echo $detail->gambar;?>" alt="<?php  echo $detail->nama_rs;?>">
+  <?php }?>
+
+</div>
+                </div>
+
+
+
 </div>
 <div class="apartment__about">
     <div class="container">
         <div class="apartment__about-wrap">
-            <ul class="apartment__about-accomodation">
-                <li class="apartment__about-accomodation-item">Hall: 1</li>
-                <li class="apartment__about-accomodation-item">Bedroom: 2</li>
-                <li class="apartment__about-accomodation-item">Kitchen: 1</li>
-                <li class="apartment__about-accomodation-item">Bathroom: 2</li>
-                <li class="apartment__about-accomodation-item">Terrace: 0</li>
-                <li class="apartment__about-accomodation-item">Furniture for sale: No</li>
-            </ul>
+
             <ul class="apartment__about-amenity">
                 <li class="apartment__about-amenity-item">
                     <span class="icon iconfont-info-solid apartment__about-amenity-icon"></span>
@@ -114,70 +89,76 @@
                 <li class="apartment__about-amenity-item">
                     <span class="icon iconfont-bed apartment__about-amenity-icon"></span>
                     <div class="apartment__about-amenity-info">
-                        <span>Amount beds: 1</span>
+                        <span>Jumlah Ruangan: 1</span>
                     </div>
                 </li>
                 <li class="apartment__about-amenity-item">
-                    <span class="icon iconfont-map-point-v2 apartment__about-amenity-icon"></span>
+                    <span class="icon iconfont-bed apartment__about-amenity-icon"></span>
                     <div class="apartment__about-amenity-info">
-                        <span>Distance from <br> the sea: 150m</span>
+                        <span>Jumlah Kamar: 1</span>
                     </div>
                 </li>
                 <li class="apartment__about-amenity-item">
-                    <span class="icon iconfont-wallet apartment__about-amenity-icon"></span>
+                    <span class="icon iconfont-bed apartment__about-amenity-icon"></span>
                     <div class="apartment__about-amenity-info">
-                        <span>Long-term rent: $399/mo</span>
-                        <span>Communal tax: $49/mo</span>
+                        <span>Jumlah kamar Kosong: 1</span>
                     </div>
                 </li>
+
             </ul>
         </div>
     </div>
 </div>
+
+
+
+
 <div class="apartment__full-description">
-    <div class="container">
-        <p>
-            But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful.
-        </p>
-        <p>
-            Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure.
-        </p>
-    </div>
+    <div class="container ">
+
+
+        <?php echo $this->load->view('umum/share/auto_ruang', '', TRUE);?>
+
+
+
+    
+      </div>
 </div>
-<div id="apartment-map" class="apartment__map"></div>
+
 
 <div class="container apartment__owner">
     <div class="apartment__owner-avatar-wrap">
-        <img src="<?php echo site_url(); ?>data_umum/images/apartments/avatar.png" alt="" class="apartment__owner-avatar" width="170" height="170">
+        <?php if($detail->gambar==NULL){?>
+              <img src="<?php echo site_url(); ?>gambar/rs.png" alt="" class="apartment__owner-avatar" height="170">
+        <?php }else{?>
+              <img src="<?php echo site_url(); ?>gambar/<?php  echo $detail->kode_rs?>/<?php  echo $detail->gambar;?>" alt="" class="apartment__owner-avatar" height="170">
+        <?php }?>
+
     </div>
     <div class="apartment__owner-info">
-        <div class="apartment__owner-info-name">John</div>
-        <div class="apartment__owner-info-location">Italy, Abruzzo, Teramo</div>
+        <div class="apartment__owner-info-name"><?php  echo $detail->nama_rs;?></div>
+        <div class="apartment__owner-info-location"><?php  echo $detail->alamat;?></div>
 
         <div class="apartment__owner-info-actions-wrap">
             <ul class="apartment__owner-info-actions list-unstyled">
                 <li>
-                    <a href="#">All listings</a> &ndash; 192
+                    <div class="apartment__owner-info-location">Telphone/No HP : <?php  echo $detail->no_hp;?></div>
                 </li>
-                <li>
-                    <a href="#">Send advertisement to e-mail</a>
-                </li>
-            </ul>
-            <ul class="apartment__owner-info-actions list-unstyled">
-                <li>
-                    <a href="#">All listings</a>
-                </li>
-                <li>
-                    <a href="#">Send advertisement to e-mail</a>
-                </li>
+
             </ul>
         </div>
     </div>
-    <div class="apartment__owner-actions">
+    <!-- <div class="apartment__owner-actions">
         <a href="#" class="btn btn-primary btn-lg">Request a call</a>
         <a href="#" class="btn btn-outline-primary btn-lg">Send a message</a>
-    </div>
+    </div> -->
 </div>
+<div class="col-lg-12 " align="center">
+    <a href="#" class="btn btn-outline-danger btn-lg">Tidak Memenuhi Syarat</a>
+    <a href="#" class="btn btn-success btn-lg">Memenuhi Syarat</a>
+
+</div>
+<br>
 <?php
  }
  ?>
@@ -223,7 +204,7 @@
 <script src="<?php echo site_url(); ?>data_umum/vendors/leaflet/leaflet.js"></script>
 <script src="<?php echo site_url(); ?>data_umum/vendors/lightslider/js/lightslider.min.js"></script>
 <script src="<?php echo site_url(); ?>data_umum/js/apartment.js"></script>
-
+<script src="<?php echo site_url(); ?>data_umum/vendors/nouislider/nouislider.min.js"></script>
 
 </body>
 </html>

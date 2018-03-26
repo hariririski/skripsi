@@ -2,18 +2,34 @@
 class M_Ruang extends CI_Model{
     function lihat()
     {
-        $query=$this->db->query("SELECT * FROM Ruang left join jenis_ruang on ruang.id_jenis_ruang=jenis_ruang.id_jenis_ruang");
+        $id=$this->session->userdata('rs');
+        $query=$this->db->query("SELECT * FROM Ruang left join jenis_ruang on ruang.id_jenis_ruang=jenis_ruang.id_jenis_ruang where ruang.kode_rs='$id'");
+        return $query->result();
+    }
+    function lihat_per($id)
+    {
+        $query=$this->db->query("SELECT * FROM Ruang left join jenis_ruang on ruang.id_jenis_ruang=jenis_ruang.id_jenis_ruang where ruang.id_ruang='$id'");
+        return $query->result();
+    }
+
+    function lihat_ruang($id)
+    {
+        $query=$this->db->query("SELECT * FROM Ruang left join jenis_ruang on ruang.id_jenis_ruang=jenis_ruang.id_jenis_ruang left join rs on rs.kode_rs=ruang.kode_rs where ruang.kode_rs='$id'");
         return $query->result();
     }
 
 
     function tambah()
     {
-      $nama_jenis_ruang = $this->input->post('nama_jenis_ruang');
+      $nama_ruang = $this->input->post('nama_ruang');
+      $jenis_ruang = $this->input->post('jenis_ruang');
+      $kode_rs=$id=$this->session->userdata('rs');
       $data = array(
-          'nama_jenis_ruang'=>$nama_jenis_ruang
+          'nama_ruang'=>$nama_ruang,
+          'id_jenis_ruang'=>$jenis_ruang,
+          'kode_rs'=>$kode_rs
       );
-      $cek=$this->db->insert('jenis_ruang',$data);
+      $cek=$this->db->insert('ruang',$data);
       return $cek;
     }
 
