@@ -1,28 +1,19 @@
 <?php
-class M_Kamar extends CI_Model{
+class M_tempat_tidur extends CI_Model{
     function lihat($id)
     {
-        $query=$this->db->query("SELECT * FROM kamar left join kelas_kamar on kamar.id_kelas_kamar=kelas_kamar.id_kelas_kamar where id_ruang='$id'");
-        return $query->result();
-    }
-    function lihat_per($id)
-    {
-        $query=$this->db->query("SELECT * FROM kamar left join kelas_kamar on kamar.id_kelas_kamar=kelas_kamar.id_kelas_kamar left join ruang on ruang.id_ruang=kamar.id_ruang where kamar.id_kamar='$id'");
+        $query=$this->db->query("SELECT * FROM `tempat_tidur` WHERE id_kamar='$id'");
         return $query->result();
     }
 
 
-    function tambah($id_ruang,$id_kamar)
+    function tambah($id_kamar)
     {
-
       $data = array(
-          'nama_kamar'=>$this->input->post('nama_kamar'),
-          'id_kelas_kamar'=>$this->input->post('kelas_kamar'),
-          'id_ruang'=>$id_ruang,
+          'nama_tempat_tidur'=>$this->input->post('nama_tempat_tidur'),
           'id_kamar'=>$id_kamar,
       );
-      $cek=$this->db->insert('kamar',$data);
-      $this->auto_bed($id_kamar,$this->input->post('jumlah_tempat_tidur'));
+      $cek=$this->db->insert('tempat_tidur',$data);
       return $cek;
     }
 
@@ -30,7 +21,7 @@ class M_Kamar extends CI_Model{
     {
       for($i=1;$i<=$jumlah;$i++){
         $data = array(
-            'nama_tempat_tidur'=>"Kamar ".$i,
+            'nama_tempat_tidur'=>"Bed ".$i,
             'id_kamar'=>$id_kamar
         );
         $cek=$this->db->insert('tempat_tidur',$data);

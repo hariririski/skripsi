@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kamar extends CI_Controller {
+class Tempat_tidur extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -28,7 +28,7 @@ class Kamar extends CI_Controller {
 			 $this->load->model('M_Kelas_kamar');
 			 $this->load->model('M_Ruang');
 			 $this->load->model('M_Kamar');
-			 $this->load->model('M_tempat_tidur');
+			 $this->load->model('M_Tempat_tidur');
 
 
    }
@@ -52,14 +52,13 @@ class Kamar extends CI_Controller {
 	}
 
   public function tambah(){
-        $id_kamar=$this->random_name(20);
-        $cek= $this->M_Kamar->tambah($this->uri->segment('3'),$id_kamar);
+        $cek= $this->M_Tempat_tidur->tambah($this->uri->segment('3'));
         if($cek){
           $this->alert("primary","Berhasil");
-          redirect('kamar/kamar/'.$this->uri->segment('3'));
+          redirect('kamar/tempat_tidur/'.$this->uri->segment('3'));
         }else{
           $this->alert("danger","Gagal");
-          redirect('kamar/kamar/'.$this->uri->segment('3'));
+          redirect('kamar/tempat_tidur/'.$this->uri->segment('3'));
         }
   }
 
