@@ -3,25 +3,36 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>DirectoryHub - Multipurpose Directory &amp; Listings HTML Template</title>
+    <title>Rumah Sakit</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/tether/css/tether.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/animate-css/animate.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/fonts/circular/styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/fonts/open-sans/styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/fonts/iconfont/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/tether/css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/animate-css/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/circular/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/open-sans/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/iconfont/styles.css">
     <!-- END GLOBAL MANDATORY STYLES -->
 
 
 
-<link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/select2/css/select2.min.css">
-<link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/css/vendors/select2/select2.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/select2/css/select2.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/css/vendors/select2/select2.min.css">
 
+<style>
+.parent {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 80px;
+    font-family: "Open Sans";
+    font-size: 15px;
+}
+
+</style>
 
     <!-- BEGIN THEME STYLES -->
     <?php echo $this->load->view('umum/share/warna', '', TRUE);?>
@@ -79,389 +90,72 @@
 <div class="listing-travel-trips">
     <div class="container">
         <div class="row">
+          <?php
+             $i=0;
+             foreach($results as $Rs){
+             $i++;
+           ?>
             <div class="col-xl-3 col-lg-4 col-md-6">
                 <div class="listing-travel-trips__item">
                     <div class="listing-travel-trips__item-image">
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/01.png" alt="" class="embed-responsive">
+                      <img src="<?php echo site_url();
+                                if($Rs->gambar!=NULL){
+                                    echo "gambar/";
+                                    echo $Rs->kode_rs;
+                                    echo "/";
+                                    echo $Rs->gambar;
+                                  }else{
+                                    echo"gambar/rs.png";
+                                  }
+                                  ?>
+                                " alt="" height="200px" class="embed-responsive">
                         <div class="listing-travel-trips__item-title">
-                            <span>Swimming with Dolphins</span>
+                            <span><?php echo $Rs->nama_rs ?></span>
                         </div>
                     </div>
                     <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
+
+                          <div class="listing-travel-trips__item-description">
+                              <div class="parent">
+                            <?php echo $Rs->alamat ?>
+                              </div>
+                          </div>
+
                         <div class="listing-travel-trips__item-details">
                             <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
+                                <span class="heading">Kelas</span>
+                                <span class="value"><?php echo $Rs->nama_kelas_rs ?></span>
                             </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="<?php site_url(); ?>detail" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
+
+                            <a href="<?php echo site_url(); ?>rumah_sakit/detail/<?php echo $Rs->kode_rs ?>" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <div class="listing-travel-trips__item-users">
-                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/avatar-1.png" alt="" width="34" height="34">
-                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/avatar-2.png" alt="" width="34" height="34">
-                        </div>
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/02.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>How Hypnosis Can Help You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="<?php site_url(); ?>detail" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <div class="listing-travel-trips__item-users">
-                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/avatar-3.png" alt="" width="34" height="34">
-                        </div>
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/03.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>
-                                When you are Down and out How <br> do You Get Up and Go Forward
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/04.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Why Las Vegas Hotel Rooms For You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <div class="listing-travel-trips__item-users">
-                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/avatar-3.png" alt="" width="34" height="34">
-                        </div>
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/05.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Swimming with Dolphins</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/06.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>How Hypnosis Can Help You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/07.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>
-                                When you are Down and out How <br> do You Get Up and Go Forward
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <div class="listing-travel-trips__item-users">
-                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/avatar-1.png" alt="" width="34" height="34">
-                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/avatar-2.png" alt="" width="34" height="34">
-                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/avatar-3.png" alt="" width="34" height="34">
-                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/avatar-1.png" alt="" width="34" height="34">
-                        </div>
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/08.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Why Las Vegas Hotel Rooms For You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/09.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Swimming with Dolphins</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/10.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>How Hypnosis Can Help You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <div class="listing-travel-trips__item-users">
-                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/avatar-1.png" alt="" width="34" height="34">
-                            <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/avatar-2.png" alt="" width="34" height="34">
-                        </div>
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/11.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>
-                                When you are Down and out How <br> do You Get Up and Go Forward
-                            </span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6">
-                <div class="listing-travel-trips__item">
-                    <div class="listing-travel-trips__item-image">
-                        <img src="<?php site_url(); ?>data_umum/images/listings/travel-trips/12.png" alt="" class="embed-responsive">
-                        <div class="listing-travel-trips__item-title">
-                            <span>Why Las Vegas Hotel Rooms For You</span>
-                        </div>
-                    </div>
-                    <div class="listing-travel-trips__item-info">
-                        <div class="listing-travel-trips__item-description">
-                            It is possible to charter, rent or
-                            lease an aircraft for less than ever
-                            before and it has also become
-                        </div>
-                        <div class="listing-travel-trips__item-details">
-                            <div class="listing-travel-trips__item-details-price">
-                                <span class="heading">Price</span>
-                                <span class="value">$450</span>
-                            </div>
-                            <div class="listing-travel-trips__item-details-duration">
-                                <span class="heading">Duration</span>
-                                <span class="value">5 nights</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php
+          }
+             ?>
         </div>
+
+
 
         <nav class="listings-pagination listings-travel-trips-pagination d-flex justify-content-center">
             <ul class="pagination">
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                <li class="page-item"><a class="page-link" href="#">99</a></li>
+              <?php foreach ($links as $link) {
+              echo "  <li class='page-item active'> ". $link." </li>";
+
+              } ?>
             </ul>
         </nav>
+            <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
     </div>
 </div>
 <?php echo $this->load->view('umum/share/footer', '', TRUE);?>
 
-<script src="<?php site_url(); ?>data_umum/vendors/jquery/jquery.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/vendors/tether/js/tether.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/js/dropdown.animate.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/jquery/jquery.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/tether/js/tether.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/js/dropdown.animate.js"></script>
 
 
 
@@ -493,8 +187,8 @@
     })(jQuery);
 </script>
 
-<script src="<?php site_url(); ?>data_umum/vendors/select2/js/select2.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/js/travel-trips.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/select2/js/select2.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/js/travel-trips.js"></script>
 
 
 </body>

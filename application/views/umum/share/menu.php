@@ -41,7 +41,7 @@
                                  <a href="<?php echo site_url();?>home"class="nav-link <?php $link=uri_string(); if($link =="home"){ echo "active";} ?> "  role="button" aria-haspopup="true" aria-expanded="false">Home</a>
                              </li>
                              <li class="nav-item dropdown">
-                                 <a href="<?php echo site_url(); ?>rumah_sakit"class="nav-link <?php $link=uri_string(); if($link =="rumah_sakit"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Rumah Sakit</a>
+                                 <a href="<?php echo site_url(); ?>rumah_sakit/rs"class="nav-link <?php $link=uri_string(); if($link =="rumah_sakit/rs"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Rumah Sakit</a>
                              </li>
                              <li class="nav-item dropdown">
                                  <a href="<?php echo site_url(); ?>cari_kamar"class="nav-link <?php $link=uri_string(); if($link =="cari_kamar"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Cari Kamar</a>
@@ -61,6 +61,7 @@
                                    ?>
                                      <a class="dropdown-item" href="<?php echo site_url(); ?>profil">Profil Rumah Sakit</a>
                                      <a class="dropdown-item" href="<?php echo site_url(); ?>ruang">Ruang</a>
+                                     <a class="dropdown-item" href="<?php echo site_url(); ?>pasien/data">Pasien</a>
                                   <?php }else if(isset($admin)){ ?>
                                      <a class="dropdown-item" href="<?php echo site_url(); ?>rumah_sakit_admin">Data Rumah Sakit</a>
                                   <?php } ?>

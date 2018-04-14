@@ -117,11 +117,11 @@
     <div class="container ">
 
 
-        <?php echo $this->load->view('umum/share/auto_ruang', '', TRUE);?>
+        <?php //echo $this->load->view('umum/share/auto_ruang', '', TRUE);?>
 
 
 
-    
+
       </div>
 </div>
 
@@ -154,8 +154,8 @@
     </div> -->
 </div>
 <div class="col-lg-12 " align="center">
-    <a href="#" class="btn btn-outline-danger btn-lg">Tidak Memenuhi Syarat</a>
-    <a href="#" class="btn btn-success btn-lg">Memenuhi Syarat</a>
+    <a href="<?php echo site_url(); ?>rumah_sakit/tidak/<?php  echo $detail->kode_rs;?>" class="btn btn-outline-danger btn-lg">Tidak Memenuhi Syarat</a>
+    <a href="<?php echo site_url(); ?>rumah_sakit/ya/<?php  echo $detail->kode_rs;?>" class="btn btn-success btn-lg">Memenuhi Syarat</a>
 
 </div>
 <br>

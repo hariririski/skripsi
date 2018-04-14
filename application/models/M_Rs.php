@@ -2,7 +2,7 @@
 class M_Rs extends CI_Model{
     function lihat()
     {
-        $query=$this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE verfikasi='1'");
+        $query=$this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE verifikasi='1'");
         return $query->result();
     }
     function lihat_rs($id)
@@ -13,7 +13,7 @@ class M_Rs extends CI_Model{
 
     function lihat_verifikasi()
     {
-        $query=$this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verfikasi is null");
+        $query=$this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi is null");
         return $query->result();
     }
 
@@ -47,6 +47,28 @@ class M_Rs extends CI_Model{
           return $cek;
 
     }
+    function ya($kode_rs)
+    {
+      $admin=$this->session->userdata('admin');
+      $data = array(
+        'verifikasi'=>'1',
+        'username_admin'=>$admin
+      );
+          $this->db->where('kode_rs',$kode_rs);
+          $cek=$this->db->update('rs',$data);
+          return $cek;
+    }
+    function tidak($kode_rs)
+    {
+      $admin=$this->session->userdata('admin');
+      $data = array(
+        'verifikasi'=>'2',
+        'username_admin'=>$admin
+      );
+          $this->db->where('kode_rs',$kode_rs);
+          $cek=$this->db->update('rs',$data);
+          return $cek;
+    }
 
     function edit_profil_tanpa_gambar($kode_rs)
     {
@@ -77,5 +99,21 @@ class M_Rs extends CI_Model{
       return $cek;
     }
 
+    public function record_count() {
+        $this->db->where('verifikasi', '1');
+        return $this->db->count_all_results(("Rs"));
+    }
+
+    public function fetch_countries($limit, $start) {
+        $query = $this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi='1' limit $start,$limit ");
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+   }
 
 }

@@ -86,10 +86,9 @@
                       <tr>
                           <th>NO</th>
                           <th>Ruang</th>
-                          <th>Detail</th>
+                          <th>Jenis Ruang</th>
+                          <th>Kamar</th>
                           <th>Hapus Ruang</th>
-                          <th>Tambah Kamar</th>
-
 
                       </tr>
                   </thead>
@@ -105,8 +104,8 @@
                           <td><?php echo $i?></td>
                           <td><?php echo $data_ruang->nama_ruang ?></td>
                           <td><?php echo $data_ruang->nama_jenis_ruang ?></td>
-                          <td class="center"><a href="<?php site_url(); ?>"><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
-                          <td class="center"><a href="<?php site_url(); ?>kamar/kamar/<?php echo $data_ruang->id_ruang ?>"><button type="button" class="btn btn-success btn-xs">Tambah</button></td>
+                          <td class="center"><a href="<?php site_url(); ?>kamar/kamar/<?php echo $data_ruang->id_ruang ?>"><button type="button" class="btn btn-success btn-xs">Detail</button></td>
+                            <td class="center"><a href="<?php site_url(); ?>"><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                       </tr>
                       <?php
                       }

@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Kamar</title>
+    <title> Faslitas Kamar</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,10 +35,10 @@
 <!-- BEGIN HEAD -->
 <body class="">
   <?php
-    $nama_ruang="";
-     foreach($ruang as $data_ruang){
-       $nama_ruang=$data_ruang->nama_ruang;
-       $id_ruang=$data_ruang->id_ruang;
+    $nama_kamar="";
+     foreach($kamar as $data_kamar){
+       $nama_kamar=$data_kamar->nama_kamar;
+       $id_kamar=$data_kamar->id_kamar;
 
       }
     ?>
@@ -48,7 +48,7 @@
 <div class="blog">
     <header class="blog__header">
         <div class="container">
-            <h3 class="blog__heading">Kamar</h3>
+            <h3 class="blog__heading">Fasilitas Kamar</h3>
             <p class="blog__heading-level-two">Mengelola Data Kamar</p>
         </div>
     </header>
@@ -56,60 +56,45 @@
     <div class="container">
         <br>
       <div class="card card-outline-success mb-3">
-            <div class="card-header bg-success">Tambah Kamar Pada Ruang <?php echo $nama_ruang;?></div>
+            <div class="card-header bg-success">TTambah Fasilitas Pada Kamar <?php echo $nama_kamar;?></div>
             <div class="card-block">
-              <form method="POST" action="<?php echo site_url(); ?>kamar/tambah/<?php echo $id_ruang;?>">
+              <form method="POST" action="<?php echo site_url(); ?>fasilitas/tambah_fasilitas/<?php echo $id_kamar;?>">
                 <div class="form-group row">
-                  <label for="example-text-input" class="col-3 col-form-label">Nama Ruang</label>
+                  <label for="example-text-input" class="col-3 col-form-label">Nama Kamar</label>
                   <div class="col-9">
-                      <input class="form-control" required type="text" value="<?php echo $nama_ruang;?>" name="nama_ruang" id="example-text-input" readonly placeholder="Masukkan Nama Ruang">
+                      <input class="form-control" required type="text" value="<?php echo $nama_kamar;?>" name="nama_kamar" id="example-text-input" readonly placeholder="Masukkan Nama Ruang">
                   </div>
                 </div>
                     <div class="form-group row">
-                      <label for="example-text-input" class="col-3 col-form-label">Nama Kamar</label>
+                      <label for="example-text-input" class="col-3 col-form-label">Nama Fasilitas</label>
                       <div class="col-9">
-                          <input class="form-control" required type="text" name="nama_kamar" id="example-text-input" required placeholder="Masukkan Nama Kamar">
+                          <input class="form-control" required type="text" name="nama_fasilitas" id="example-text-input" required placeholder="Masukkan Nama Fasilitas">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="example-text-input" class="col-3 col-form-label">Jumlah Tempat Tidur</label>
+                      <label for="example-text-input" class="col-3 col-form-label">Jumlah</label>
                       <div class="col-9">
-                        <input class="form-control" required type="number" name="jumlah_tempat_tidur" id="example-text-input" required placeholder="Masukkan Jumlah Tempat">
-                        <span>Isi Jumlah Tempat Tidur Jika Ingin Membuat Tempat Tidur Otomatis, Jika Tidak Silahkan Berikan Nilai 0<span>
+                        <input class="form-control" required type="number" name="jumlah" id="example-text-input" required placeholder="Masukkan Jumlah Fasilitas">
+
                       </div>
                     </div>
-                    <div class="form-group row">
-                      <label for="example-text-input" class="col-3 col-form-label">Kelas Kamar</label>
-                      <div class="col-9">
-                        <select class="form-control select2-form-control " name="kelas_kamar" required tabindex="-1" aria-hidden="true">
-                              <option value="">Pilih Kelas Kamar</option>
-                            <?php
-                               foreach($lihat as $data_jenis){
-                             ?>
-                            <option value="<?php echo $data_jenis->id_kelas_kamar;?>"><?php echo $data_jenis->nama_kelas_kamar;?></option>
-                            <?php
-                              }
-                             ?>
-                        </select>
-                      </div>
-                    </div>
+
                   <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
               </form>
             </div>
         </div>
 
         <div class="card card-outline-info mb-3">
-            <div class="card-header bg-info">Data Kamar Pada Ruang <?php echo $nama_ruang;?></div>
+            <div class="card-header bg-info">Data Fasilitas Pada Kamar <?php echo $nama_kamar;?></div>
             <div class="card-block">
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                   <thead>
                       <tr>
                           <th>NO</th>
-                          <th>Kamar</th>
-                          <th>Kelas Kamar</th>
-                          <th>Lihat Tempat Tidur</th>
-                          <th>Tambah Fasilitas</th>
-                          <th>Hapus kamar</th>
+                          <th>Nama Fasilitas</th>
+                          <th>Jumlah</th>
+                          <th>Edit</th>
+                          <th>Hapus</th>
 
 
                       </tr>
@@ -119,15 +104,14 @@
 
                     <?php
                        $i=0;
-                       foreach($kamar as $data_kamar){
+                       foreach($lihat as $data_fasilitas){
                        $i++;
                      ?>
                       <tr>
                           <td><?php echo $i?></td>
-                          <td><?php echo $data_kamar->nama_kamar ?></td>
-                          <td><?php echo $data_kamar->nama_kelas_kamar ?></td>
-                          <td class="center"><a href="<?php echo site_url(); ?>kamar/tempat_tidur/<?php echo $data_kamar->id_kamar ?>"><button type="button" class="btn btn-success btn-xs">Lihat</button></td>
-                          <td class="center"><a href="<?php echo site_url(); ?>fasilitas/tambah/<?php echo $data_kamar->id_kamar ?>"><button type="button" class="btn btn-success btn-xs">Tambah</button></td>
+                          <td><?php echo $data_fasilitas->nama_fasilitas ?></td>
+                          <td><?php echo $data_fasilitas->jumlah ?></td>
+                          <td class="center"><a href="<?php echo site_url(); ?>kamar/tempat_tidur/<?php echo $data_fasilitas->id_kamar ?>"><button type="button" class="btn btn-success btn-xs">Edit</button></td>
                           <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                       </tr>
                       <?php

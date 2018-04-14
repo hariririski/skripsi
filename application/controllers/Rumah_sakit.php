@@ -30,12 +30,27 @@ class Rumah_sakit extends CI_Controller {
 			 $this->load->model('M_Jenis_rs');
 			 $this->load->model('M_Pemilik_rs');
 			 $this->load->model('M_Kelas_rs');
+       $this->load->library("pagination");
 
 
    }
 
-	public function index()
+	public function rs()
 	{
+    $config["base_url"] = base_url() . "rumah_sakit/rs/";
+    $config["total_rows"] = $this->M_Rs->record_count();
+    $config["per_page"] = 8;
+    $config["uri_segment"] = 3;
+    $choice = $config["total_rows"] / $config["per_page"];
+    $config["num_links"] = round($choice);
+
+    $this->pagination->initialize($config);
+
+    $page = ($this->uri->segment(3))? $this->uri->segment(3) : 0;
+    $data["results"] = $this->M_Rs
+        ->fetch_countries($config["per_page"], $page);
+    $str_links = $this->pagination->create_links();
+    $data["links"] = explode('&nbsp;',$str_links );
     $data['lihat'] = $this->M_Rs->lihat();
 		$this->load->view('umum/Rumah_sakit',$data);
 	}
@@ -100,6 +115,32 @@ class Rumah_sakit extends CI_Controller {
           redirect('profil');
          }
       }
+  }
+
+  public function ya()
+  {
+        $kode_rs=$this->uri->segment('3');
+         $rs=$this->M_Rs->ya($kode_rs);
+         if($rs){
+           $this->alert("success","berhasil","Anda Berhasil Memverifikasi");
+           redirect("rumah_sakit/detail/$kode_rs");
+         }else{
+          $this->alert("danger","Gagal","Anda Gagal Memverifikasi");
+         redirect("rumah_sakit/detail/$kode_rs");
+       }
+  }
+
+  public function tidak()
+  {
+        $kode_rs=$this->uri->segment('3');
+         $rs=$this->M_Rs->tidak($kode_rs);
+         if($rs){
+           $this->alert("success","berhasil","Anda Berhasil Memverifikasi");
+           redirect("rumah_sakit/detail/$kode_rs");
+         }else{
+          $this->alert("danger","Gagal","Anda Gagal Memverifikasi");
+         redirect("rumah_sakit/detail/$kode_rs");
+       }
   }
 
   public function upload($name,$id){
