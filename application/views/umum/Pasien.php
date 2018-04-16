@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Rumah Sakit Admin</title>
+    <title>Pasien</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,10 +27,19 @@
 <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/leaflet/leaflet.css">
 
 
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!-- Bootstrap Date-Picker Plugin -->
+
+
+
     <!-- BEGIN THEME STYLES -->
       <?php echo $this->load->view('umum/share/warna', '', TRUE);?>
     <!-- END THEME STYLES -->
-
 </head>
 <!-- BEGIN HEAD -->
 <body class="">
@@ -53,15 +62,16 @@
 
 
 <div class="container">
+      <?php echo $this->session->flashdata('pesan')?>
   <br>
   <div class="card card-outline-success mb-3">
         <div class="card-header bg-success">Tambah Pasien</div>
         <div class="card-block">
-          <form method="POST" action="<?php site_url(); ?>jenis_ruang/tambah">
+          <form method="POST" action="<?php site_url(); ?>cek">
                 <div class="form-group row">
                 <label for="example-text-input" class="col-3 col-form-label">NIK Pasien</label>
                 <div class="col-9">
-                    <input class="form-control"  autofocus="autofocus" required type="text" name="nik" id="example-text-input" placeholder="Masukkan NIK Pasien">
+                    <input class="form-control"  autofocus="autofocus" required type="number" name="nik" id="example-text-input" placeholder="Masukkan NIK Pasien">
 
                 </div>
 
@@ -103,7 +113,19 @@
                       <td><?php echo $rawat->nama_ruang?></td>
                       <td><?php echo $rawat->nama_kamar?></td>
                       <td><?php echo $rawat->nama_tempat_tidur?></td>
-                      <td class="center"><a href="rumah_sakit/detail/<?php echo $rawat->kode_rs?>"><button type="button" class="btn btn-success btn-xs">Detail</button></td>
+                      <td width="28%">
+                        <form method="POST" action="keluar/<?php echo $rawat->id_rawat?>/<?php echo $rawat->id_tempat_tidur?>/<?php echo $rawat->tanggal_masuk?>">
+
+
+
+
+
+                                  <input class="form-control form-control-sm col-lg-7"  type="date" autofocus="autofocus" required  name="tanggal_keluar" id="example-text-input" placeholder="Masukkan NIK Pasien">
+                                  <button type="submit" class="btn btn-info btn-xs">Keluar</button>
+
+
+                        </form>
+                      </td>
                   </tr>
                   <?php
                   }
@@ -181,6 +203,7 @@
 
   <?php echo $this->load->view('umum/share/footer', '', TRUE);?>
 
+
 <script src="<?php echo site_url(); ?>data_umum/vendors/jquery/jquery.min.js"></script>
 <script src="<?php echo site_url(); ?>data_umum/vendors/tether/js/tether.min.js"></script>
 <script src="<?php echo site_url(); ?>data_umum/vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -217,7 +240,6 @@
 </script>
 
     <!-- <script src="<?php echo site_url(); ?>data_umum/table/vendor/bootstrap/js/bootstrap.min.js"></script> -->
-
 
         <script src="<?php echo site_url(); ?>data_umum/table/vendor/metisMenu/metisMenu.min.js"></script>
 

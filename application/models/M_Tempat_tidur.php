@@ -6,6 +6,12 @@ class M_tempat_tidur extends CI_Model{
         return $query->result();
     }
 
+    function kosong_tempat_tidur($id)
+    {
+        $query=$this->db->query("SELECT * FROM `tempat_tidur` WHERE id_kamar='$id' and status='0'");
+        return $query->result();
+    }
+
 
     function tambah($id_kamar)
     {
@@ -28,6 +34,7 @@ class M_tempat_tidur extends CI_Model{
       }
       return true;
     }
+
     function Edit($id,$new)
     {
       $data = array(
@@ -39,6 +46,32 @@ class M_tempat_tidur extends CI_Model{
 
           $this->db->where('id_prodi',$id);
           $cek=$this->db->update('prodi',$data);
+          return $cek;
+
+    }
+    function kosong($id_tempat_tidur)
+    {
+      $data = array(
+          'status'=>'0'
+
+      );
+
+
+          $this->db->where('id_tempat_tidur',$id_tempat_tidur);
+          $cek=$this->db->update('tempat_tidur',$data);
+          return $cek;
+
+    }
+    function terisi($id_tempat_tidur)
+    {
+      $data = array(
+          'status'=>'1'
+
+      );
+
+
+          $this->db->where('id_tempat_tidur',$id_tempat_tidur);
+          $cek=$this->db->update('tempat_tidur',$data);
           return $cek;
 
     }

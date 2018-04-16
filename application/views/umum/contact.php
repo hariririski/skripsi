@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>DirectoryHub - Multipurpose Directory &amp; Listings HTML Template</title>
+    <title>Kontak</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +36,7 @@
 <div id="page-contact-map" class="page-contact__map"></div>
 <div class="container">
     <form class="page-contact__form">
-        <h2 class="page-contact__form-heading">Get in Touch!</h2>
+
         <div class="row justify-content-center">
             <div class="col-lg-5">
                 <div class="form-group">
@@ -45,7 +45,7 @@
             </div>
             <div class="col-lg-5">
                 <div class="form-group">
-                    Hariririski@gmail.com
+                    apkerrmap@gmail.com
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
             </div>
             <div class="col-lg-5">
                 <div class="form-group">
-                  ...
+                  Jalan T. Hamzah Bendahara No.31, Desa Kuta Alam,Kecamatan Kuta ALam, BAnda Aceh
                 </div>
             </div>
         </div>
@@ -137,7 +137,7 @@
         });*/
 
         var contactIcon = new L.HtmlIcon({
-            html : '<div class="page-contact__map-point"><div class="page-contact__map-point-title">Arlic New York Pizza Bar</div><div>4.2 (39) <span class="page-contact__map-point-rating"><img src="images/map/star.png" alt=""><img src="images/map/star.png" alt=""><img src="images/map/star.png" alt=""><img src="images/map/star.png" alt=""><img src="images/map/half-star.png" alt=""></span></div><div>$ · Italian · 2nd Ave</div> <div>Open from 11:00</div></div>',
+            html : '<div class="page-contact__map-point"><div class="page-contact__map-point-title">APKERRNAP</div><div> <span class="page-contact__map-point-rating"><img src="images/map/star.png" alt=""><img src="images/map/star.png" alt=""><img src="images/map/star.png" alt=""><img src="images/map/star.png" alt=""><img src="images/map/half-star.png" alt=""></span></div><div>Banda Aceh, Kuta ALam</div> <div>Buka 8.30:00</div></div>',
             iconSize: [370, 140]
         });
 

@@ -7,18 +7,18 @@
          <div class="container">
              <div class="header-topbar__contact-info">
                  <div class="header-topbar__contact-info-item">
-                     <span class="title">Phone:</span>
-                     <span class="value">800-987-65-43</span>
+                     <span class="title">Telephone:</span>
+                     <span class="value">0822-3765-3720</span>
                  </div>
                  <div class="header-topbar__contact-info-item">
                      <span class="title">Email: </span>
-                     <span class="value">info@companyname.com</span>
+                     <span class="value">apkerrnap@gmail.com</span>
                  </div>
              </div>
              <ul class="nav header-topbar__nav">
 
                  <li class="nav-item">
-                     <a class="nav-link" href="<?php echo site_url(); ?>contact">Contact</a>
+                     <a class="nav-link" href="<?php echo site_url(); ?>contact">Kontak</a>
                  </li>
 
 
@@ -33,7 +33,7 @@
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                  </button>
-                 <a class="navbar-brand" href="<?php echo site_url(); ?>home">Direct<span class="colored">o</span>ry</a>
+                 <a class="navbar-brand" href="<?php echo site_url(); ?>home">APKER<span class="colored">R</span>NAP</a>
                  <div id="header-master-menu" class="collapse navbar-collapse">
                      <div class="header-master__menu-collapse">
                          <ul class="nav navbar-nav">
@@ -80,6 +80,7 @@
                                      <a class="dropdown-item" href="<?php echo site_url(); ?>jenis_ruang">Jenis Ruang</a>
                                      <a class="dropdown-item" href="<?php echo site_url(); ?>kelas_kamar">Kelas Kamar</a>
                                      <a class="dropdown-item" href="<?php echo site_url(); ?>jenis_kelamin">Jenis Kelamin</a>
+                                     <a class="dropdown-item" href="<?php echo site_url(); ?>admin">Administrator</a>
                                  </div>
                              </li>
                                <?php } ?>
