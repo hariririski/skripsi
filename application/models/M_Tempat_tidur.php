@@ -11,7 +11,23 @@ class M_tempat_tidur extends CI_Model{
         $query=$this->db->query("SELECT * FROM `tempat_tidur` WHERE id_kamar='$id' and status='0'");
         return $query->result();
     }
+    function jlh_kosong_tempat_tidur($id)
+    {
+        $query=$this->db->query("SELECT count(id_tempat_tidur) as kosong FROM `tempat_tidur` WHERE id_kamar='$id' and status='0'");
+        return $query->result();
+    }
 
+    function jumlah_tempat_tidur($id)
+    {
+        $query=$this->db->query("SELECT count(id_tempat_tidur) as jumlah_tempat_tidur FROM `tempat_tidur` WHERE id_kamar='$id' ");
+        return $query->result();
+    }
+
+    function jumlah_tempat_tidur_kosong($id)
+    {
+        $query=$this->db->query("SELECT COUNT(id_tempat_tidur) as jumlah_tempat_tidur_kosong from tempat_tidur left join kamar on kamar.id_kamar=tempat_tidur.id_kamar left join ruang on ruang.id_ruang = kamar.id_ruang WHERE ruang.kode_rs='$id' and tempat_tidur.status='0'");
+        return $query->result();
+    }
 
     function tambah($id_kamar)
     {

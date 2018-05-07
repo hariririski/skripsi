@@ -111,7 +111,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <img src="<?php site_url(); ?>data_umum/images/master/application-person.png" alt="" class="application-master__person">
+                <img src="<?php site_url(); ?>data_umum/images/master/application-person.png" alt="" class="application-master__person" width="45%">
             </div>
             <div class="col-lg-6">
                 <h2 class="application-master__heading">

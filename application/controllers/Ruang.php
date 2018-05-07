@@ -37,6 +37,7 @@ class Ruang extends CI_Controller {
     $data['ruang'] = $this->M_Ruang->lihat();
 		$this->load->view('umum/tambah_ruang',$data);
 	}
+	
 
   public function tambah(){
         $cek= $this->M_Ruang->tambah();

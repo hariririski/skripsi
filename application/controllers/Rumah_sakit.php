@@ -27,11 +27,13 @@ class Rumah_sakit extends CI_Controller {
 			 $this->load->database();
 			 $this->load->model('M_Rs');
 			 $this->load->model('M_Ruang');
+			 $this->load->model('M_Kamar');
+			 $this->load->model('M_Tempat_tidur');
 			 $this->load->model('M_Jenis_rs');
 			 $this->load->model('M_Pemilik_rs');
 			 $this->load->model('M_Kelas_rs');
        $this->load->library("pagination");
-
+       $this->Front = & get_instance();
 
    }
 
@@ -64,21 +66,39 @@ class Rumah_sakit extends CI_Controller {
 
   public function detail()
 	{
-
+    $CI =& get_instance();
     $data['lihat'] = $this->M_Rs->lihat_rs($this->uri->segment('3'));
     $data['ruang'] = $this->M_Ruang->lihat_ruang($this->uri->segment('3'));
     //print_r($data['ruang']);
-    //$data['kamar'] = $this->M_Ruang->lihat_rs($this->uri->segment('3'));
+
 		$this->load->view('umum/Detail_rumah_sakit',$data);
 	}
-  public function auto_data_ruang()
+  public function detail2($id_rs,$id_ruang)
+	{
+     return $this->M_Kamar->ruang_kamar($id_rs,$id_ruang);
+	}
+
+  public function jumlah_kamar($id_rs)
+	{
+     return $this->M_Kamar->jumlah_kamar($id_rs);
+	}
+
+  public function jumlah_ruang($id_rs)
   {
+     return $this->M_Ruang->jumlah_ruang($id_rs);
+  }
 
-    $data['ruang'] = $this->M_Ruang->lihat_ruang($this->uri->segment('3'));
-    $this->load->view('umum/share/auto_ruang',$data);
-
-    //$data['kamar'] = $this->M_Ruang->lihat_rs($this->uri->segment('3'));
-    //$this->load->view('umum/Detail_rumah_sakit',$data);
+  public function jumlah_tempat_tidur_kosong($id_rs)
+  {
+     return $this->M_Tempat_tidur->jumlah_tempat_tidur_kosong($id_rs);
+  }
+  public function kosong($id_kamar)
+  {
+     return $this->M_Tempat_tidur->jlh_kosong_tempat_tidur($id_kamar);
+  }
+  public function jumlah_tempat_tidur($id_kamar)
+  {
+     return $this->M_Tempat_tidur->jumlah_tempat_tidur($id_kamar);
   }
 
   public function profil()

@@ -43,6 +43,8 @@ class Kamar extends CI_Controller {
 		$this->load->view('umum/tambah_kamar',$data);
 	}
 
+
+
 	public function tempat_tidur()
 	{
 

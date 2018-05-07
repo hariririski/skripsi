@@ -73,35 +73,41 @@
 
 
 </div>
+<?php $CI =& get_instance();?>
 <div class="apartment__about">
     <div class="container">
         <div class="apartment__about-wrap">
 
             <ul class="apartment__about-amenity">
+
                 <li class="apartment__about-amenity-item">
-                    <span class="icon iconfont-info-solid apartment__about-amenity-icon"></span>
+                    <span class="icon iconfont-bed apartment__about-amenity-icon"></span>
                     <div class="apartment__about-amenity-info">
-                        <span>Floor: 5</span>
-                        <span>Total area: 45m<sup>2</sup></span>
-                        <span>Living area: 34m<sup>2</sup></span>
+                        <span>Jumlah Ruangan:
+                          <?php 	$data['jlh_ruang']=$CI->jumlah_ruang($this->uri->segment('3'));
+                          foreach ($data['jlh_ruang'] as $object) {
+                            echo $object->jumlah_ruang;
+                          }?></span>
                     </div>
                 </li>
                 <li class="apartment__about-amenity-item">
                     <span class="icon iconfont-bed apartment__about-amenity-icon"></span>
                     <div class="apartment__about-amenity-info">
-                        <span>Jumlah Ruangan: 1</span>
+                        <span>Jumlah Kamar:
+                          <?php 	$data['jlh_kamar']=$CI->jumlah_kamar($this->uri->segment('3'));
+                        foreach ($data['jlh_kamar'] as $object) {
+                          echo $object->jumlah_kamar;
+                        }?></span>
                     </div>
                 </li>
                 <li class="apartment__about-amenity-item">
                     <span class="icon iconfont-bed apartment__about-amenity-icon"></span>
                     <div class="apartment__about-amenity-info">
-                        <span>Jumlah Kamar: 1</span>
-                    </div>
-                </li>
-                <li class="apartment__about-amenity-item">
-                    <span class="icon iconfont-bed apartment__about-amenity-icon"></span>
-                    <div class="apartment__about-amenity-info">
-                        <span>Jumlah kamar Kosong: 1</span>
+                        <span>Jumlah Tempat Tidur Kosong:
+                          <?php 	$data['jlh_tempat_tidur_kosong']=$CI->jumlah_tempat_tidur_kosong($this->uri->segment('3'));
+                        foreach ($data['jlh_tempat_tidur_kosong'] as $object) {
+                          echo $object->jumlah_tempat_tidur_kosong;
+                        }?></span>
                     </div>
                 </li>
 
@@ -117,7 +123,57 @@
     <div class="container ">
 
 
-        <?php //echo $this->load->view('umum/share/auto_ruang', '', TRUE);?>
+
+      <div class="row " id="show" >
+      <?php
+        //$CI =& get_instance();
+         foreach($ruang as $data_ruang){
+       ?>
+
+      <div class="col-lg-4" >
+          <div id="accordion<?php echo $data_ruang->id_ruang;?>" role="tablist"  aria-multiselectable="true" >
+                    <div class="card card-outline-info mb-4 card-accordion">
+                        <div class="card-header card-header bg-info collapsed" id="heading-one" data-toggle="collapse" data-parent="#accordion" data-target="#<?php echo $data_ruang->id_ruang;?>" aria-expanded="false">
+                            <?php echo $data_ruang->nama_jenis_ruang." / ".$data_ruang->nama_ruang;?>
+                        </div>
+
+                        <div id="<?php echo $data_ruang->id_ruang;?>" class="collapse" aria-expanded="false" style="">
+                              <div class="card-block">
+                                <div class="list-group">
+                                  <?php 	$data['ruang1']=$CI->detail2($this->uri->segment('3'),$data_ruang->id_ruang);
+                                  foreach ($data['ruang1'] as $object) {
+                                  ?>
+                                  <a href="#" class="list-group-item list-group-item-action">
+                                      <?php print $object->nama_kamar;?>  &nbsp; &nbsp; &nbsp; <span class="badge badge-pill badge-info badge-sm">
+                                        Kosong
+                                              <?php 	$data['kosong']=$CI->kosong($object->id_kamar);
+                                                      foreach ($data['kosong'] as $object2) {
+                                                      echo $object2->kosong;
+                                                      }
+                                              ?>
+                                        dari
+                                              <?php 	$data['jumlah_tempat_tidur']=$CI->jumlah_tempat_tidur($object->id_kamar);
+                                                      foreach ($data['jumlah_tempat_tidur'] as $object3) {
+                                                      echo $object3->jumlah_tempat_tidur;
+                                                      }
+                                              ?>
+                                        </span>
+                                  </a>
+
+                                <?php } ?>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+        <?php
+      }
+
+         ?>
+        </div>
+
 
 
 
@@ -153,12 +209,19 @@
         <a href="#" class="btn btn-outline-primary btn-lg">Send a message</a>
     </div> -->
 </div>
+<?php
+$admin=$this->session->userdata('admin');
+ if(isset($admin)){
+?>
 <div class="col-lg-12 " align="center">
     <a href="<?php echo site_url(); ?>rumah_sakit/tidak/<?php  echo $detail->kode_rs;?>" class="btn btn-outline-danger btn-lg">Tidak Memenuhi Syarat</a>
     <a href="<?php echo site_url(); ?>rumah_sakit/ya/<?php  echo $detail->kode_rs;?>" class="btn btn-success btn-lg">Memenuhi Syarat</a>
 
 </div>
 <br>
+<?php
+ }
+ ?>
 <?php
  }
  ?>
