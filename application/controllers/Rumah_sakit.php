@@ -28,6 +28,7 @@ class Rumah_sakit extends CI_Controller {
 			 $this->load->model('M_Rs');
 			 $this->load->model('M_Ruang');
 			 $this->load->model('M_Kamar');
+			 $this->load->model('M_Fasilitas');
 			 $this->load->model('M_Tempat_tidur');
 			 $this->load->model('M_Jenis_rs');
 			 $this->load->model('M_Pemilik_rs');
@@ -99,6 +100,14 @@ class Rumah_sakit extends CI_Controller {
   public function jumlah_tempat_tidur($id_kamar)
   {
      return $this->M_Tempat_tidur->jumlah_tempat_tidur($id_kamar);
+  }
+  public function tempat_tidur($id_kamar)
+  {
+     return $this->M_Tempat_tidur->lihat($id_kamar);
+  }
+  public function fasilitas($id_kamar)
+  {
+     return $this->M_Fasilitas->lihat($id_kamar);
   }
 
   public function profil()
