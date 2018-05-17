@@ -44,47 +44,46 @@
 
 <?php echo $this->load->view('umum/share/menu', '', TRUE);?>
 
-<div class="hero-travel-trips">
+<div class="hero-resume">
     <div class="container">
-        <h2 class="hero-travel-trips__heading">Cari Rumah Sakit</h2>
-        <form action="#" class="hero-travel-trips__form">
-            <div class="form-control-inline-icon inline-icon-left hero-travel-trips__search-input">
-                <span class="icon iconfont-left iconfont-search-v2"></span>
-                <input type="text" class="form-control" placeholder="Ex.Summer camp...">
+        <div class="hero-resume__heading">
+            <div class="hero-resume__heading--sub">Kami Mempunyai 7 Rumah Sakit</div>
+            <h3 class="hero-resume__heading--main">Cari Rumah Sakit</h3>
+        </div>
+        <div class="row hero-resume__filter">
+            <div class="col-xl-6">
+                <div class="form-group">
+                    <label for="hero-resume-search">Cari</label>
+                    <input type="text" id="hero-resume-search" class="form-control" value="" placeholder="Search">
+                </div>
+            </div>
+            <div class="col-xl-2">
+                <div class="form-group">
+                    <label for="hero-resume-location">Jenis</label>
+                    <select id="hero-resume-location" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
+                        <option value="" selected="">New York</option>
+                        <option value="">London</option>
+                        <option value="">Moscow</option>
+                        <option value="">Las Vegas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xl-2">
+                <div class="form-group">
+                    <label for="hero-resume-skills">Kelas</label>
+                    <select id="hero-resume-skills" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
+                        <option value="" selected="">PHP</option>
+                        <option value="">Java</option>
+                        <option value="">Python</option>
+                        <option value="">OOP</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="hero-travel-trips__select">
-                <div class="hero-travel-trips__select-heading">Type</div>
-                <select class="form-control selectable" data-selectable-no-search="true">
-                    <option value="" selected>All</option>
-                    <option value="">All</option>
-                    <option value="">sfasf</option>
-                    <option value="">sfasf</option>
-                </select>
+            <div class="col-xl-2 hero-resume__search-wrap">
+                <div class="btn btn-primary btn-block btn-lg hero-resume__search-button">Temukan</div>
             </div>
-
-            <div class="hero-travel-trips__select">
-                <div class="hero-travel-trips__select-heading">Period</div>
-                <select class="form-control selectable" data-selectable-no-search="true">
-                    <option value="" selected>Anytime</option>
-                    <option value="">Anytime</option>
-                    <option value="">sfasf</option>
-                    <option value="">sfasf</option>
-                </select>
-            </div>
-
-            <div class="hero-travel-trips__select">
-                <div class="hero-travel-trips__select-heading">Price</div>
-                <select class="form-control selectable" data-selectable-no-search="true">
-                    <option value="" selected>Anyprice</option>
-                    <option value="">sfasf</option>
-                    <option value="">sfasf</option>
-                    <option value="">sfasf</option>
-                </select>
-            </div>
-
-            <button type="button" class="btn btn-primary hero-travel-trips__search-btn">Search</button>
-        </form>
+        </div>
     </div>
 </div>
 <div class="listing-travel-trips">

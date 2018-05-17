@@ -5,6 +5,11 @@ class M_Rs extends CI_Model{
         $query=$this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi='1'");
         return $query->result();
     }
+    function jumlah($id)
+    {
+        $query=$this->db->query("SELECT COUNT(DISTINCT ruang.id_ruang) as ruang,COUNT(DISTINCT kamar.id_kamar) as kamar, COUNT( DISTINCT tempat_tidur.id_tempat_tidur) as tempat_tidur from ruang LEFT JOIN kamar on kamar.id_ruang=ruang.id_ruang LEFT JOIN tempat_tidur on tempat_tidur.id_kamar=kamar.id_kamar WHERE ruang.kode_rs='$id'");
+        return $query->result();
+    }
     function terbaru()
     {
         $query=$this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi='1' order by rs.tanggal_update DESC limit 4");

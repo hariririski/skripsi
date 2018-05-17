@@ -5,6 +5,11 @@ class M_Kamar extends CI_Model{
         $query=$this->db->query("SELECT * FROM kamar left join kelas_kamar on kamar.id_kelas_kamar=kelas_kamar.id_kelas_kamar where id_ruang='$id'");
         return $query->result();
     }
+    function fasilitas($id)
+    {
+        $query=$this->db->query("SELECT * from fasilitas where id_kamar='$id'");
+        return $query->result();
+    }
     function ruang_kamar($id_rs,$id_ruang)
     {
         $query=$this->db->query("SELECT * FROM kamar left join ruang on ruang.id_ruang=kamar.id_ruang where ruang.id_ruang='$id_ruang' and ruang.kode_rs='$id_rs' ");

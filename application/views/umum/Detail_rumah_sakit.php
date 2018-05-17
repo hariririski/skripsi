@@ -213,10 +213,8 @@
                                                                 <table class="table table-striped" >
                                                                     <thead>
                                                                     <tr>
-
                                                                         <th>Nama fasilitas</th>
                                                                         <th>Jumlah</th>
-
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -225,14 +223,9 @@
                                                                               foreach ($data['fasilitas'] as $object2) {
 
                                                                       ?>
-
                                                                       <tr>
-
-                                                                          
                                                                           <td><?php echo $object2->nama_fasilitas; ?></td>
                                                                           <td><?php echo $object2->jumlah; ?></td>
-
-
                                                                       </tr>
                                                                     <?php } ?>
 

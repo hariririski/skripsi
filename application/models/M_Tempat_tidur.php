@@ -5,6 +5,13 @@ class M_tempat_tidur extends CI_Model{
         $query=$this->db->query("SELECT * FROM `tempat_tidur` WHERE id_kamar='$id'");
         return $query->result();
     }
+    function semua()
+    {
+        $query=$this->db->query("SELECT * FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang WHERE tempat_tidur.status='0'  ORDER by kelas_kamar.id_kelas_kamar");
+        return $query->result();
+    }
+
+
 
     function kosong_tempat_tidur($id)
     {
@@ -100,6 +107,18 @@ class M_tempat_tidur extends CI_Model{
       $cek=$this->db->delete('prodi');
       return $cek;
     }
+
+    public function fetch_countries($limit, $start) {
+        $query = $this->db->query("SELECT * FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang WHERE tempat_tidur.status='0'  ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit ");
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+   }
 
 
 }

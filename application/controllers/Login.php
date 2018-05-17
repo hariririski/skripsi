@@ -58,10 +58,10 @@ class Login extends CI_Controller {
 
      if(isset($rs[0]->kode_rs)){
        $this->session->set_userdata('rs',$rs[0]->kode_rs);
-       redirect('home');
+       redirect('rumah_sakit/admin');
      }else if(isset($admin[0]->username)){
        $this->session->set_userdata('admin',$admin[0]->username);
-       redirect('home');
+       redirect('rumah_sakit_admin');
      }else{
        $this->alert("danger","Gagal","Maaf Anda Gagal Login");
        redirect('login');

@@ -32,11 +32,24 @@ class Rumah_sakit extends CI_Controller {
 			 $this->load->model('M_Tempat_tidur');
 			 $this->load->model('M_Jenis_rs');
 			 $this->load->model('M_Pemilik_rs');
+			 $this->load->model('M_Jenis_kelamin');
+			 $this->load->model('M_Pasien');
 			 $this->load->model('M_Kelas_rs');
        $this->load->library("pagination");
        $this->Front = & get_instance();
 
    }
+
+   public function admin()
+ 	{
+    $kode_rs=$this->session->userdata('rs');
+    $data['lihat'] = $this->M_Rs->lihat_rs($kode_rs);
+    $data['rawat'] = $this->M_Pasien->rawat($kode_rs);
+    $data['selesai'] = $this->M_Pasien->selesai($kode_rs);
+    $data['jumlah'] = $this->M_Rs->jumlah($kode_rs);
+    $data['kosong'] = $this->M_Tempat_tidur->jumlah_tempat_tidur_kosong($kode_rs);
+		$this->load->view('admin/home',$data);
+ 	}
 
 	public function rs()
 	{
