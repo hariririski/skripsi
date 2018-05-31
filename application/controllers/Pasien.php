@@ -50,6 +50,14 @@ class Pasien extends CI_Controller {
 		$this->load->view('umum/rawat_pasien',$data);
 	}
 
+	public function info_pasien()
+	{
+
+    $data['rawat'] = $this->M_Pasien->rawat_pasien($this->uri->segment('3'));
+    $data['ruang'] = $this->M_Ruang->lihat();
+		$this->load->view('umum/info_pasien',$data);
+	}
+
   function kamar($id) {
     $data1=null;
     $data=$this->M_Kamar->lihat($id);
@@ -146,7 +154,7 @@ class Pasien extends CI_Controller {
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
-                <strong>'.$status.'</strong> 
+                <strong>'.$status.'</strong>
         </div>
         ');
      }

@@ -47,43 +47,57 @@
 <div class="hero-resume">
     <div class="container">
         <div class="hero-resume__heading">
-            <div class="hero-resume__heading--sub">Kami Mempunyai 7 Rumah Sakit</div>
+
             <h3 class="hero-resume__heading--main">Cari Rumah Sakit</h3>
         </div>
+        <form action="<?php echo base_url();?>rumah_sakit/cari" method="post" >
         <div class="row hero-resume__filter">
-            <div class="col-xl-6">
+            <div class="col-xl-5">
                 <div class="form-group">
                     <label for="hero-resume-search">Cari</label>
-                    <input type="text" id="hero-resume-search" class="form-control" value="" placeholder="Search">
+                    <input type="text" id="hero-resume-search" name="keyword"class="form-control" value="" placeholder="Search">
                 </div>
             </div>
-            <div class="col-xl-2">
+            <div class="col-xl-3">
                 <div class="form-group">
                     <label for="hero-resume-location">Jenis</label>
-                    <select id="hero-resume-location" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
-                        <option value="" selected="">New York</option>
-                        <option value="">London</option>
-                        <option value="">Moscow</option>
-                        <option value="">Las Vegas</option>
+                    <select name="jenis" id="hero-resume-location" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
+                        <option value="0" selected="">Semua</option>
+                        <?php
+                           $i=0;
+                           foreach($jenis as $data_jenis){
+                           $i++;
+                         ?>
+                           <option value="<?php echo $data_jenis->id_jenis_rs; ?>" ><?php echo $data_jenis->nama_jenis_rs;?></option>
+                         <?php
+                       }
+                         ?>
                     </select>
                 </div>
             </div>
             <div class="col-xl-2">
                 <div class="form-group">
                     <label for="hero-resume-skills">Kelas</label>
-                    <select id="hero-resume-skills" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
-                        <option value="" selected="">PHP</option>
-                        <option value="">Java</option>
-                        <option value="">Python</option>
-                        <option value="">OOP</option>
+                    <select name="kelas" id="hero-resume-skills" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
+                      <option value="0    " selected="">Semua</option>
+                      <?php
+                         $i=0;
+                         foreach($kelas as $data_kelas){
+                         $i++;
+                       ?>
+                         <option value="<?php echo $data_kelas->id_kelas_rs; ?>" ><?php echo $data_kelas->nama_kelas_rs;?></option>
+                       <?php
+                     }
+                       ?>
                     </select>
                 </div>
             </div>
 
             <div class="col-xl-2 hero-resume__search-wrap">
-                <div class="btn btn-primary btn-block btn-lg hero-resume__search-button">Temukan</div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg hero-resume__search-button">Temukan</button>
             </div>
         </div>
+      </form>
     </div>
 </div>
 <div class="listing-travel-trips">

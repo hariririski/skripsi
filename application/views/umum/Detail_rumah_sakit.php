@@ -144,6 +144,7 @@
                                   foreach ($data['ruang1'] as $object) {
                                   ?>
                                   <a  class="list-group-item list-group-item-action">
+
                                     <table border="0" width='100%'>
                                       <tr>
                                         <td width="80%">

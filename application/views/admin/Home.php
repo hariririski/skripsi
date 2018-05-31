@@ -47,6 +47,7 @@
 
 
 <?php echo $this->load->view('umum/share/menu', '', TRUE);?>
+
 <div class="blog">
     <header class="blog__header">
         <div class="container">
@@ -85,17 +86,22 @@
        $i++;
        $tempat_tidur=$jumlah->tempat_tidur;
      ?>
-      <div class="col-lg-3">
+      <div class="col-lg-3 " >
         <div class="card mb-3 ">
             <div class=" card-header bg-info">
-              <center>  Jumlah Ruangan</center>
+            <center>  Jumlah Ruangan</center>
             </div>
             <div class="card-block">
-                <center><h5 class="card-title"><?php echo $jumlah->ruang ?></h5></center>
+                <a href="#" data-toggle="modal" data-target="#ruang">
+                    <center><h5 class="card-title"><?php echo $jumlah->ruang ?></h5></center>
+                </a>
 
             </div>
         </div>
       </div>
+
+
+
       <div class="col-lg-3">
         <div class="card mb-3 ">
             <div class="card-header bg-warning">
@@ -113,10 +119,10 @@
       <div class="col-lg-3">
         <div class="card mb-3 ">
             <div class=" card-header bg-primary">
-              <center>  Tempat Tidur Terisi</center>
+              <center>   Jumlah Tempat Tidur</center>
             </div>
             <div class="card-block">
-                  <center><h5 class="card-title"><?php echo $tempat_tidur?>/<?php echo $tempat_tidur-$kosong?></h5></center>
+                  <center><h5 class="card-title"><?php echo $tempat_tidur?></h5></center>
 
             </div>
         </div>
@@ -125,10 +131,10 @@
       <div class="col-lg-3">
         <div class="card mb-3 ">
             <div class=" card-header bg-success">
-              <center>  Tempat Tidur Kosong</center>
+              <center>  Tempat Tidur Terisi / Kosong</center>
             </div>
             <div class="card-block">
-                <center><h5 class="card-title"><?php echo $kosong?></h5></center>
+                <center><h5 class="card-title"><?php echo $tempat_tidur-$kosong?> / <?php echo $kosong?></h5></center>
 
             </div>
         </div>
@@ -193,6 +199,25 @@
 
 
   <?php echo $this->load->view('umum/share/footer', '', TRUE);?>
+  <div class="modal fade" id="ruang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ruang</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+              </div>
+          </div>
+      </div>
+  </div>
 
 
 <script src="<?php echo site_url(); ?>data_umum/vendors/jquery/jquery.min.js"></script>

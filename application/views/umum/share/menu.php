@@ -37,10 +37,13 @@
                                  <a href="<?php echo site_url();?>home"class="nav-link <?php $link=uri_string(); if($link =="home"){ echo "active";} ?> "  role="button" aria-haspopup="true" aria-expanded="false">Home</a>
                              </li>
                              <li class="nav-item dropdown">
-                                 <a href="<?php echo site_url(); ?>rumah_sakit/rs"class="nav-link <?php $link=uri_string(); if($link =="rumah_sakit/rs"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Rumah Sakit</a>
+                                 <a href="<?php echo site_url(); ?>rumah_sakit/rs/0"class="nav-link <?php $link=uri_string(); if($link =="rumah_sakit/rs/0"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Rumah Sakit</a>
                              </li>
                              <li class="nav-item dropdown">
-                                 <a href="<?php echo site_url(); ?>cari_kamar"class="nav-link <?php $link=uri_string(); if($link =="cari_kamar"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Cari Kamar</a>
+                                 <a href="<?php echo site_url(); ?>cari_kamar"class="nav-link <?php $link=uri_string(); if($link =="cari_kamar"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Info Kamar</a>
+                             </li>
+                             <li class="nav-item dropdown">
+                                 <a href="<?php echo site_url(); ?>pasien/info_pasien"class="nav-link <?php $link=uri_string(); if($link =="pasien/info_pasien"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Info Pasien</a>
                              </li>
 
                              <?php
