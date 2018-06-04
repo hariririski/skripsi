@@ -43,7 +43,7 @@
                                  <a href="<?php echo site_url(); ?>cari_kamar"class="nav-link <?php $link=uri_string(); if($link =="cari_kamar"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Info Kamar</a>
                              </li>
                              <li class="nav-item dropdown">
-                                 <a href="<?php echo site_url(); ?>pasien/info_pasien"class="nav-link <?php $link=uri_string(); if($link =="pasien/info_pasien"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Info Pasien</a>
+                                 <a href="<?php echo site_url(); ?>pasien/info_pasien?rs="class="nav-link <?php $link=uri_string(); if($link =="pasien/info_pasien"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Info Pasien</a>
                              </li>
 
                              <?php

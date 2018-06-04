@@ -36,24 +36,25 @@
 <div class="hero-resume">
     <div class="container">
         <div class="hero-resume__heading">
-            <div class="hero-resume__heading--sub">Kami Mempunyai 7 Kamar</div>
-            <h3 class="hero-resume__heading--main">Cari Kamar</h3>
+            <div class="hero-resume__heading--sub">&nbsp;</div>
         </div>
         <div class="row hero-resume__filter">
             <div class="col-xl-6">
                 <div class="form-group">
-                    <label for="hero-resume-search">Cari</label>
-                    <input type="text" id="hero-resume-search" class="form-control" value="" placeholder="Search">
+                    <label for="hero-resume-search">Cari Kamar</label>
+                    <input type="text" id="hero-resume-search" class="form-control" value="" placeholder="Kata Kunci">
                 </div>
             </div>
             <div class="col-xl-2">
                 <div class="form-group">
                     <label for="hero-resume-location">Jenis Ruang</label>
                     <select id="hero-resume-location" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
-                        <option value="" selected="">New York</option>
-                        <option value="">London</option>
-                        <option value="">Moscow</option>
-                        <option value="">Las Vegas</option>
+                        <option value="" selected="0">Semua</option>
+                        <?php
+                           foreach($jenis_ruang as $data_jenis_ruang){
+                         ?>
+                         <option value="<?php echo $data_jenis_ruang->id_jenis_ruang?>"><?php echo $data_jenis_ruang->nama_jenis_ruang?></option>
+                       <?php } ?>
                     </select>
                 </div>
             </div>
@@ -61,10 +62,12 @@
                 <div class="form-group">
                     <label for="hero-resume-skills">Kelas</label>
                     <select id="hero-resume-skills" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
-                        <option value="" selected="">PHP</option>
-                        <option value="">Java</option>
-                        <option value="">Python</option>
-                        <option value="">OOP</option>
+                      <option value="" selected="0">Semua</option>
+                      <?php
+                         foreach($kelas_kamar as $data_kelas_kamar){
+                       ?>
+                       <option value="<?php echo $data_kelas_kamar->id_kelas_kamar?>"><?php echo $data_kelas_kamar->nama_kelas_kamar?></option>
+                     <?php } ?>
                     </select>
                 </div>
             </div>

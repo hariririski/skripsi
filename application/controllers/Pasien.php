@@ -26,6 +26,7 @@ class Pasien extends CI_Controller {
 			 $this->load->library('session');
 			 $this->load->database();
 			 $this->load->model('M_Jenis_ruang');
+			 $this->load->model('M_Rs');
 			 $this->load->model('M_Pasien');
 			 $this->load->model('M_Tempat_tidur');
 			 $this->load->model('M_Kamar');
@@ -52,9 +53,10 @@ class Pasien extends CI_Controller {
 
 	public function info_pasien()
 	{
-
-    $data['rawat'] = $this->M_Pasien->rawat_pasien($this->uri->segment('3'));
+    $kode_rs=$_GET['rs'];
+    $data['rawat'] = $this->M_Pasien->rawat($kode_rs);
     $data['ruang'] = $this->M_Ruang->lihat();
+    $data['rumah_sakit'] = $this->M_Rs->lihat();
 		$this->load->view('umum/info_pasien',$data);
 	}
 

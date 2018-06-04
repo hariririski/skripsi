@@ -30,6 +30,8 @@ class cari_kamar extends CI_Controller {
 			 $this->load->model('M_Pemilik_rs');
 			 $this->load->model('M_Kelas_rs');
 			 $this->load->model('M_Kamar');
+			 $this->load->model('M_Jenis_ruang');
+			 $this->load->model('M_Kelas_kamar');
 			 $this->load->model('M_Tempat_tidur');
        $this->load->library("pagination");
 
@@ -50,7 +52,8 @@ class cari_kamar extends CI_Controller {
     $data["semua"] = $this->M_Tempat_tidur->fetch_countries($config["per_page"], $page);
     $str_links = $this->pagination->create_links();
     $data["links"] = explode('&nbsp;',$str_links );
-
+    $data['jenis_ruang'] = $this->M_Jenis_ruang->lihat();
+    $data['kelas_kamar'] = $this->M_Kelas_kamar->lihat();
 		$this->load->view('umum/Cari_kamar',$data);
 	}
 

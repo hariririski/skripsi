@@ -48,14 +48,14 @@
     <div class="container">
         <div class="hero-resume__heading">
 
-            <h3 class="hero-resume__heading--main">Cari Rumah Sakit</h3>
+            <div class="hero-resume__heading--sub">&nbsp;</div>
         </div>
         <form action="<?php echo base_url();?>rumah_sakit/cari" method="post" >
         <div class="row hero-resume__filter">
             <div class="col-xl-5">
                 <div class="form-group">
-                    <label for="hero-resume-search">Cari</label>
-                    <input type="text" id="hero-resume-search" name="keyword"class="form-control" value="" placeholder="Search">
+                    <label for="hero-resume-search">Cari Rumah Sakit</label>
+                    <input type="text" id="hero-resume-search" name="keyword"class="form-control" value="" placeholder="Kata Kunci">
                 </div>
             </div>
             <div class="col-xl-3">
@@ -140,7 +140,7 @@
                                 <span class="value"><?php echo $Rs->nama_kelas_rs ?></span>
                             </div>
 
-                            <a href="<?php echo site_url(); ?>rumah_sakit/detail/<?php echo $Rs->kode_rs ?>" class="btn btn-outline-default listing-travel-trips__item-details-view-link">Details</a>
+                            <a href="<?php echo site_url(); ?>rumah_sakit/detail/<?php echo $Rs->kode_rs ?>" class="btn btn-info ">Details</a>
                         </div>
                     </div>
                 </div>
