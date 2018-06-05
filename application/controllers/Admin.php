@@ -36,6 +36,33 @@ class Admin extends CI_Controller {
     $data['lihat'] = $this->M_Admin->lihat();
   	$this->load->view('admin/Tambah_admin',$data);
 	}
+	public function grafik_pasien()
+	{
+    $data['lihat'] = $this->M_Admin->lihat();
+    $data['tahun'] = $this->M_Admin->tahun();
+  	$this->load->view('admin/pasien_rs',$data);
+	}
+	public function data_grafik_pasien()
+	{
+    $id = $_GET['id'];
+    $data['lihat'] = $this->M_Admin->data_grafik_pasien($id);
+
+  	$this->load->view('admin/data/data',$data);
+	}
+
+  public function grafik_rs()
+	{
+    $data['lihat'] = $this->M_Admin->lihat();
+    $data['tahun'] = $this->M_Admin->tahun();
+  	$this->load->view('admin/grafik_rs',$data);
+	}
+	public function data_grafik_rs()
+	{
+    $id = $_GET['id'];
+    $data['lihat'] = $this->M_Admin->data_grafik_rs($id);
+
+  	$this->load->view('admin/data/data_rs',$data);
+	}
 
   public function tambah(){
         $cek= $this->M_Admin->tambah();

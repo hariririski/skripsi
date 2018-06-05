@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Rumah Sakit Admin</title>
+    <title>Admin</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,7 +60,7 @@
       <div class="card mb-12 ">
 
           <div class="card-block">
-            <iframe class="animated fadeInDown wow" src="maps/lokasi_databases_baru.php" width="100%" height="400px" scrolling="no" frameborder="0"></iframe>
+            <iframe class="animated fadeInDown wow" src="<?php echo site_url(); ?>admin/grafik_rs" width="100%" height="500px" scrolling="no" frameborder="0"></iframe>
           </div>
       </div>
     </div>
@@ -106,7 +106,7 @@
     </div>
 
 
-    
+
 
 
 
