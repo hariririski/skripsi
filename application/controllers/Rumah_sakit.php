@@ -53,26 +53,71 @@ class Rumah_sakit extends CI_Controller {
 
 	public function rs()
 	{
-    $config["base_url"] = base_url() . "rumah_sakit/rs/".$this->uri->segment('3')."/".$this->uri->segment('4')."/".$this->uri->segment('5')."/";
-    $config["total_rows"] = $this->M_Rs->record_count();
-    $config["per_page"] = 8;
-    $config["uri_segment"] = 6;
-    $choice = $config["total_rows"] / $config["per_page"];
-    $config["num_links"] = round($choice);
 
-    $this->pagination->initialize($config);
 
-    $page = ($this->uri->segment(6))? $this->uri->segment(6) : 0;
-    $data["results"] = $this->M_Rs
-        ->fetch_countries($config["per_page"], $page);
-    $str_links = $this->pagination->create_links();
-    $data["links"] = explode('&nbsp;',$str_links );
+        $config['base_url'] = base_url().'rumah_sakit/rs/';
+        $config['total_rows'] = $this->M_Rs->record_count();
+        $config['per_page'] = 8;
+        $config['uri_segment'] = 3;
+        $this->pagination->initialize($config);
+
+//        menentukan offset record dari uri segment
+        $start = $this->uri->segment(3, 0);
+//        ubah data menjadi tampilan per limit
+        $rows = $this->M_Rs->user_limit($config['per_page'],$start)->result();
+
+        $data = array(
+            'title' => 'harviacode.com',
+            'judul' => 'Halaman User',
+            'content' => 'user',
+            'rows' => $rows,
+            'pagination' => $this->pagination->create_links(),
+            'start' => $start
+        );
+
+
 
     $data['jenis'] = $this->M_Jenis_rs->lihat();
     $data['kelas'] = $this->M_Kelas_rs->lihat();
 		$this->load->view('umum/Rumah_sakit',$data);
 	}
-  
+  public function cari_rs()
+	{
+
+        $rs=$this->uri->segment(3, 0);
+        $jenis=$this->uri->segment(4, 0);
+        $kelas=$this->uri->segment(5, 0);
+        $config['base_url'] = base_url().'rumah_sakit/cari_rs/'.$rs.'/'.$jenis.'/'.$kelas;
+        $jumlah=$this->M_Rs->record_count_cari($rs,$jenis,$kelas);
+        $config['total_rows'] =  $jumlah[0]->jumlah;;
+        $config['per_page'] = 8;
+        $config['uri_segment'] = 6;
+        $this->pagination->initialize($config);
+
+
+
+
+//        menentukan offset record dari uri segment
+        $start = $this->uri->segment(6, 0);
+//        ubah data menjadi tampilan per limit
+        $rows = $this->M_Rs->cari($config['per_page'],$start,$rs,$jenis,$kelas)->result();
+
+        $data = array(
+            'title' => 'harviacode.com',
+            'judul' => 'Halaman User',
+            'content' => 'user',
+            'rows' => $rows,
+            'pagination' => $this->pagination->create_links(),
+            'start' => $start
+        );
+
+
+
+    $data['jenis'] = $this->M_Jenis_rs->lihat();
+    $data['kelas'] = $this->M_Kelas_rs->lihat();
+		$this->load->view('umum/Rumah_sakit',$data);
+	}
+
 
   public function rumah_sakit_admin()
 	{

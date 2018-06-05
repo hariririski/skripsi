@@ -16,7 +16,28 @@
     <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/open-sans/styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/iconfont/styles.css">
     <!-- END GLOBAL MANDATORY STYLES -->
+    <style>
+.pagination {
+    display: inline-block;
+}
 
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #0594d0;
+    color: white;
+    border: 1px solid #0594d0;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
 
 
 <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/select2/css/select2.min.css">
@@ -50,25 +71,33 @@
 
             <div class="hero-resume__heading--sub">&nbsp;</div>
         </div>
-        <form action="<?php echo base_url();?>rumah_sakit/cari" method="post" >
+        <form  method="post"  >
+          <?php
+          $rs=$this->uri->segment(3, 0);
+          $djenis=$this->uri->segment(4, 0);
+          $dkelas=$this->uri->segment(5, 0);
+          if($rs='null'){
+            $rs=null;
+          }
+          ?>
         <div class="row hero-resume__filter">
             <div class="col-xl-5">
                 <div class="form-group">
                     <label for="hero-resume-search">Cari Rumah Sakit</label>
-                    <input type="text" id="hero-resume-search" name="keyword"class="form-control" value="" placeholder="Kata Kunci">
+                    <input type="text" id="hero-resume-search" name="rs" value="<?php echo $rs;?>"class="form-control" value="" placeholder="Kata Kunci">
                 </div>
             </div>
             <div class="col-xl-3">
                 <div class="form-group">
                     <label for="hero-resume-location">Jenis</label>
                     <select name="jenis" id="hero-resume-location" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
-                        <option value="0" selected="">Semua</option>
+                        <option value="0" <?php if($djenis==0){echo"selected";}?>>Semua</option>
                         <?php
                            $i=0;
                            foreach($jenis as $data_jenis){
                            $i++;
                          ?>
-                           <option value="<?php echo $data_jenis->id_jenis_rs; ?>" ><?php echo $data_jenis->nama_jenis_rs;?></option>
+                           <option value="<?php echo $data_jenis->id_jenis_rs; ?>" <?php if($data_jenis->id_jenis_rs==$djenis){echo"selected";}?> ><?php echo $data_jenis->nama_jenis_rs;?></option>
                          <?php
                        }
                          ?>
@@ -79,13 +108,13 @@
                 <div class="form-group">
                     <label for="hero-resume-skills">Kelas</label>
                     <select name="kelas" id="hero-resume-skills" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
-                      <option value="0    " selected="">Semua</option>
+                      <option value="0"  <?php if($dkelas==0){echo"selected";}?>>Semua</option>
                       <?php
                          $i=0;
                          foreach($kelas as $data_kelas){
                          $i++;
                        ?>
-                         <option value="<?php echo $data_kelas->id_kelas_rs; ?>" ><?php echo $data_kelas->nama_kelas_rs;?></option>
+                         <option value="<?php echo $data_kelas->id_kelas_rs; ?>" <?php if($data_kelas->id_kelas_rs==$dkelas){echo"selected";}?> ><?php echo $data_kelas->nama_kelas_rs;?></option>
                        <?php
                      }
                        ?>
@@ -94,18 +123,29 @@
             </div>
 
             <div class="col-xl-2 hero-resume__search-wrap">
-                <button type="submit" class="btn btn-primary btn-block btn-lg hero-resume__search-button">Temukan</button>
+                <button type="submit" name="temukan" class="btn btn-primary btn-block btn-lg hero-resume__search-button">Temukan</button>
             </div>
         </div>
       </form>
     </div>
 </div>
+<?php
+  if(isset($_POST['temukan'])){
+    $rs=$_POST['rs'];
+    if(empty($rs)){
+      $rs='null';
+    }
+    $jenis=$_POST['jenis'];
+    $kelas=$_POST['kelas'];
+    redirect('rumah_sakit/cari_rs/'.$rs.'/'.$jenis.'/'.$kelas.'/');
+  }
+?>
 <div class="listing-travel-trips">
     <div class="container">
         <div class="row">
           <?php
              $i=0;
-             foreach($results as $Rs){
+             foreach($rows as $Rs){
              $i++;
            ?>
             <div class="col-xl-3 col-lg-4 col-md-6">
@@ -152,15 +192,10 @@
 
 
 
-        <nav class="listings-pagination listings-travel-trips-pagination d-flex justify-content-center">
-            <ul class="pagination">
-              <?php foreach ($links as $link) {
-              echo "  <li class='page-item active'> ". $link." </li>";
+<nav class="listings-pagination d-flex justify-content-center">
+            <?php echo $pagination; ?>
+</nav>
 
-              } ?>
-            </ul>
-        </nav>
-            <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
     </div>
 </div>
 <?php echo $this->load->view('umum/share/footer', '', TRUE);?>

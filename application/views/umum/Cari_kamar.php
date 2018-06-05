@@ -16,7 +16,28 @@
     <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/open-sans/styles.css">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/iconfont/styles.css">
     <!-- END GLOBAL MANDATORY STYLES -->
+    <style>
+.pagination {
+    display: inline-block;
+}
 
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+}
+
+.pagination a.active {
+    background-color: #0594d0;
+    color: white;
+    border: 1px solid #0594d0;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
 
 
 <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/select2/css/select2.min.css">
@@ -32,7 +53,15 @@
 
 
 <?php echo $this->load->view('umum/share/menu', '', TRUE);?>
-
+<form  method="post"  >
+  <?php
+  $dkamar=$this->uri->segment(3, 0);
+  $djenis=$this->uri->segment(4, 0);
+  $dkelas=$this->uri->segment(5, 0);
+  if($dkamar=='null'){
+    $dkamar=null;
+  }
+  ?>
 <div class="hero-resume">
     <div class="container">
         <div class="hero-resume__heading">
@@ -42,18 +71,18 @@
             <div class="col-xl-6">
                 <div class="form-group">
                     <label for="hero-resume-search">Cari Kamar</label>
-                    <input type="text" id="hero-resume-search" class="form-control" value="" placeholder="Kata Kunci">
+                    <input type="text" name="dkamar"value="<?php echo $dkamar;?>" id="hero-resume-search" class="form-control"  placeholder="Kata Kunci">
                 </div>
             </div>
             <div class="col-xl-2">
                 <div class="form-group">
                     <label for="hero-resume-location">Jenis Ruang</label>
-                    <select id="hero-resume-location" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
-                        <option value="" selected="0">Semua</option>
+                    <select id="hero-resume-location" name="jenis" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
+                        <option value="0" <?php if($djenis==0){echo"selected";}?>>Semua</option>
                         <?php
                            foreach($jenis_ruang as $data_jenis_ruang){
                          ?>
-                         <option value="<?php echo $data_jenis_ruang->id_jenis_ruang?>"><?php echo $data_jenis_ruang->nama_jenis_ruang?></option>
+                         <option value="<?php echo $data_jenis_ruang->id_jenis_ruang?>" <?php if($data_jenis_ruang->id_jenis_ruang==$djenis){echo"selected";}?>  ><?php echo $data_jenis_ruang->nama_jenis_ruang?></option>
                        <?php } ?>
                     </select>
                 </div>
@@ -61,29 +90,42 @@
             <div class="col-xl-2">
                 <div class="form-group">
                     <label for="hero-resume-skills">Kelas</label>
-                    <select id="hero-resume-skills" class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
-                      <option value="" selected="0">Semua</option>
+                    <select id="hero-resume-skills" name="kelas"class="form-control selectable select2-hidden-accessible" data-selectable-no-search="true" tabindex="-1" aria-hidden="true">
+                      <option value="0" <?php if($dkelas==0){echo"selected";}?>>Semua</option>
                       <?php
                          foreach($kelas_kamar as $data_kelas_kamar){
                        ?>
-                       <option value="<?php echo $data_kelas_kamar->id_kelas_kamar?>"><?php echo $data_kelas_kamar->nama_kelas_kamar?></option>
+                       <option value="<?php echo $data_kelas_kamar->id_kelas_kamar?>" <?php if($data_kelas_kamar->id_kelas_kamar==$dkelas){echo"selected";}?> ><?php echo $data_kelas_kamar->nama_kelas_kamar?></option>
                      <?php } ?>
                     </select>
                 </div>
             </div>
 
             <div class="col-xl-2 hero-resume__search-wrap">
-                <div class="btn btn-primary btn-block btn-lg hero-resume__search-button">Temukan</div>
+                <button type="submit" name="temukan" class="btn btn-primary btn-block btn-lg hero-resume__search-button">Temukan</button>
             </div>
         </div>
     </div>
 </div>
+</form>
+<?php
+  if(isset($_POST['temukan'])){
+    $dkamar=$_POST['dkamar'];
+    if(empty($dkamar)){
+      $dkamar='null';
+    }
+    $jenis=$_POST['jenis'];
+    $kelas=$_POST['kelas'];
+    redirect('cari_kamar/cari/'.$dkamar.'/'.$jenis.'/'.$kelas.'/');
+  }
+?>
 <div class="listings-resumes">
     <div class="container">
 
 
         <div class="listings-resumes__items">
           <?php
+          if (is_array($semua) || is_object($semua)){
              $i=0;
              foreach($semua as $kamar){
 
@@ -135,7 +177,13 @@
             </div>
             <?php
           }
+        }else{
              ?>
+
+             <div class="alert alert-warning" role="alert">
+                     <strong>Maaf!</strong>  Data Yang Anda Cari Tidak Tersedia
+                 </div>
+        <?php } ?>
         </div>
 
         <nav class="listings-pagination d-flex justify-content-center">
