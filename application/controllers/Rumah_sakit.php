@@ -126,6 +126,13 @@ class Rumah_sakit extends CI_Controller {
 		$this->load->view('admin/Rumah_sakit_admin',$data);
 	}
 
+  public function h_admin()
+	{
+    $data['lihat'] = $this->M_Rs->lihat();
+    $data['verifikasi'] = $this->M_Rs->lihat_verifikasi();
+		$this->load->view('admin/Home_admin',$data);
+	}
+
   public function detail()
 	{
     $CI =& get_instance();

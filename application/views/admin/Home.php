@@ -140,6 +140,16 @@
         </div>
       </div>
 
+
+      <div class="col-lg-12">
+        <div class="card mb-3 ">
+
+            <div class="card-block">
+              <iframe class="animated fadeInDown wow" src="maps/lokasi_databases_baru.php" width="100%" height="400px" scrolling="no" frameborder="0"></iframe>
+            </div>
+        </div>
+      </div>
+
     </div>
 
   <div class="card card-outline-info mb-3">

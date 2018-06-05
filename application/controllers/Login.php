@@ -61,7 +61,7 @@ class Login extends CI_Controller {
        redirect('rumah_sakit/admin');
      }else if(isset($admin[0]->username)){
        $this->session->set_userdata('admin',$admin[0]->username);
-       redirect('rumah_sakit_admin');
+       redirect('home_admin');
      }else{
        $this->alert("danger","Gagal","Maaf Anda Gagal Login");
        redirect('login');

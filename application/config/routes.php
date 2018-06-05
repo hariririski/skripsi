@@ -59,6 +59,7 @@ $route['profil'] = 'rumah_sakit/profil';
 
 $route['detail'] = 'Rumah_sakit/detail';
 $route['rumah_sakit_admin'] = 'Rumah_sakit/rumah_sakit_admin';
+$route['home_admin'] = 'Rumah_sakit/h_admin';
 
 
 $route['404_override'] = '';
