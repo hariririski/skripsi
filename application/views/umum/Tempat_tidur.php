@@ -49,8 +49,9 @@
             <p class="blog__heading-level-two">Mengelola Data Kamar</p>
         </div>
     </header>
-    <?php echo $this->session->flashdata('pesan')?>
+
     <div class="container">
+      <?php echo $this->session->flashdata('pesan')?>
         <br>
 <div class="row">
       <div class="col-lg-5">
@@ -139,9 +140,9 @@
                               echo'<span class="badge badge-pill badge-danger badge-sm">Terisi</span>';
                             }
                            ?></td>
-                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-success btn-xs">Tambah</button></td>
-                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
-                      </tr>
+                           <td class="center"><a href="<?php echo site_url(); ?>tempat_tidur/<?php echo $this->uri->segment('3')?>/edit_tempat_tidur?id=<?php echo $tempat_tidur->id_tempat_tidur?>" onclick="return confirm('Apakah Anda Yakin Meemperbaharui ?')" ><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
+                           <td class="center"><a href="<?php echo site_url(); ?>tempat_tidur/hapus_tempat_tidur/<?php echo $this->uri->segment('3')?>?id=<?php echo $tempat_tidur->id_tempat_tidur?>" onclick="return confirm('Apakah Anda Yakin Menghapus ?')" ><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
+                           </tr>
                       <?php
                       }
                      ?>

@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Kamar</title>
+    <title>Edit Tempat Tidur</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,11 +36,8 @@
 <body class="">
   <?php
     $nama_ruang="";
-     foreach($ruang as $data_ruang){
-       $nama_ruang=$data_ruang->nama_ruang;
-       $id_ruang=$data_ruang->id_ruang;
+     foreach($kamar as $data_kamar){
 
-      }
     ?>
 
 
@@ -54,63 +51,72 @@
     </header>
 
     <div class="container">
-        <br>
       <?php echo $this->session->flashdata('pesan')?>
-      <div class="card card-outline-success mb-3">
-            <div class="card-header bg-success">Tambah Kamar Pada Ruang <?php echo $nama_ruang;?></div>
+        <br>
+<div class="row">
+      <div class="col-lg-5">
+      <div class="card card-outline-info mb-3">
+            <div class="card-header bg-success">Data Ruang dan Kamar</div>
             <div class="card-block">
-              <form method="POST" action="<?php echo site_url(); ?>kamar/tambah/<?php echo $id_ruang;?>">
-                <div class="form-group row">
-                  <label for="example-text-input" class="col-3 col-form-label">Nama Ruang</label>
-                  <div class="col-9">
-                      <input class="form-control" required type="text" value="<?php echo $nama_ruang;?>" name="nama_ruang" id="example-text-input" readonly placeholder="Masukkan Nama Ruang">
-                  </div>
-                </div>
+              <form >
+
                     <div class="form-group row">
-                      <label for="example-text-input" class="col-3 col-form-label">Nama Kamar</label>
-                      <div class="col-9">
-                          <input class="form-control" required type="text" name="nama_kamar" id="example-text-input" required placeholder="Masukkan Nama Kamar">
+                      <label for="example-text-input" class="col-4 col-form-label">Nama Ruang</label>
+                      <div class="col-8">
+                          <input class="form-control" required type="text" readonly value=" <?php echo $data_kamar->nama_ruang;?>" name="nama_kamar" id="example-text-input" required placeholder="Masukkan Nama Kamar">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="example-text-input" class="col-3 col-form-label">Jumlah Tempat Tidur</label>
-                      <div class="col-9">
-                        <input class="form-control" required type="number" name="jumlah_tempat_tidur" id="example-text-input" required placeholder="Masukkan Jumlah Tempat">
-                        <span>Isi Jumlah Tempat Tidur Jika Ingin Membuat Tempat Tidur Otomatis, Jika Tidak Silahkan Berikan Nilai 0<span>
+                      <label for="example-text-input" class="col-4 col-form-label">Nama Kamar</label>
+                      <div class="col-8">
+                          <input class="form-control" required type="text" readonly value=" <?php echo $data_kamar->nama_kamar;?>" name="nama_kamar" id="example-text-input" required placeholder="Masukkan Nama Kamar">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label for="example-text-input" class="col-3 col-form-label">Kelas Kamar</label>
-                      <div class="col-9">
-                        <select class="form-control select2-form-control " name="kelas_kamar" required tabindex="-1" aria-hidden="true">
-                              <option value="">Pilih Kelas Kamar</option>
-                            <?php
-                               foreach($lihat as $data_jenis){
-                             ?>
-                            <option value="<?php echo $data_jenis->id_kelas_kamar;?>"><?php echo $data_jenis->nama_kelas_kamar;?></option>
-                            <?php
-                              }
-                             ?>
-                        </select>
-                      </div>
+                      <label for="example-text-input" class="col-4 col-form-label">Kelas Kamar</label>
+                      <div class="col-8">
+                        <input class="form-control" required type="text" readonly value=" <?php echo $data_kamar->nama_kelas_kamar;?>" name="jumlah_tempat_tidur" id="example-text-input" required placeholder="Masukkan Jumlah Tempat">
+
                     </div>
-                  <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
+
               </form>
             </div>
         </div>
+        </div>
+        </div>
 
+
+  <div class="col-lg-7 ">
+    <div class="card card-outline-success mb-3">
+          <div class="card-header bg-success">Edit Tempat Tidur </div>
+          <div class="card-block">
+            <form method="POST" action="<?php echo site_url(); ?>tempat_tidur/tambah/<?php echo $data_kamar->id_kamar;?>">
+
+                  <div class="form-group row">
+                    <label for="example-text-input" class="col-4 col-form-label">Nama Tempat Tidur</label>
+                    <div class="col-8">
+                        <input class="form-control" required type="text"   name="nama_tempat_tidur" id="example-text-input" required placeholder="Masukkan Nama Tempat Tidur">
+                    </div>
+                  </div>
+                  <p align="right"><button type="submit" class="btn btn-info btn-medium">Simpan</button></p>
+
+            </form>
+          </div>
+      </div>
+      </div>
+  </div>
+
+<?php } ?>
         <div class="card card-outline-info mb-3">
-            <div class="card-header bg-info">Data Kamar Pada Ruang <?php echo $nama_ruang;?></div>
+            <div class="card-header bg-info">Data Tempat Tidur</div>
             <div class="card-block">
               <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                   <thead>
                       <tr>
                           <th>NO</th>
-                          <th>Kamar</th>
-                          <th>Kelas Kamar</th>
-                          <th>Lihat Tempat Tidur</th>
-                          <th>Tambah Fasilitas</th>
-                          <th>Edit kamar</th>
+                          <th>nama_tempat_tidur</th>
+                          <th>Status</th>
+                          <th>Edit</th>
                           <th>Hapus kamar</th>
 
 
@@ -121,18 +127,22 @@
 
                     <?php
                        $i=0;
-                       foreach($kamar as $data_kamar){
+                       foreach($lihat as $tempat_tidur){
                        $i++;
                      ?>
                       <tr>
                           <td><?php echo $i?></td>
-                          <td><?php echo $data_kamar->nama_kamar ?></td>
-                          <td><?php echo $data_kamar->nama_kelas_kamar ?></td>
-                          <td class="center"><a href="<?php echo site_url(); ?>kamar/tempat_tidur/<?php echo $data_kamar->id_kamar ?>"><button type="button" class="btn btn-success btn-xs">Lihat</button></td>
-                          <td class="center"><a href="<?php echo site_url(); ?>kamar/tambah/<?php echo $data_kamar->id_kamar ?>"><button type="button" class="btn btn-success btn-xs">Tambah</button></td>
-                          <td class="center"><a href="<?php echo site_url(); ?>kamar/edit_kamar/<?php echo $this->uri->segment('3')?>?id=<?php echo $data_kamar->id_kamar?>" onclick="return confirm('Apakah Anda Yakin Meemperbaharui ?')" ><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
-                          <td class="center"><a href="<?php echo site_url(); ?>kamar/hapus_kamar/<?php echo $this->uri->segment('3')?>?id=<?php echo $data_kamar->id_kamar?>" onclick="return confirm('Apakah Anda Yakin Menghapus ?')" ><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
-                        </tr>
+                          <td><?php echo $tempat_tidur->nama_tempat_tidur ?></td>
+                          <td><?php
+                            if($tempat_tidur->status==0){
+                              echo'<span class="badge badge-pill badge-success badge-sm">Kosong</span>';
+                            }else if($tempat_tidur->status==1){
+                              echo'<span class="badge badge-pill badge-danger badge-sm">Terisi</span>';
+                            }
+                           ?></td>
+                           <td class="center"><a href="<?php echo site_url(); ?>tempat_tidur/<?php echo $this->uri->segment('3')?>/edit_tempat_tidur?id=<?php echo $tempat_tidur->id_tempat_tidur?>" onclick="return confirm('Apakah Anda Yakin Meemperbaharui ?')" ><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
+                           <td class="center"><a href="<?php echo site_url(); ?>tempat_tidur/hapus_tempat_tidur/<?php echo $this->uri->segment('3')?>?id=<?php echo $tempat_tidur->id_tempat_tidur?>" onclick="return confirm('Apakah Anda Yakin Menghapus ?')" ><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
+                           </tr>
                       <?php
                       }
                      ?>

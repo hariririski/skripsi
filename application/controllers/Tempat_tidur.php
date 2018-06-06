@@ -46,9 +46,16 @@ class Tempat_tidur extends CI_Controller {
 	public function tempat_tidur()
 	{
 
-    $data['lihat'] = $this->M_tempat_tidur->lihat($this->uri->segment('3'));
+    $data['lihat'] = $this->M_Tempat_tidur->lihat($this->uri->segment('3'));
     $data['kamar'] = $this->M_Kamar->lihat_per($this->uri->segment('3'));
   	$this->load->view('umum/tempat_tidur',$data);
+	}
+	public function edit_tempat_tidur()
+	{
+
+    $data['lihat'] = $this->M_Tempat_tidur->lihat($this->uri->segment('3'));
+    $data['kamar'] = $this->M_Kamar->lihat_per($this->uri->segment('3'));
+  	$this->load->view('umum/edit_tempat_tidur',$data);
 	}
 
   public function tambah(){
@@ -61,7 +68,18 @@ class Tempat_tidur extends CI_Controller {
           redirect('kamar/tempat_tidur/'.$this->uri->segment('3'));
         }
   }
+  public function hapus_tempat_tidur(){
+        $id=$_GET['id'];
 
+        $cek= $this->M_Tempat_tidur->hapus($id);
+        if($cek){
+          $this->alert_hapus("primary","Berhasil");
+          redirect('kamar/tempat_tidur/'.$this->uri->segment('3'));
+        }else{
+          $this->alert_hapus("danger","Gagal");
+            redirect('kamar/tempat_tidur/'.$this->uri->segment('3'));
+        }
+  }
   function alert($warna,$status){
        $this->session->set_flashdata('pesan',
        '<div class="alert alert-solid-'.$warna.'" role="alert">
@@ -72,7 +90,16 @@ class Tempat_tidur extends CI_Controller {
         </div>
         ');
      }
-
+     function alert_hapus($warna,$status){
+          $this->session->set_flashdata('pesan',
+          '<div class="alert alert-solid-'.$warna.'" role="alert">
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                   </button>
+                   <strong>'.$status.'</strong> Data '.$status.' Di hapus
+           </div>
+           ');
+        }
      function random_name($length) {
               $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
               $password = substr( str_shuffle( $chars ), 0, $length );

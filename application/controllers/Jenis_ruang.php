@@ -35,6 +35,11 @@ class Jenis_ruang extends CI_Controller {
     $data['lihat'] = $this->M_Jenis_ruang->lihat();
 		$this->load->view('admin/tambah_jenis_ruang',$data);
 	}
+	public function edit_jenis_ruang()
+	{
+    $data['lihat'] = $this->M_Jenis_ruang->lihat();
+		$this->load->view('admin/edit_jenis_ruang',$data);
+	}
 
   public function tambah(){
         $cek= $this->M_Jenis_ruang->tambah();
@@ -46,7 +51,17 @@ class Jenis_ruang extends CI_Controller {
           redirect('jenis_ruang');
         }
   }
-
+  public function hapus_jenis_ruang(){
+        $id=$_GET['id'];
+        $cek= $this->M_Jenis_ruang->hapus($id);
+        if($cek){
+          $this->alert_hapus("primary","Berhasil");
+          redirect('jenis_ruang');
+        }else{
+          $this->alert_hapus("danger","Gagal");
+          redirect('jenis_ruang');
+        }
+  }
   function alert($warna,$status){
        $this->session->set_flashdata('pesan',
        '<div class="alert alert-solid-'.$warna.'" role="alert">
@@ -57,6 +72,15 @@ class Jenis_ruang extends CI_Controller {
         </div>
         ');
      }
-
+     function alert_hapus($warna,$status){
+          $this->session->set_flashdata('pesan',
+          '<div class="alert alert-solid-'.$warna.'" role="alert">
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                   </button>
+                   <strong>'.$status.'</strong> Data '.$status.' Di hapus
+           </div>
+           ');
+        }
 
 }

@@ -103,8 +103,8 @@ class M_tempat_tidur extends CI_Model{
 
     function hapus($id)
     {
-      $query=$this->db->where('id_prodi', $id);
-      $cek=$this->db->delete('prodi');
+      $query=$this->db->where('id_tempat_tidur', $id);
+      $cek=$this->db->delete('tempat_tidur');
       return $cek;
     }
 

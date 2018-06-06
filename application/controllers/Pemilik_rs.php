@@ -35,6 +35,11 @@ class Pemilik_rs extends CI_Controller {
     $data['lihat'] = $this->M_Pemilik_rs->lihat();
 		$this->load->view('admin/tambah_pemilik_rs',$data);
 	}
+	public function edit_pemilik_rs()
+	{
+    $data['lihat'] = $this->M_Pemilik_rs->lihat();
+		$this->load->view('admin/edit_pemilik_rs',$data);
+	}
 
 
   public function tambah(){
@@ -44,6 +49,18 @@ class Pemilik_rs extends CI_Controller {
           redirect('pemilik_rs');
         }else{
           $this->alert("danger","Gagal");
+          redirect('pemilik_rs');
+        }
+  }
+
+  public function hapus_pemilik_rs(){
+        $id=$_GET['id'];
+        $cek= $this->M_Pemilik_rs->hapus($id);
+        if($cek){
+          $this->alert_hapus("primary","Berhasil");
+          redirect('pemilik_rs');
+        }else{
+          $this->alert_hapus("danger","Gagal");
           redirect('pemilik_rs');
         }
   }
@@ -58,6 +75,15 @@ class Pemilik_rs extends CI_Controller {
         </div>
         ');
      }
-
+     function alert_hapus($warna,$status){
+          $this->session->set_flashdata('pesan',
+          '<div class="alert alert-solid-'.$warna.'" role="alert">
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                   </button>
+                   <strong>'.$status.'</strong> Data '.$status.' Di hapus
+           </div>
+           ');
+        }
 
 }

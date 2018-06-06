@@ -55,8 +55,8 @@ class M_Fasilitas extends CI_Model{
 
     function hapus($id)
     {
-      $query=$this->db->where('id_prodi', $id);
-      $cek=$this->db->delete('prodi');
+      $query=$this->db->where('id_fasilitas', $id);
+      $cek=$this->db->delete('fasilitas');
       return $cek;
     }
 

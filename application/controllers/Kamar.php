@@ -42,6 +42,15 @@ class Kamar extends CI_Controller {
 
 		$this->load->view('umum/tambah_kamar',$data);
 	}
+	public function edit_kamar()
+	{
+
+    $data['lihat'] = $this->M_Kelas_kamar->lihat();
+    $data['kamar'] = $this->M_Kamar->lihat($this->uri->segment('3'));
+    $data['ruang'] = $this->M_Ruang->lihat_per($this->uri->segment('3'));
+
+		$this->load->view('umum/edit_kamar',$data);
+	}
 
 
 
@@ -64,7 +73,17 @@ class Kamar extends CI_Controller {
           redirect('kamar/kamar/'.$this->uri->segment('3'));
         }
   }
-
+  public function hapus_kamar(){
+        $id=$_GET['id'];
+        $cek= $this->M_Kamar->hapus($id);
+        if($cek){
+          $this->alert_hapus("primary","Berhasil");
+          redirect('kamar/kamar/'.$this->uri->segment('3'));
+        }else{
+          $this->alert_hapus("danger","Gagal");
+            redirect('kamar/kamar/'.$this->uri->segment('3'));
+        }
+  }
   function alert($warna,$status){
        $this->session->set_flashdata('pesan',
        '<div class="alert alert-solid-'.$warna.'" role="alert">
@@ -75,7 +94,16 @@ class Kamar extends CI_Controller {
         </div>
         ');
      }
-
+     function alert_hapus($warna,$status){
+          $this->session->set_flashdata('pesan',
+          '<div class="alert alert-solid-'.$warna.'" role="alert">
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                   </button>
+                   <strong>'.$status.'</strong> Data '.$status.' Di hapus
+           </div>
+           ');
+        }
      function random_name($length) {
               $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
               $password = substr( str_shuffle( $chars ), 0, $length );

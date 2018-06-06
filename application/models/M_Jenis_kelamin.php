@@ -36,8 +36,8 @@ class M_jenis_kelamin extends CI_Model{
 
     function hapus($id)
     {
-      $query=$this->db->where('id_prodi', $id);
-      $cek=$this->db->delete('prodi');
+      $query=$this->db->where('id_jenis_kelamin', $id);
+      $cek=$this->db->delete('jenis_kelamin');
       return $cek;
     }
 

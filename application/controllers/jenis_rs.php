@@ -35,6 +35,11 @@ class Jenis_rs extends CI_Controller {
     $data['lihat'] = $this->M_Jenis_rs->lihat();
 		$this->load->view('admin/tambah_jenis_rs',$data);
 	}
+	public function edit_jenis_rs()
+	{
+    $data['lihat'] = $this->M_Jenis_rs->lihat();
+		$this->load->view('admin/edit_jenis_rs',$data);
+	}
 
   public function tambah(){
         $cek= $this->M_Jenis_rs->tambah();
@@ -46,7 +51,17 @@ class Jenis_rs extends CI_Controller {
           redirect('jenis_rs');
         }
   }
-
+  public function hapus_jenis_rs(){
+        $id=$_GET['id'];
+        $cek= $this->M_Jenis_rs->hapus($id);
+        if($cek){
+          $this->alert_hapus("primary","Berhasil");
+          redirect('jenis_rs');
+        }else{
+          $this->alert_hapus("danger","Gagal");
+          redirect('jenis_rs');
+        }
+  }
   function alert($warna,$status){
        $this->session->set_flashdata('pesan',
        '<div class="alert alert-solid-'.$warna.'" role="alert">
@@ -57,7 +72,16 @@ class Jenis_rs extends CI_Controller {
         </div>
         ');
      }
-
+     function alert_hapus($warna,$status){
+          $this->session->set_flashdata('pesan',
+          '<div class="alert alert-solid-'.$warna.'" role="alert">
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                   </button>
+                   <strong>'.$status.'</strong> Data '.$status.' Di hapus
+           </div>
+           ');
+        }
 
 
 }

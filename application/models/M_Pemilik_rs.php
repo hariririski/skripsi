@@ -36,8 +36,8 @@ class M_Pemilik_rs extends CI_Model{
 
     function hapus($id)
     {
-      $query=$this->db->where('id_prodi', $id);
-      $cek=$this->db->delete('prodi');
+      $query=$this->db->where('id_pemilik', $id);
+      $cek=$this->db->delete('pemilik_rs');
       return $cek;
     }
 

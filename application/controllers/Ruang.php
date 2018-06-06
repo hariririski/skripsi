@@ -37,7 +37,13 @@ class Ruang extends CI_Controller {
     $data['ruang'] = $this->M_Ruang->lihat();
 		$this->load->view('umum/tambah_ruang',$data);
 	}
-	
+	public function edit_ruang()
+	{
+    $data['lihat'] = $this->M_Jenis_ruang->lihat();
+    $data['ruang'] = $this->M_Ruang->lihat();
+		$this->load->view('umum/edit_ruang',$data);
+	}
+
 
   public function tambah(){
         $cek= $this->M_Ruang->tambah();
@@ -49,7 +55,27 @@ class Ruang extends CI_Controller {
           redirect('ruang');
         }
   }
-
+  public function hapus_ruang(){
+        $id=$_GET['id'];
+        $cek= $this->M_Ruang->hapus($id);
+        if($cek){
+          $this->alert_hapus("primary","Berhasil");
+          redirect('ruang/');
+        }else{
+          $this->alert_hapus("danger","Gagal");
+            redirect('ruang/');
+        }
+  }
+  function alert_hapus($warna,$status){
+       $this->session->set_flashdata('pesan',
+       '<div class="alert alert-solid-'.$warna.'" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <strong>'.$status.'</strong> Data '.$status.' Di hapus
+        </div>
+        ');
+     }
   function alert($warna,$status){
        $this->session->set_flashdata('pesan',
        '<div class="alert alert-solid-'.$warna.'" role="alert">

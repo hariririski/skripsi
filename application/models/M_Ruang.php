@@ -57,8 +57,8 @@ class M_Ruang extends CI_Model{
 
     function hapus($id)
     {
-      $query=$this->db->where('id_prodi', $id);
-      $cek=$this->db->delete('prodi');
+      $query=$this->db->where('id_ruang', $id);
+      $cek=$this->db->delete('ruang');
       return $cek;
     }
 

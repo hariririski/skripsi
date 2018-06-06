@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Jenis Rumah Sakit</title>
+    <title>Edit Jenis Kelamin</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,71 +41,86 @@
 <div class="blog">
     <header class="blog__header">
         <div class="container">
-            <h3 class="blog__heading">Jenis Rumah Sakit</h3>
-            <p class="blog__heading-level-two">Mengelola Jenis Rumah Sakit</p>
+            <h3 class="blog__heading">Jenis Kelamin</h3>
+            <p class="blog__heading-level-two">Mengelola Data Jenis Kelamin</p>
         </div>
     </header>
 
+
+
     <div class="container">
-        <br>
-        <?php echo $this->session->flashdata('pesan')?>
+      <br>
+      <?php echo $this->session->flashdata('pesan')?>
       <div class="card card-outline-success mb-3">
-            <div class="card-header bg-success">Tambah Jenis Rumah Sakit</div>
-            <div class="card-block">
-              <form method="POST" action="<?php echo site_url(); ?>jenis_rs/tambah">
-                    <div class="form-group row">
-                    <label for="example-text-input" class="col-3 col-form-label">Jenis Rumah Sakit</label>
-                    <div class="col-9">
-                        <input class="form-control" type="text" required name="nama_jenis_rs" id="example-text-input" placeholder="Masukkan Jenis Rumah Sakit">
-                    </div>
-                </div>
-                <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
-                </form>
-            </div>
-        </div>
+          <div class="card-header bg-success">Edit Jenis Kelamin</div>
+          <div class="card-block">
+            <form method="POST" action="<?php echo site_url(); ?>jenis_kelamin/tambah" >
+              <div class="form-group row">
+                  <label for="example-text-input" class="col-3 col-form-label">Jenis Kelamin</label>
+                  <div class="col-9">
+                      <input class="form-control" type="text"  required name="nama_jenis_kelamin" placeholder="Masukkan Jenis Kelamin">
+                      <div class="form-control-feedback">Jenis Kelamin Yang Di Akui Indonesia. Contoh : Laki-Laki, Perempuan</div>
+                  </div>
 
-        <div class="card card-outline-info mb-3">
-            <div class="card-header bg-info">Data Jenis Rumah Sakit</div>
-            <div class="card-block">
-              <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                  <thead>
-                      <tr>
-                          <th>NO</th>
-                          <th>Jenis Rumah Sakit</th>
-                          <th>Edit</th>
-                          <th>Hapus</th>
+              </div>
+                <p align="right"><button type="submit" class="btn btn-info btn-medium">Simpan</button></p>
+            </form>
 
-                      </tr>
-                  </thead>
-                  <tbody>
+          </div>
+      </div>
 
+      <div class="card card-outline-info mb-3">
+          <div class="card-header bg-info">Data Jenis Kelamin</div>
+          <div class="card-block">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                    <tr>
+                        <th>NO</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Edit</th>
+                        <th>Hapus</th>
 
+                    </tr>
+                </thead>
+                <tbody>
+                  <?php
+                     $i=0;
+                     foreach($lihat as $jenis_kelamin){
+                     $i++;
+                   ?>
+                    <tr>
+                        <td><?php echo $i?></td>
+                        <td><?php echo $jenis_kelamin->nama_jenis_kelamin ?></td>
+
+                        <td class="center"><a href="<?php echo site_url(); ?>jenis_kelamin/edit_jenis_kelamin?id=<?php echo $jenis_kelamin->id_jenis_kelamin?>" onclick="return confirm('Apakah Anda Yakin Meemperbaharui ?')" ><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
+                        <td class="center"><a href="<?php echo site_url(); ?>jenis_kelamin/hapus_jenis_kelamin?id=<?php echo $jenis_kelamin->id_jenis_kelamin?>" onclick="return confirm('Apakah Anda Yakin Menghapus ?')" ><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
+                        </tr>
                     <?php
-                       $i=0;
-                       foreach($lihat as $jenis_rs){
-                       $i++;
-                     ?>
-                      <tr>
-                          <td><?php echo $i?></td>
-                          <td><?php echo $jenis_rs->nama_jenis_rs ?></td>
+                    }
+                   ?>
 
-                          <td class="center"><a href="<?php echo site_url(); ?>jenis_rs/edit_jenis_rs?id=<?php echo $jenis_rs->id_jenis_rs ?>" onclick="return confirm('Apakah Anda Yakin Meemperbaharui ?')" ><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
-                          <td class="center"><a href="<?php echo site_url(); ?>jenis_rs/hapus_jenis_rs?id=<?php echo $jenis_rs->id_jenis_rs ?>" onclick="return confirm('Apakah Anda Yakin Menghapus ?')" ><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
-                          </tr>
-                      <?php
-                      }
-                     ?>
+                </tbody>
+            </table>
+            <!-- /.table-responsive -->
+          </div>
+      </div>
 
 
-                  </tbody>
-              </table>
-              <!-- /.table-responsive -->
 
-            </div>
-        </div>
+
     </div>
 
 </div>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -148,18 +163,16 @@
 
     <!-- <script src="<?php echo site_url(); ?>data_umum/table/vendor/bootstrap/js/bootstrap.min.js"></script> -->
 
-        <!-- Metis Menu Plugin JavaScript -->
+
         <script src="<?php echo site_url(); ?>data_umum/table/vendor/metisMenu/metisMenu.min.js"></script>
 
-        <!-- DataTables JavaScript -->
         <script src="<?php echo site_url(); ?>data_umum/table/vendor/datatables/js/jquery.dataTables.min.js"></script>
         <script src="<?php echo site_url(); ?>data_umum/table/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
         <script src="<?php echo site_url(); ?>data_umum/table/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
-        <!-- Custom Theme JavaScript -->
         <script src="<?php echo site_url(); ?>data_umum/table/dist/js/sb-admin-2.js"></script>
 
-        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+
         <script>
         $(document).ready(function() {
             $('#dataTables-example').DataTable({

@@ -45,9 +45,9 @@
             <p class="blog__heading-level-two">Mengelola Administrator</p>
         </div>
     </header>
-    <?php echo $this->session->flashdata('pesan')?>
     <div class="container">
         <br>
+        <?php echo $this->session->flashdata('pesan')?>
       <div class="card card-outline-success mb-3">
             <div class="card-header bg-success">Tambah Administrator</div>
             <div class="card-block">
@@ -91,7 +91,6 @@
                           <th>NO</th>
                           <th>Nama Lengkap</th>
                           <th>Username</th>
-                          <th>Edit</th>
                           <th>Hapus</th>
 
                       </tr>
@@ -101,17 +100,15 @@
 
                     <?php
                        $i=0;
-                       foreach($lihat as $admi){
+                       foreach($lihat as $admin){
                        $i++;
                      ?>
                       <tr>
                           <td><?php echo $i?></td>
-                          <td><?php echo $admi->nama_lengkap ?></td>
-                          <td><?php echo $admi->username ?></td>
-
-                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
-                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
-                      </tr>
+                          <td><?php echo $admin->nama_lengkap ?></td>
+                          <td><?php echo $admin->username ?></td>
+                          <td class="center"><a href="<?php echo site_url(); ?>admin/hapus_admin?id=<?php echo $admin->username?>" onclick="return confirm('Apakah Anda Yakin Menghapus ?')" ><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
+                        </tr>
                       <?php
                       }
                      ?>

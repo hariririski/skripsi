@@ -9,22 +9,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/tether/css/tether.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/animate-css/animate.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/fonts/circular/styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/fonts/open-sans/styles.css">
-    <link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/fonts/iconfont/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/tether/css/tether.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/animate-css/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/circular/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/open-sans/styles.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/fonts/iconfont/styles.css">
 
-    <link href="<?php site_url(); ?>data_umum/table/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
-    <!-- <link href="<?php site_url(); ?>data_umum/table/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link href="<?php site_url(); ?>data_umum/table/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
-    <link href="<?php site_url(); ?>data_umum/table/dist/css/sb-admin-2.css" rel="stylesheet">
-    <link href="<?php site_url(); ?>data_umum/table/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-    <link href="<?php site_url(); ?>data_umum/table/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo site_url(); ?>data_umum/table/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <link href="<?php echo site_url(); ?>data_umum/table/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <link href="<?php echo site_url(); ?>data_umum/table/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?php echo site_url(); ?>data_umum/table/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="<?php echo site_url(); ?>data_umum/table/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-<link rel="stylesheet" type="text/css" href="<?php site_url(); ?>data_umum/vendors/leaflet/leaflet.css">
+<link rel="stylesheet" type="text/css" href="<?php echo site_url(); ?>data_umum/vendors/leaflet/leaflet.css">
 
 
     <!-- BEGIN THEME STYLES -->
@@ -45,10 +45,12 @@
             <p class="blog__heading-level-two">Mengelola Kelas Rumah Sakit</p>
         </div>
     </header>
-    <?php echo $this->session->flashdata('pesan')?>
+
     <div class="container">
         <br>
+      <?php echo $this->session->flashdata('pesan')?>
       <div class="card card-outline-success mb-3">
+
             <div class="card-header bg-success">Tambah Kelas Rumah Sakit</div>
             <div class="card-block">
               <form method="POST" action="<?php site_url(); ?>kelas_rs/tambah">
@@ -92,8 +94,8 @@
                           <td><?php echo $i?></td>
                           <td><?php echo $kelas_rs->nama_kelas_rs ?></td>
 
-                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
-                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
+                          <td class="center"><a href="<?php echo site_url(); ?>kelas_rs/edit_kelas_rs?id=<?php echo $kelas_rs->id_kelas_rs ?>" onclick="return confirm('Apakah Anda Yakin Meemperbaharui ?')" ><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
+                          <td class="center"><a href="<?php echo site_url(); ?>kelas_rs/hapus_kelas_rs?id=<?php echo $kelas_rs->id_kelas_rs ?>" onclick="return confirm('Apakah Anda Yakin Menghapus ?')" ><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                       </tr>
                       <?php
                       }
@@ -115,10 +117,10 @@
 
   <?php echo $this->load->view('umum/share/footer', '', TRUE);?>
 
-<script src="<?php site_url(); ?>data_umum/vendors/jquery/jquery.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/vendors/tether/js/tether.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/vendors/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?php site_url(); ?>data_umum/js/dropdown.animate.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/jquery/jquery.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/tether/js/tether.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo site_url(); ?>data_umum/js/dropdown.animate.js"></script>
 
 
 
@@ -150,18 +152,16 @@
     })(jQuery);
 </script>
 
-    <!-- <script src="<?php site_url(); ?>data_umum/table/vendor/bootstrap/js/bootstrap.min.js"></script> -->
 
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="<?php site_url(); ?>data_umum/table/vendor/metisMenu/metisMenu.min.js"></script>
+        <script src="<?php echo site_url(); ?>data_umum/table/vendor/metisMenu/metisMenu.min.js"></script>
 
         <!-- DataTables JavaScript -->
-        <script src="<?php site_url(); ?>data_umum/table/vendor/datatables/js/jquery.dataTables.min.js"></script>
-        <script src="<?php site_url(); ?>data_umum/table/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-        <script src="<?php site_url(); ?>data_umum/table/vendor/datatables-responsive/dataTables.responsive.js"></script>
+        <script src="<?php echo site_url(); ?>data_umum/table/vendor/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="<?php echo site_url(); ?>data_umum/table/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+        <script src="<?php echo site_url(); ?>data_umum/table/vendor/datatables-responsive/dataTables.responsive.js"></script>
 
         <!-- Custom Theme JavaScript -->
-        <script src="<?php site_url(); ?>data_umum/table/dist/js/sb-admin-2.js"></script>
+        <script src="<?php echo site_url(); ?>data_umum/table/dist/js/sb-admin-2.js"></script>
 
         <!-- Page-Level Demo Scripts - Tables - Use for reference -->
         <script>

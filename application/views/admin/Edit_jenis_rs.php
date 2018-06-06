@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Jenis Rumah Sakit</title>
+    <title>Edit Jenis Rumah Sakit</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,7 +50,7 @@
         <br>
         <?php echo $this->session->flashdata('pesan')?>
       <div class="card card-outline-success mb-3">
-            <div class="card-header bg-success">Tambah Jenis Rumah Sakit</div>
+            <div class="card-header bg-success">Edit  Jenis Rumah Sakit</div>
             <div class="card-block">
               <form method="POST" action="<?php echo site_url(); ?>jenis_rs/tambah">
                     <div class="form-group row">
@@ -59,7 +59,7 @@
                         <input class="form-control" type="text" required name="nama_jenis_rs" id="example-text-input" placeholder="Masukkan Jenis Rumah Sakit">
                     </div>
                 </div>
-                <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
+                <p align="right"><button type="submit" class="btn btn-info btn-medium">Simpan</button></p>
                 </form>
             </div>
         </div>

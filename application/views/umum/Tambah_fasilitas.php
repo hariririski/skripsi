@@ -52,9 +52,10 @@
             <p class="blog__heading-level-two">Mengelola Data Kamar</p>
         </div>
     </header>
-    <?php echo $this->session->flashdata('pesan')?>
+
     <div class="container">
         <br>
+        <?php echo $this->session->flashdata('pesan')?>
       <div class="card card-outline-success mb-3">
             <div class="card-header bg-success">TTambah Fasilitas Pada Kamar <?php echo $nama_kamar;?></div>
             <div class="card-block">
@@ -111,8 +112,8 @@
                           <td><?php echo $i?></td>
                           <td><?php echo $data_fasilitas->nama_fasilitas ?></td>
                           <td><?php echo $data_fasilitas->jumlah ?></td>
-                          <td class="center"><a href="<?php echo site_url(); ?>kamar/tempat_tidur/<?php echo $data_fasilitas->id_kamar ?>"><button type="button" class="btn btn-success btn-xs">Edit</button></td>
-                          <td class="center"><a href="detail_rental.php?id="><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
+                          <td class="center"><a href="<?php echo site_url(); ?>fasilitas/edit_fasilitas/<?php echo $this->uri->segment('3')?>?id=<?php echo $data_fasilitas->id_fasilitas?>" onclick="return confirm('Apakah Anda Yakin Meemperbaharui ?')" ><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
+                          <td class="center"><a href="<?php echo site_url(); ?>fasilitas/hapus_fasilitas/<?php echo $this->uri->segment('3')?>?id=<?php echo $data_fasilitas->id_fasilitas?>" onclick="return confirm('Apakah Anda Yakin Menghapus ?')" ><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                       </tr>
                       <?php
                       }

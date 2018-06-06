@@ -36,6 +36,11 @@ class Jenis_kelamin extends CI_Controller {
     $data['lihat'] = $this->M_Jenis_kelamin->lihat();
 		$this->load->view('admin/tambah_jenis_kelamin',$data);
 	}
+	public function edit_jenis_kelamin()
+	{
+    $data['lihat'] = $this->M_Jenis_kelamin->lihat();
+		$this->load->view('admin/edit_jenis_kelamin',$data);
+	}
 
   public function tambah(){
     		$cek= $this->M_Jenis_kelamin->tambah();
@@ -47,7 +52,17 @@ class Jenis_kelamin extends CI_Controller {
           redirect('jenis_kelamin');
         }
   }
-
+  public function hapus_jenis_kelamin(){
+        $id=$_GET['id'];
+        $cek= $this->M_Jenis_kelamin->hapus($id);
+        if($cek){
+          $this->alert_hapus("primary","Berhasil");
+          redirect('jenis_kelamin');
+        }else{
+          $this->alert_hapus("danger","Gagal");
+          redirect('jenis_kelamin');
+        }
+  }
   function alert($warna,$status){
        $this->session->set_flashdata('pesan',
        '<div class="alert alert-solid-'.$warna.'" role="alert">
@@ -58,5 +73,14 @@ class Jenis_kelamin extends CI_Controller {
         </div>
         ');
      }
-
+     function alert_hapus($warna,$status){
+          $this->session->set_flashdata('pesan',
+          '<div class="alert alert-solid-'.$warna.'" role="alert">
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                   </button>
+                   <strong>'.$status.'</strong> Data '.$status.' Di hapus
+           </div>
+           ');
+        }
 }

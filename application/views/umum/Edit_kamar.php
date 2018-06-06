@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Kamar</title>
+    <title>Edit Kamar</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,7 +57,7 @@
         <br>
       <?php echo $this->session->flashdata('pesan')?>
       <div class="card card-outline-success mb-3">
-            <div class="card-header bg-success">Tambah Kamar Pada Ruang <?php echo $nama_ruang;?></div>
+            <div class="card-header bg-success">Edit Kamar Pada Ruang <?php echo $nama_ruang;?></div>
             <div class="card-block">
               <form method="POST" action="<?php echo site_url(); ?>kamar/tambah/<?php echo $id_ruang;?>">
                 <div class="form-group row">
@@ -94,7 +94,7 @@
                         </select>
                       </div>
                     </div>
-                  <p align="right"><button type="submit" class="btn btn-info btn-medium">Tambah</button></p>
+                  <p align="right"><button type="submit" class="btn btn-info btn-medium">Simpan</button></p>
               </form>
             </div>
         </div>

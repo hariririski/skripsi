@@ -39,6 +39,13 @@ class Fasilitas extends CI_Controller {
     $data['kamar'] = $this->M_Kamar->lihat_per($kode_kamar);
   	$this->load->view('umum/tambah_fasilitas',$data);
 	}
+	public function edit_fasilitas()
+	{
+    $kode_kamar=$this->uri->segment('3');
+    $data['lihat'] = $this->M_Fasilitas->lihat($kode_kamar);
+    $data['kamar'] = $this->M_Kamar->lihat_per($kode_kamar);
+  	$this->load->view('umum/edit_fasilitas',$data);
+	}
 
 
 
@@ -53,7 +60,17 @@ class Fasilitas extends CI_Controller {
           redirect('fasilitas/tambah/'.$this->uri->segment('3'));
         }
   }
-
+  public function hapus_fasilitas(){
+        $id=$_GET['id'];
+        $cek= $this->M_Fasilitas->hapus($id);
+        if($cek){
+          $this->alert_hapus("primary","Berhasil");
+          redirect('fasilitas/tambah/'.$this->uri->segment('3'));
+        }else{
+          $this->alert_hapus("danger","Gagal");
+            redirect('fasilitas/tambah/'.$this->uri->segment('3'));
+        }
+  }
   function alert($warna,$status){
        $this->session->set_flashdata('pesan',
        '<div class="alert alert-solid-'.$warna.'" role="alert">
@@ -64,7 +81,16 @@ class Fasilitas extends CI_Controller {
         </div>
         ');
      }
-
+     function alert_hapus($warna,$status){
+          $this->session->set_flashdata('pesan',
+          '<div class="alert alert-solid-'.$warna.'" role="alert">
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">×</span>
+                   </button>
+                   <strong>'.$status.'</strong> Data '.$status.' Di hapus
+           </div>
+           ');
+        }
      function random_name($length) {
               $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
               $password = substr( str_shuffle( $chars ), 0, $length );

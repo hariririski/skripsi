@@ -74,6 +74,17 @@ class Admin extends CI_Controller {
           redirect('admin');
         }
   }
+  public function hapus_admin(){
+        $id=$_GET['id'];
+        $cek= $this->M_Admin->hapus($id);
+        if($cek){
+          $this->alert("primary","Berhasil");
+          redirect('admin');
+        }else{
+          $this->alert("danger","Gagal");
+          redirect('admin');
+        }
+  }
 
   function alert($warna,$status){
        $this->session->set_flashdata('pesan',
