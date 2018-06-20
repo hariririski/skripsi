@@ -69,7 +69,7 @@
                     <div class="form-group row">
                       <label for="example-text-input" class="col-3 col-form-label">Nama Fasilitas</label>
                       <div class="col-9">
-                          <input class="form-control" required type="text" name="nama_fasilitas" id="example-text-input" required placeholder="Masukkan Nama Fasilitas">
+                          <input class="form-control" autofocus required type="text" name="nama_fasilitas" id="example-text-input" required placeholder="Masukkan Nama Fasilitas">
                       </div>
                     </div>
                     <div class="form-group row">

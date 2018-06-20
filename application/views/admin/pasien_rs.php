@@ -73,7 +73,7 @@ $tahun_max=max($data_tahun);?>
                     series: []
                 };
                 function getAjaxData(id) {
-                    $.getJSON("<?php echo site_url(); ?>admin/data_grafik_pasien", {id: id}, function(json) {
+                    $.getJSON("<?php echo site_url(); ?>admin/data_grafik_pasien/<?php echo $this->uri->segment('3')?>", {id: id}, function(json) {
                         options.xAxis.categories = json[0]['data']; //xAxis: {categories: []}
                         options.series[0] = json[1];
                         chart = new Highcharts.Chart(options);

@@ -129,7 +129,7 @@
                           <td><?php echo $data_kamar->nama_kamar ?></td>
                           <td><?php echo $data_kamar->nama_kelas_kamar ?></td>
                           <td class="center"><a href="<?php echo site_url(); ?>kamar/tempat_tidur/<?php echo $data_kamar->id_kamar ?>"><button type="button" class="btn btn-success btn-xs">Lihat</button></td>
-                          <td class="center"><a href="<?php echo site_url(); ?>kamar/tambah/<?php echo $data_kamar->id_kamar ?>"><button type="button" class="btn btn-success btn-xs">Tambah</button></td>
+                          <td class="center"><a href="<?php echo site_url(); ?>fasilitas/tambah/<?php echo $data_kamar->id_kamar ?>"><button type="button" class="btn btn-success btn-xs">Tambah</button></td>
                           <td class="center"><a href="<?php echo site_url(); ?>kamar/edit_kamar/<?php echo $this->uri->segment('3')?>?id=<?php echo $data_kamar->id_kamar?>" onclick="return confirm('Apakah Anda Yakin Meemperbaharui ?')" ><button type="button" class="btn btn-warning btn-xs">Edit</button></td>
                           <td class="center"><a href="<?php echo site_url(); ?>kamar/hapus_kamar/<?php echo $this->uri->segment('3')?>?id=<?php echo $data_kamar->id_kamar?>" onclick="return confirm('Apakah Anda Yakin Menghapus ?')" ><button type="button" class="btn btn-danger btn-xs">Hapus</button></td>
                         </tr>

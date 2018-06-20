@@ -134,7 +134,7 @@ class M_Rs extends CI_Model{
 
     public function record_count_cari($rs,$jenis,$kelas) {
 
-      if($rs='null'){
+      if($rs=='null'){
         $rs=null;
       }
        if($jenis==0 && $kelas==0){
@@ -149,8 +149,9 @@ class M_Rs extends CI_Model{
 
          return $query->result();
     }
+
    function cari($limit, $start = 0,$rs,$jenis,$kelas) {
-     if($rs='null'){
+     if($rs=='null'){
        $rs=null;
      }
       if($jenis==0 && $kelas==0){

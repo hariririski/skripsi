@@ -143,7 +143,7 @@ class M_tempat_tidur extends CI_Model{
 
    public function record_count_cari($kamar,$jenis,$kelas) {
 
-     if($kamar='null'){
+     if($kamar=='null'){
        $kamar=null;
      }
       if($jenis==0 && $kelas==0){

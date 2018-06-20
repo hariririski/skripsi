@@ -3,7 +3,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Rumah Sakit</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,10 +53,12 @@
         <div class="container">
             <h3 class="blog__heading">
               <?php
+              $kode_rs;
                  $i=0;
                  foreach($lihat as $lihat){
 
                  echo $lihat->nama_rs;
+                 $kode_rs= $lihat->kode_rs;
                }
                ?>
             </h3>
@@ -145,7 +147,7 @@
         <div class="card mb-3 ">
 
             <div class="card-block">
-              <iframe class="animated fadeInDown wow" src="<?php echo site_url(); ?>admin/grafik_pasien" width="100%" height="450px" scrolling="no" frameborder="0"></iframe>
+              <iframe class="animated fadeInDown wow" src="<?php echo site_url(); ?>admin/grafik_pasien/<?php echo $kode_rs?>" width="100%" height="450px" scrolling="no" frameborder="0"></iframe>
             </div>
         </div>
       </div>
@@ -219,7 +221,7 @@
                   </button>
               </div>
               <div class="modal-body">
-
+                <iframe class="animated fadeInDown wow" src="<?php echo site_url(); ?>rumah_sakit/detail_admin/<?php echo $kode_rs?>" width="100%" height="450px" scrolling="yes" frameborder="0"></iframe>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

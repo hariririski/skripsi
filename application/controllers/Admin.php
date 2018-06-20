@@ -45,7 +45,8 @@ class Admin extends CI_Controller {
 	public function data_grafik_pasien()
 	{
     $id = $_GET['id'];
-    $data['lihat'] = $this->M_Admin->data_grafik_pasien($id);
+    $rs=$this->uri->segment('3');
+    $data['lihat'] = $this->M_Admin->data_grafik_pasien($id,$rs);
 
   	$this->load->view('admin/data/data',$data);
 	}

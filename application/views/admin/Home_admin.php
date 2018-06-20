@@ -60,7 +60,7 @@
       <div class="card mb-12 ">
 
           <div class="card-block">
-            <iframe class="animated fadeInDown wow" src="<?php echo site_url(); ?>admin/grafik_rs" width="100%" height="500px" scrolling="no" frameborder="0"></iframe>
+            <iframe class="animated fadeInDown wow" src="<?php echo site_url(); ?>admin/grafik_rs/admin" width="100%" height="500px" scrolling="no" frameborder="0"></iframe>
           </div>
       </div>
     </div>
