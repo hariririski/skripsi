@@ -136,8 +136,9 @@
               <center>  Tempat Tidur Terisi / Kosong</center>
             </div>
             <div class="card-block">
+              <a href="#" data-toggle="modal" data-target="#tempat_tidur">
                 <center><h5 class="card-title"><?php echo $tempat_tidur-$kosong?> / <?php echo $kosong?></h5></center>
-
+              </a>
             </div>
         </div>
       </div>
@@ -221,6 +222,25 @@
               </div>
               <div class="modal-body">
                 <iframe src="<?php echo site_url(); ?>rumah_sakit/detail_admin/<?php echo $kode_rs?>" width="100%" height="450px" scrolling="yes" frameborder="0"></iframe>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="modal fade " id="tempat_tidur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg " role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Tempat Tidur</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <iframe src="<?php echo site_url(); ?>tempat_tidur/pop_data/<?php echo $kode_rs?>" width="100%" height="450px" scrolling="yes" frameborder="0"></iframe>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

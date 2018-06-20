@@ -46,26 +46,6 @@
 
 
 
-<?php echo $this->load->view('umum/share/menu', '', TRUE);?>
-<div class="blog">
-    <header class="blog__header">
-        <div class="container">
-            <h3 class="blog__heading">Info Temat Tidur</h3>
-
-        </div>
-    </header>
-
-
-
-</div>
-
-
-
-<div class="container">
-  <br>
-  <div class="card card-outline-info mb-3">
-      <div class="card-header bg-info">Data Tempat Tidur</div>
-      <div class="card-block">
         <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
             <thead>
                 <tr>
@@ -94,9 +74,9 @@
                       }else if($tempat_tidur->status==1){
                         echo'<span class="badge badge-pill badge-danger badge-sm">Terisi</span>';
                       }
-                     ?></td>
-                     
-                     </tr>
+                     ?>
+                   </td>
+                </tr>
                 <?php
                 }
                ?>
@@ -105,12 +85,6 @@
             </tbody>
         </table>
         <!-- /.table-responsive -->
-      </div>
-  </div>
-
-
-
-</div>
 
 
 
@@ -121,7 +95,10 @@
 
 
 
-  <?php echo $this->load->view('umum/share/footer', '', TRUE);?>
+
+
+
+
 
 
 <script src="<?php echo site_url(); ?>data_umum/vendors/jquery/jquery.min.js"></script>
