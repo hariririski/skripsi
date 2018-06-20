@@ -33,6 +33,14 @@ class Tempat_tidur extends CI_Controller {
 
    }
 
+	public function data()
+	{
+
+    $data['lihat'] = $this->M_Tempat_tidur->lihat_semua($this->session->userdata('rs'));
+
+
+		$this->load->view('umum/semua_tempat_tidur',$data);
+	}
 	public function kamar()
 	{
 

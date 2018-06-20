@@ -34,7 +34,26 @@
                      <div class="header-master__menu-collapse">
                          <ul class="nav navbar-nav">
                              <li class="nav-item dropdown ">
-                                 <a href="<?php echo site_url();?>home"class="nav-link <?php $link=uri_string(); if($link =="home"){ echo "active";} ?> "  role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                               <?php
+                               $rs=$this->session->userdata('rs');
+                               $admin=$this->session->userdata('admin');
+                                if(isset($rs)){
+                                ?>
+                                     <a href="<?php echo site_url();?>rumah_sakit/admin"class="nav-link <?php $link=uri_string(); if($link =="rumah_sakit/admin"){ echo "active";} ?> "  role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                                <?php
+                                }
+                                else if(isset($admin)){
+                                ?>
+                                     <a href="<?php echo site_url();?>home_admin"class="nav-link <?php $link=uri_string(); if($link =="home_admin"){ echo "active";} ?> "  role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                                <?php
+                                }
+                                else{
+                                ?>
+                                     <a href="<?php echo site_url();?>home"class="nav-link <?php $link=uri_string(); if($link =="home"){ echo "active";} ?> "  role="button" aria-haspopup="true" aria-expanded="false">Home</a>
+                                <?php
+                                }
+                                ?>
+
                              </li>
                              <li class="nav-item dropdown">
                                  <a href="<?php echo site_url(); ?>rumah_sakit/rs/0"class="nav-link <?php $link=uri_string(); if($link =="rumah_sakit/rs/0"){ echo "active";} ?>"  role="button" aria-haspopup="true" aria-expanded="false">Rumah Sakit</a>
@@ -61,6 +80,7 @@
                                      <a class="dropdown-item" href="<?php echo site_url(); ?>profil">Profil Rumah Sakit</a>
                                      <a class="dropdown-item" href="<?php echo site_url(); ?>ruang">Ruang</a>
                                      <a class="dropdown-item" href="<?php echo site_url(); ?>pasien/data">Pasien</a>
+                                     <a class="dropdown-item" href="<?php echo site_url(); ?>tempat_tidur/data">Info Tempat Tidur</a>
                                   <?php }else if(isset($admin)){ ?>
                                      <a class="dropdown-item" href="<?php echo site_url(); ?>rumah_sakit_admin">Data Rumah Sakit</a>
                                   <?php } ?>

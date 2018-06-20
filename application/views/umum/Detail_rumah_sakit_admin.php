@@ -47,8 +47,8 @@
 
 
 
-<div class="apartment__full-description">
-    <div class="container ">
+<div >
+    <div >
 
 
 
@@ -58,10 +58,10 @@
          foreach($ruang as $data_ruang){
        ?>
 
-      <div class="col-lg-4" >
+      <div class="col-md-6" >
           <div id="accordion<?php echo $data_ruang->id_ruang;?>" role="tablist"  aria-multiselectable="true" >
                     <div class="card card-outline-info mb-4 card-accordion">
-                        <div class="card-header card-header bg-info collapsed" id="heading-one" data-toggle="collapse" data-parent="#accordion" data-target="#<?php echo $data_ruang->id_ruang;?>" aria-expanded="false">
+                        <div class="card-header bg-info collapsed" id="heading-six" data-toggle="collapse" data-parent="#accordion" data-target="#<?php echo $data_ruang->id_ruang;?>" aria-expanded="false">
                             <?php echo $data_ruang->nama_jenis_ruang." / ".$data_ruang->nama_ruang;?>
                         </div>
 

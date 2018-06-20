@@ -5,6 +5,11 @@ class M_tempat_tidur extends CI_Model{
         $query=$this->db->query("SELECT * FROM `tempat_tidur` WHERE id_kamar='$id'");
         return $query->result();
     }
+    function lihat_semua($rs)
+    {
+      $query=$this->db->query("SELECT * FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang WHERE ruang.kode_rs='$rs' ORDER by tempat_tidur.status='0' DESC");
+      return $query->result();
+    }
     function semua()
     {
         $query=$this->db->query("SELECT * FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang WHERE tempat_tidur.status='0'  ORDER by kelas_kamar.id_kelas_kamar");
