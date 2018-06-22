@@ -45,7 +45,7 @@ class M_Kamar extends CI_Model{
     {
       for($i=1;$i<=$jumlah;$i++){
         $data = array(
-            'nama_tempat_tidur'=>$this->input->post('nama_kamar')." ".$i,
+            'nama_tempat_tidur'=>$this->input->post('nama_kamar')."/ Bed ".$i,
             'id_kamar'=>$id_kamar
         );
         $cek=$this->db->insert('tempat_tidur',$data);
