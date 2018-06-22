@@ -138,13 +138,13 @@ class M_Rs extends CI_Model{
         $rs=null;
       }
        if($jenis==0 && $kelas==0){
-        $query = $this->db->query("SELECT count(rs.kode_rs)as jumlah FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.nama_rs like '%$rs%' or rs.id_kelas_rs='$kelas' or rs.id_jenis_rs='$jenis'  ");
+        $query = $this->db->query("SELECT count(rs.kode_rs)as jumlah FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE  rs.verifikasi='1' and rs.nama_rs like '%$rs%' or rs.id_kelas_rs='$kelas' or rs.id_jenis_rs='$jenis'  ");
       }else if($jenis!=0 && $kelas!=0){
-         $query = $this->db->query("SELECT count(rs.kode_rs)as jumlah FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.nama_rs like '%$rs%' and rs.id_kelas_rs='$kelas' and rs.id_jenis_rs='$jenis'  ");
+         $query = $this->db->query("SELECT count(rs.kode_rs)as jumlah FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi='1' and rs.nama_rs like '%$rs%' and rs.id_kelas_rs='$kelas' and rs.id_jenis_rs='$jenis'  ");
       } else if($jenis!=0 && $kelas==0){
-         $query = $this->db->query("SELECT count(rs.kode_rs)as jumlah FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.nama_rs like '%$rs%'and rs.id_jenis_rs='$jenis' or rs.id_kelas_rs='$kelas'   ");
+         $query = $this->db->query("SELECT count(rs.kode_rs)as jumlah FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi='1' and rs.nama_rs like '%$rs%'and rs.id_jenis_rs='$jenis' or rs.id_kelas_rs='$kelas'   ");
       }else if($jenis==0 && $kelas!=0){
-        $query = $this->db->query("SELECT count(rs.kode_rs)as jumlah FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.nama_rs like '%$rs%' and rs.id_kelas_rs='$kelas' or rs.id_jenis_rs='$jenis'  ");
+        $query = $this->db->query("SELECT count(rs.kode_rs)as jumlah FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi='1' and rs.nama_rs like '%$rs%' and rs.id_kelas_rs='$kelas' or rs.id_jenis_rs='$jenis'  ");
       }
 
          return $query->result();
@@ -155,13 +155,13 @@ class M_Rs extends CI_Model{
        $rs=null;
      }
       if($jenis==0 && $kelas==0){
-       $query = $this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.nama_rs like '%$rs%' or rs.id_kelas_rs='$kelas' or rs.id_jenis_rs='$jenis' and rs.verifikasi='1' limit $start,$limit ");
+       $query = $this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi='1' and rs.nama_rs like '%$rs%' or rs.id_kelas_rs='$kelas' or rs.id_jenis_rs='$jenis' and rs.verifikasi='1' limit $start,$limit ");
      }else if($jenis!=0 && $kelas!=0){
-        $query = $this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.nama_rs like '%$rs%' and rs.id_kelas_rs='$kelas' and rs.id_jenis_rs='$jenis' and rs.verifikasi='1' limit $start,$limit ");
+        $query = $this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi='1' and rs.nama_rs like '%$rs%' and rs.id_kelas_rs='$kelas' and rs.id_jenis_rs='$jenis' and rs.verifikasi='1' limit $start,$limit ");
      } else if($jenis!=0 && $kelas==0){
-        $query = $this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.nama_rs like '%$rs%'and rs.id_jenis_rs='$jenis' or rs.id_kelas_rs='$kelas'  and rs.verifikasi='1' limit $start,$limit ");
+        $query = $this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi='1' and rs.nama_rs like '%$rs%'and rs.id_jenis_rs='$jenis' or rs.id_kelas_rs='$kelas'  and rs.verifikasi='1' limit $start,$limit ");
      }else if($jenis==0 && $kelas!=0){
-       $query = $this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.nama_rs like '%$rs%' and rs.id_kelas_rs='$kelas' or rs.id_jenis_rs='$jenis' and rs.verifikasi='1' limit $start,$limit ");
+       $query = $this->db->query("SELECT * FROM `rs` LEFT JOIN pemilik_rs on pemilik_rs.id_pemilik=rs.id_pemilik left JOIN kelas_rs on kelas_rs.id_kelas_rs=rs.id_kelas_rs left JOIN jenis_rs on jenis_rs.id_jenis_rs=rs.id_jenis_rs WHERE rs.verifikasi='1' and rs.nama_rs like '%$rs%' and rs.id_kelas_rs='$kelas' or rs.id_jenis_rs='$jenis' and rs.verifikasi='1' limit $start,$limit ");
      }
         return $query;
     }

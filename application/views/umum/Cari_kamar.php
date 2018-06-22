@@ -170,7 +170,7 @@
                   ?>
 
                     <li class="listings-resumes__item-extras-item">
-                        <span class="icon iconfont-map-point"></span>
+                        <span class="icon iconfont-plus"></span>
                       <?php echo $object->nama_fasilitas;?>
                     </li>
 
