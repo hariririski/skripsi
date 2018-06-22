@@ -125,9 +125,12 @@
 
         <div class="listings-resumes__items">
           <?php
-          if (is_array($semua) || is_object($semua)){
+          if (is_array($rows) || is_object($rows)){
              $i=0;
-             foreach($semua as $kamar){
+
+
+                foreach($rows as $kamar){
+
 
            ?>
             <div class="listings-resumes__item">
@@ -187,12 +190,7 @@
         </div>
 
         <nav class="listings-pagination d-flex justify-content-center">
-            <ul class="pagination">
-              <?php foreach ($links as $link) {
-              echo "  <li class='page-item active'>&nbsp". $link." </li>";
-
-              } ?>
-            </ul>
+                    <?php echo $pagination; ?>
         </nav>
     </div>
 </div>

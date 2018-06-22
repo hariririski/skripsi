@@ -2,7 +2,7 @@
 class M_Kamar extends CI_Model{
     function lihat($id)
     {
-        $query=$this->db->query("SELECT * FROM kamar left join kelas_kamar on kamar.id_kelas_kamar=kelas_kamar.id_kelas_kamar where id_ruang='$id'");
+        $query=$this->db->query("SELECT * FROM kamar left join kelas_kamar on kamar.id_kelas_kamar=kelas_kamar.id_kelas_kamar where id_ruang='$id' order by kamar.nama_kamar ASC");
         return $query->result();
     }
     function fasilitas($id)
@@ -12,7 +12,7 @@ class M_Kamar extends CI_Model{
     }
     function ruang_kamar($id_rs,$id_ruang)
     {
-        $query=$this->db->query("SELECT * FROM kamar left join ruang on ruang.id_ruang=kamar.id_ruang where ruang.id_ruang='$id_ruang' and ruang.kode_rs='$id_rs' ");
+        $query=$this->db->query("SELECT * FROM kamar left join ruang on ruang.id_ruang=kamar.id_ruang where ruang.id_ruang='$id_ruang' and ruang.kode_rs='$id_rs' order by kamar.nama_kamar ASC ");
         return $query->result();
     }
     function lihat_per($id)
@@ -45,7 +45,7 @@ class M_Kamar extends CI_Model{
     {
       for($i=1;$i<=$jumlah;$i++){
         $data = array(
-            'nama_tempat_tidur'=>"Kamar ".$i,
+            'nama_tempat_tidur'=>$this->input->post('nama_kamar')." ".$i,
             'id_kamar'=>$id_kamar
         );
         $cek=$this->db->insert('tempat_tidur',$data);

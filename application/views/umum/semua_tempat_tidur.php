@@ -70,7 +70,9 @@
             <thead>
                 <tr>
                     <th>NO</th>
-                    <th>nama_tempat_tidur</th>
+                    <th>Ruang</th>
+                    <th>Kamar</th>
+                    <th>Nama Tempat Tidur</th>
                     <th>Status</th>
 
 
@@ -87,6 +89,8 @@
                ?>
                 <tr>
                     <td><?php echo $i?></td>
+                    <td><?php echo $tempat_tidur->nama_ruang ?></td>
+                    <td><?php echo $tempat_tidur->nama_kamar ?></td>
                     <td><?php echo $tempat_tidur->nama_tempat_tidur ?></td>
                     <td><?php
                       if($tempat_tidur->status==0){
@@ -95,7 +99,7 @@
                         echo'<span class="badge badge-pill badge-danger badge-sm">Terisi</span>';
                       }
                      ?></td>
-                     
+
                      </tr>
                 <?php
                 }

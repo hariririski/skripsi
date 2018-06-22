@@ -2,7 +2,7 @@
 class M_tempat_tidur extends CI_Model{
     function lihat($id)
     {
-        $query=$this->db->query("SELECT * FROM `tempat_tidur` WHERE id_kamar='$id'");
+        $query=$this->db->query("SELECT * FROM `tempat_tidur` WHERE id_kamar='$id' order by nama_tempat_tidur ASC");
         return $query->result();
     }
     function lihat_semua($rs)
@@ -114,7 +114,7 @@ class M_tempat_tidur extends CI_Model{
     }
 
     public function fetch_countries($limit, $start) {
-        $query = $this->db->query("SELECT * FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang WHERE tempat_tidur.status='0'  ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit ");
+        $query = $this->db->query("SELECT * FROM `tempat_tidur` inner JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar inner JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner join ruang on kamar.id_ruang=ruang.id_ruang inner join rs on rs.kode_rs=ruang.kode_rs inner join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang WHERE tempat_tidur.status='0'  ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit ");
 
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
@@ -125,17 +125,17 @@ class M_tempat_tidur extends CI_Model{
         return false;
    }
     public function cari_kamar($limit, $start,$kamar,$jenis,$kelas) {
-        if($kamar='null'){
+        if($kamar=='null'){
           $kamar=null;
         }
          if($jenis==0 && $kelas==0){
-          $query = $this->db->query("SELECT * FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' or jenis_ruang.id_jenis_ruang='$jenis' or kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0' ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit");
+          $query = $this->db->query("SELECT * FROM `tempat_tidur`inner  JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner  join ruang on kamar.id_ruang=ruang.id_ruang inner  join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' or jenis_ruang.id_jenis_ruang='$jenis' or kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0' ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit");
         }else if($jenis!=0 && $kelas!=0){
-        $query = $this->db->query("SELECT * FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' and jenis_ruang.id_jenis_ruang='$jenis' and kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0' ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit");
+        $query = $this->db->query("SELECT * FROM `tempat_tidur` inner  JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner  join ruang on kamar.id_ruang=ruang.id_ruang inner  join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' and jenis_ruang.id_jenis_ruang='$jenis' and kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0' ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit");
         } else if($jenis!=0 && $kelas==0){
-          $query = $this->db->query("SELECT * FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' and jenis_ruang.id_jenis_ruang='$jenis' or kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0' ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit");
+          $query = $this->db->query("SELECT * FROM `tempat_tidur` inner  JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner  join ruang on kamar.id_ruang=ruang.id_ruang inner  join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' and jenis_ruang.id_jenis_ruang='$jenis' or kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0' ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit");
         }else if($jenis==0 && $kelas!=0){
-           $query = $this->db->query("SELECT * FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' or jenis_ruang.id_jenis_ruang='$jenis' and kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0' ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit");
+           $query = $this->db->query("SELECT * FROM `tempat_tidur` inner  JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner  join ruang on kamar.id_ruang=ruang.id_ruang inner  join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' and kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0' ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit");
          }
          if ($query->num_rows() > 0) {
              foreach ($query->result() as $row) {
@@ -152,21 +152,27 @@ class M_tempat_tidur extends CI_Model{
        $kamar=null;
      }
       if($jenis==0 && $kelas==0){
-       $query = $this->db->query("SELECT count(tempat_tidur.id_tempat_tidur) as jumlah FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' or jenis_ruang.id_jenis_ruang='$jenis' or kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0'");
+       $query = $this->db->query("SELECT count(tempat_tidur.id_tempat_tidur) as jumlah FROM `tempat_tidur` inner  JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner  join ruang on kamar.id_ruang=ruang.id_ruang inner  join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' or jenis_ruang.id_jenis_ruang='$jenis' or kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0'");
      }else if($jenis!=0 && $kelas!=0){
-     $query = $this->db->query("SELECT count(tempat_tidur.id_tempat_tidur) as jumlah FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' and jenis_ruang.id_jenis_ruang='$jenis' and kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0'");
+     $query = $this->db->query("SELECT count(tempat_tidur.id_tempat_tidur) as jumlah FROM `tempat_tidur` inner JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar inner JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner  join ruang on kamar.id_ruang=ruang.id_ruang inner  join rs on rs.kode_rs=ruang.kode_rs  join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' and jenis_ruang.id_jenis_ruang='$jenis' and kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0'");
      } else if($jenis!=0 && $kelas==0){
-       $query = $this->db->query("SELECT count(tempat_tidur.id_tempat_tidur) as jumlah FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' and jenis_ruang.id_jenis_ruang='$jenis' or kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0'");
+       $query = $this->db->query("SELECT count(tempat_tidur.id_tempat_tidur) as jumlah FROM `tempat_tidur` inner  JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner  join ruang on kamar.id_ruang=ruang.id_ruang inner join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' and jenis_ruang.id_jenis_ruang='$jenis' or kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0'");
      }else if($jenis==0 && $kelas!=0){
-        $query = $this->db->query("SELECT count(tempat_tidur.id_tempat_tidur) as jumlah FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' or jenis_ruang.id_jenis_ruang='$jenis' and kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0'");
+        $query = $this->db->query("SELECT count(tempat_tidur.id_tempat_tidur) as jumlah FROM `tempat_tidur` inner  JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner  join ruang on kamar.id_ruang=ruang.id_ruang inner  join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang  WHERE tempat_tidur.nama_tempat_tidur like '%$kamar%' and kelas_kamar.id_kelas_kamar='$kelas' and tempat_tidur.status='0'");
       }
 
         return $query->result();
    }
    public function record_count() {
-     $query = $this->db->query("SELECT count(tempat_tidur.id_tempat_tidur) as jumlah FROM `tempat_tidur` left JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar left JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar left join ruang on kamar.id_ruang=ruang.id_ruang left join rs on rs.kode_rs=ruang.kode_rs left join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang WHERE tempat_tidur.status='0' ");
+     $query = $this->db->query("SELECT count(tempat_tidur.id_tempat_tidur) as jumlah FROM `tempat_tidur`inner JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar inner JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner join ruang on kamar.id_ruang=ruang.id_ruang inner join rs on rs.kode_rs=ruang.kode_rs inner join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang WHERE tempat_tidur.status='0' ");
         return $query->result();
    }
+
+   function user_limit($limit, $start = 0) {
+      $query = $this->db->query("SELECT * FROM `tempat_tidur` inner JOIN kamar on tempat_tidur.id_kamar=kamar.id_kamar inner JOIN kelas_kamar on kelas_kamar.id_kelas_kamar=kamar.id_kelas_kamar inner join ruang on kamar.id_ruang=ruang.id_ruang inner join rs on rs.kode_rs=ruang.kode_rs inner join jenis_ruang on jenis_ruang.id_jenis_ruang=ruang.id_jenis_ruang WHERE tempat_tidur.status='0'  ORDER by kelas_kamar.id_kelas_kamar limit $start,$limit ");
+
+        return $query;
+    }
 
 
 }

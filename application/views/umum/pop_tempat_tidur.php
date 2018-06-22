@@ -46,44 +46,48 @@
 
 
 
-        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-            <thead>
-                <tr>
-                    <th>NO</th>
-                    <th>nama_tempat_tidur</th>
-                    <th>Status</th>
+  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+      <thead>
+          <tr>
+              <th>NO</th>
+              <th>Ruang</th>
+              <th>Kamar</th>
+              <th>Nama Tempat Tidur</th>
+              <th>Status</th>
 
 
 
-                </tr>
-            </thead>
-            <tbody>
+          </tr>
+      </thead>
+      <tbody>
 
 
-              <?php
-                 $i=0;
-                 foreach($lihat as $tempat_tidur){
-                 $i++;
-               ?>
-                <tr>
-                    <td><?php echo $i?></td>
-                    <td><?php echo $tempat_tidur->nama_tempat_tidur ?></td>
-                    <td><?php
-                      if($tempat_tidur->status==0){
-                        echo'<span class="badge badge-pill badge-success badge-sm">Kosong</span>';
-                      }else if($tempat_tidur->status==1){
-                        echo'<span class="badge badge-pill badge-danger badge-sm">Terisi</span>';
-                      }
-                     ?>
-                   </td>
-                </tr>
-                <?php
+        <?php
+           $i=0;
+           foreach($lihat as $tempat_tidur){
+           $i++;
+         ?>
+          <tr>
+              <td><?php echo $i?></td>
+              <td><?php echo $tempat_tidur->nama_ruang ?></td>
+              <td><?php echo $tempat_tidur->nama_kamar ?></td>
+              <td><?php echo $tempat_tidur->nama_tempat_tidur ?></td>
+              <td><?php
+                if($tempat_tidur->status==0){
+                  echo'<span class="badge badge-pill badge-success badge-sm">Kosong</span>';
+                }else if($tempat_tidur->status==1){
+                  echo'<span class="badge badge-pill badge-danger badge-sm">Terisi</span>';
                 }
-               ?>
+               ?></td>
+
+               </tr>
+          <?php
+          }
+         ?>
 
 
-            </tbody>
-        </table>
+      </tbody>
+  </table>
         <!-- /.table-responsive -->
 
 
